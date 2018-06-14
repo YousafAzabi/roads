@@ -25,3 +25,15 @@ The system **must:**
 - Assign each road a "direction" attribute and value calculated from its coordinates.
 - Compare the direction attribute between identical roads, and flag and deal with any roads that have a difference in direction.
 - Display/store roads that have been flagged so that surveyors can have access to them.
+
+## Usage
+
+There are two files that make up the OS & OSM Road Comparison Script, `comparator-config.json` and `comparator.js`.
+
+`comparator-config.json` is where you will edit the I/O settings for the script, telling the script where your input files are, and where you would like it to output results. Once this file has been configured, you can then run the following command in your terminal, while in the root directory.
+
+```
+node comparator.js
+```
+
+Once you have run this, you will begin to see output displayed in the terminal as the script iterates through the OS Roads and displays possible road matches found in the OSM Data set. These results will also be saved into an output file saved in your **Output** folder.

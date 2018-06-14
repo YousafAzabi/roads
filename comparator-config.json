@@ -1,0 +1,6 @@
+{
+  "inputFileOS": "./Input/resultOS.json",
+  "inputFileOSM": "./Input/resultOSM.json",
+  "outputFileIS": "./Output/outputOS.json",
+  "outputFileOSM": "./Output/outputOSM.json"
+}

@@ -1,0 +1,28 @@
+{
+  "name": "roads",
+  "version": "1.0.0",
+  "description": "The direction of traffic for oneway roads can change, leading to out-of-date online data. The current process for detecting these changes in direction is a manual approach, including trawling through newspaper extracts and through word of mouth from local authorities to see which roads have changed. This results in a slow, time-consuming update process where the majority of surveyors will be sent to random locations in order to determine if the directions are still valid, most of which will already be correct. There is a clear need for a better suited detection system, to avoid the waste of time in sending surveyors to locations where the directions of roads are likely already correct.",
+  "main": "compare.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@turf/line-overlap": "^6.0.2",
+    "@turf/turf": "^5.1.6",
+    "bluebird": "^3.5.1",
+    "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "process": "^0.11.10",
+    "save": "^2.3.2",
+    "string-similarity": "^1.2.0",
+    "turf": "^3.0.14",
+    "uuid": "^3.2.1",
+    "xml2js": "^0.4.19",
+    "xmldom": "^0.1.27",
+    "xpath": "0.0.27"
+  }
+}
