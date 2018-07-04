@@ -1,7 +1,6 @@
 const fs = require('fs');
 const util = require('util');
 const process = require('process');
-const _ = require('lodash/core');
 
 const uploadFile = process.argv[2]; //get upload file from cmd arguments
 const outputFile = process.argv[3]; //upload new file with filtered data

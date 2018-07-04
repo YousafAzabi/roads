@@ -1,12 +1,8 @@
 ## OS & OSM Road Parser
 
-Once you have both your OS and OSM data sets in JSON format, the following scripts can be used to extract every oneway road and output them into a new file in a format ready for comparison.
+Once you have both your OS and OSM data sets in JSON format, the following scripts can be used to extract every oneway road and output them into a new file in a format ready for comparison. Due to the format of OS and OSM files, two separate parsers are needed.
 
 ## Usage
-
-### Requirements
-
-In order to parse road data, you must have a road data source file in the valid, JSON format. Data sets from both Ordnance Survey and OpenSteetMap are generally downloaded in GML or OSM files respectively, and so need to be converted into JSON. Instructions for converting these files into JSON can be found within the *Data* folder. There are two different parsers, one for Ordnance Survey Data and one for OpenStreetMap data, named `jsonRoadParserOS.js` and `jsonRoadParserOSM.js`respectively.
 
 ### OS Data Parsing
 

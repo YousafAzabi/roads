@@ -1,0 +1,6 @@
+{
+  "inputFileOS": "./Output/outputOS.json",
+  "inputFileOSM": "./Output/outputOSM.json",
+  "outputFile": "./flaggedRoads.json",
+  "outputMode": "new"
+}

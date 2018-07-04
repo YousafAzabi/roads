@@ -1,6 +1,7 @@
 {
   "inputFileOS": "./Input/resultOS.json",
   "inputFileOSM": "./Input/resultOSM.json",
-  "outputFileIS": "./Output/outputOS.json",
-  "outputFileOSM": "./Output/outputOSM.json"
+  "outputFileOS": "./Output/outputOS.json",
+  "outputFileOSM": "./Output/outputOSM.json",
+  "outputMode": "new"
 }
