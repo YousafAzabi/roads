@@ -9,6 +9,7 @@ yarn-error.log*
 Output/*.json
 Data/*
 Input/*
+InputY/*.rtf
 
 # Don't ignore README.md files
 !*/README.md

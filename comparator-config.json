@@ -1,7 +1,7 @@
 {
-  "inputFileOS": "./Input/resultOS.json",
-  "inputFileOSM": "./Input/resultOSM.json",
-  "outputFileOS": "./Output/outputOS.json",
-  "outputFileOSM": "./Output/outputOSM.json",
+  "inputFileOS": "./InputY/codeOS12.json",
+  "inputFileOSM": "./InputY/codeOSM2.json",
+  "outputFile": "./Output/output.json",
+  "outputFileMulti": "./Output/multiMatch.json",
   "outputMode": "new"
 }
