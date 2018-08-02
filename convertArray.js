@@ -1,35 +1,35 @@
+/* Script to convert coordinates array to be constructed of 2 element arrays.
+   Reads data from file and make changes then save to the same file.
+   The data is manpulated in the function deleteExtraBrackets */
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
-
-path = "./inputY/codeOSM2.json";
+//this is the input file to be fixed
+path = "./inputY/test.json";
 
 //read data from input file and parse to JSON object
 data = JSON.parse(fs.readFileSync(path).toString());
+console.log("Data is read from file: " + path);
 //loop through all elements (features) in JSON data
-for(let i = 0 ; i < data.features.length - 1 ; i++){
+for (let element of data.features) { 
+  var newCoordinates = [];
   //delete extra brackets in coordinates array and save them
-  data.features[i].geometry.coordinates =
-    deleteExtraBrackets(data.features[i].geometry.coordinates);
+  deleteExtraBrackets(element.geometry.coordinates);
+  element.geometry.coordinates = newCoordinates;
 }
-console.log("writing data to the file.");
+console.log("Writing data to the file: " + path);
 //write JSON data of orginized coordinates array to same input file
 fs.writeFileSync( path, JSON.stringify(data, null, 2));
-console.log("Data saved at: " + path;
+console.log("Data is saved to: " + path);
 
 // function to delete extra brackets in coordinates arrays
 function deleteExtraBrackets(inputArray){
-  let newCoordinates = [];
   //loop through array elements
-  for (let i = 0 ; i < inputArray.length ; i++) {
-    let temp = inputArray[i];
+  for (let temp of inputArray) {
     //check if first element is not array (no extra brucket) push to new array
     if (!Array.isArray(temp[0])) {
-      newCoordinates.push(inputArray[i]);
-    } else { // if first element array loop through sub-array
-      for (let j = 0 ; j < temp.length ; j++) {
-        newCoordinates.push(temp[j]);
-      }
+      newCoordinates.push(temp);
+    } else { // if first element array loop call function again (recursion)
+      deleteExtraBrackets(temp);
     }
   }
-  return newCoordinates;
 }

@@ -1,7 +1,9 @@
 {
   "inputFileOS": "./InputY/codeOS12.json",
-  "inputFileOSM": "./InputY/codeOSM2.json",
-  "outputFile": "./Output/output.json",
-  "outputFileMulti": "./Output/multiMatch.json",
+  "inputFileOSM": "./InputY/codeOSM5.json",
+  "outputFile": "./Output/outputOneway.json",
+  "mismatchOS": "./Output/mismatchOS.json",
+  "mismatchOSM": "./Output/mismatchOSM.json",
+  "overlap": "./Output/overlap.json",
   "outputMode": "new"
 }
