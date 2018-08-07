@@ -1,6 +1,6 @@
 {
-  "inputFileOS": "./InputY/codeOS12.json",
-  "inputFileOSM": "./InputY/codeOSM5.json",
+  "inputFileOS": "./InputY/lonOS.json",
+  "inputFileOSM": "./InputY/lonOSM.json",
   "outputFile": "./Output/outputOneway.json",
   "mismatchOS": "./Output/mismatchOS.json",
   "mismatchOSM": "./Output/mismatchOSM.json",

@@ -39,4 +39,6 @@ There is a general work flow you can follow to get to the point of comparing roa
 ```
 node comparatorY.js
 ```
-The output on the terminal shows the number of roads with zero, one and multi matches, and how many roads with no name in OS. also the total number  of roads in OS and OSM is shown.
+The output on the terminal shows the total number of roads in OS and OSM, the number of roads with zero, one and multi matches, and how many roads with no name in OS. The last line shows number of oneway mismatches between the two datasets (OS & OSM).
+
+The output files can be imported to QGIS to see the roads mismatch and analyse the correctness of the output.
