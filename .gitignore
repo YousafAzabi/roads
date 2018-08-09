@@ -6,10 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 
 # Output Files
-Output/*.json
+Output/*.*
 Data/*
-InputY/*.json
-InputY/*.rtf
+InputY/*.*
 
 # Don't ignore README.md files
 !*/README.md
@@ -68,3 +67,7 @@ typings/
 
 # next.js build output
 .next
+
+.DS_Store
+
+testing_distance_tolerance.ods
