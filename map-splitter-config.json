@@ -1,0 +1,14 @@
+{
+  "map": "OSM",
+  "Async": "no",
+  "fileTag": " ./Output/map/EXAMPLE.json",
+  "inputOS": " ./InputY/testLondonOS.json",
+  "inputOSM": " ./InputY/testLondonOSM.json",
+  "startLong": -0.5,
+  "startLat": 51.3,
+  "endLong": 0.3,
+  "endLat": 51.7,
+  "latDivision": 4,
+  "longDivision": 6,
+  "_comment": "london -0.5 51.3 0.3 51.7 / mayfair -0.16 51.53 -0.13 51.5"
+}

@@ -6,9 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 
 # Output Files
-Output/*.*
+Output/**/*
 Data/*
-InputY/*.*
+InputY/**/*
 
 # Don't ignore README.md files
 !*/README.md
