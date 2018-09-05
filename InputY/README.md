@@ -71,9 +71,9 @@ This is an explanation for the script `map-splitter.js` which runs the above pro
 |--------------|:----------------:
 | map          | `OS` or `OSM` to run relevant code
 | Async        | `yes` for Asynchronous
-| fileTag      | `./Output/map/EXAMPLE.json` map output file name and the file name without extension (EXAMPLE) is used for  small area output file names
-| inputOS      | OS input file
-| inputOSM     | OSM input file
+| fileTag      | `./Output/map/EXAMPLE.json` map output file name and the file name without extension (EXAMPLE) is used for  small area output file names (must start with a space and dot)
+| inputOS      | OS input file (must start with a space)
+| inputOSM     | OSM input file (must start with a space)
 | startLong    | smallest longitude of map
 | startLat     | smallest latitude of map
 | endLong      | largest longitude of map
