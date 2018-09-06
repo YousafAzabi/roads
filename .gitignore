@@ -5,10 +5,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Output Files
+# Files
 Output/**/*
 Data/*
 InputY/**/*
+esting_distance_tolerance.ods
+old*.*
 
 # Don't ignore README.md files
 !*/README.md
@@ -69,5 +71,3 @@ typings/
 .next
 
 .DS_Store
-
-testing_distance_tolerance.ods
