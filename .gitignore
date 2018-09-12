@@ -12,8 +12,9 @@ InputY/**/*
 esting_distance_tolerance.ods
 old*.*
 
-# Don't ignore README.md files
+# Don't ignore README.md and OSTN.... files
 !*/README.md
+!InputY/OSTN15_NTv2_OSGBtoETRS.gsb
 
 # Runtime data
 pids

@@ -5,7 +5,7 @@
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
 //this is the input file to be fixed
-path = "./InputY/londonOSM.json";
+path = "./Output/map/testUK-OSee.json";
 
 //read data from input file and parse to JSON object
 data = JSON.parse(fs.readFileSync(path).toString());

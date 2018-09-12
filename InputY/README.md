@@ -8,7 +8,7 @@ To converts data to JSON format.
 ogr2ogr -f GeoJSON "./output_file_name.json" "./input_file.ext" roadlink
 ```
 
-To converts the projection system from UK (EPSG 27700) to International (EPSG 4326) only done to OS data.
+To converts the projection system from UK (EPSG 27700) to International (EPSG 4326) only done to OS data the file `OSTN15_NTv2_OSGBtoETRS.gsb` should be in the folder or change path accordingly to the folder where it is saved.
 ```
 ogr2ogr -f GeoJSON -s_srs "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.999601 +x_0=400000 +y_0=-100000 +ellps=airy +units=m +no_defs +nadgrids=./OSTN15_NTv2_OSGBtoETRS.gsb" -t_srs EPSG:4326 "./output.json" "./input.json"
 ```
