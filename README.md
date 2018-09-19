@@ -42,3 +42,8 @@ node comparatorY.js
 The output on the terminal shows the total number of roads in OS and OSM, the number of roads with zero, one and multi matches, and how many roads with no name in OS. The last line shows number of oneway mismatches between the two datasets (OS & OSM).
 
 The output files can be imported to QGIS to see the roads mismatch and analyse the correctness of the output.
+
+### Scripts short description:
+* comparatorY.js to compare data from OS against OSM data. Configuration file is comparatorY-config.json.
+* map-splitter.js to split map to smaller areas. COnifugration file is map-splitter-config.json.
+* map-processing.js to convert original map data to required format and reduce size of the file.
