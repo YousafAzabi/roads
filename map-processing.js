@@ -5,14 +5,14 @@ const stream = require('stream'); //to create stream for read line
 const tm = require('./timeprinter.js'); //import file timeprinter.js
 const config = require('./map-processing-config.json'); //import configuration file
 
-let mapData = config.map.toUpperCase();
-let pathIn =  mapData == 'OS' ? config.inputOS : config.inputOSM;
-let pathOut = config.output + mapData + '.json ';
-let totalTime = new Date();
+let mapData = config.map.toUpperCase(); //convert choice to upper case for comparison
+let pathIn =  (mapData == 'OS') ? config.inputOS : config.inputOSM; //choose input OS or OSM
+let pathOut = config.output + mapData + '.json '; //construct output path
+let totalTime = new Date(); //read date to calculate time of script
 
-// define output format (JSON)
+//set ogr2ogr output format (JSON) and reduce coordinates to [longitude, latitude]
 let ogrJSON = 'ogr2ogr -f GeoJSON -skipfailures -dim XY ';
-let ogrPath = pathOut + pathIn;
+let ogrPath = pathOut + pathIn; //output and input files of ogr2ogr
 
 //define SQL query for OS map to select related data
 let ogrSQLOS = ' -sql "SELECT localid as i, ' +
@@ -47,9 +47,9 @@ let ogrSQLOSM = " -sql \"SELECT osm_id as i, name as n, other_tags as t " +
 //constracting the ogr2ogr command string
 ogrCommand = ogrJSON + ogrPath;
 ogrCommand = ogrCommand + (mapData == 'OS' ? ogrSQLOS + ogrProj : ogrSQLOSM);
-console.log(ogrCommand);
+
 //function to execute commandline
-commandLine = (command, callback) => {
+const commandLine = (command, callback) => {
   exec(command, (error, stdout, stderr) => {
     if (error) { //check for error
       console.error('exec error: ' + error); // print error
@@ -58,60 +58,60 @@ commandLine = (command, callback) => {
   });
 }
 
-//read data from input file and parse to JSON object
-reduceData = (seg) => {
-  let id = 0, name = "", dir = 0, way = 0;
-  let coord = [];
-  id = seg.properties.i;
-  name = name ? (seg.properties.n).toLowerCase() : 0;
-  if (mapData = 'OS') {
-    name = (name == 0) ?  0 : name.slice(3,name.length-1);
-    dir = seg.properties.d;
-    way = seg.properties.w;
-  } else {
-    way = isOneWayOSM(seg.properties.t);
+//reduce data size and save as object to be converted to JSON
+const reduceData = (seg) => {
+  let id = 0, name = "", dir = 0, way = 0; //parameters to save data
+  let coord = []; //array for saving coordinates
+  id = seg.properties.i; //read id fromf ile
+  name = seg.properties.n ? (seg.properties.n).toLowerCase() : 0; //check name if exist
+  if (mapData == 'OS') { //check data source, set OS informatin if true
+    name = (name == 0) ?  0 : name.slice(3,name.length-1); //check name exist then process
+    dir = seg.properties.d; //save dirictionality in parameter
+    way = seg.properties.w;//save dirictionality in parameter
+  } else { //if not then set OSM information
+    way = isOneWayOSM(seg.properties.t); //call function to extract paramter from data
   }
-  coord = seg.geometry.coordinates;
-  return {"i": id,
+  coord = seg.geometry.coordinates; //save coordinates to parameter.
+  obj = { "i": id, //return object contains data of the road link
           "n": name,
-          "d": dir,
           "w": way,
           "c": coord
         };
+  if (mapData == 'OS'){
+    obj.d = dir;
+  }
+  return obj;
 }
 
-readData = (output, callback) => {
-  fs.writeFile( output, '\n[ \n', (err) => {
-    if (err) throw err
-    console.log('\tOutput file created successfully at: ' + output)
-  });
-  const instream = fs.createReadStream((pathOut.trim()));
-  const outstream = new stream();
-  const rl = readline.createInterface(instream, outstream);
-  rl.on('line', function (line) {
-    if(line.slice(3, 7) == 'type'){
-      if(line[line.length - 1] == ','){
-        seg = JSON.parse(line.slice(0, (line.length - 1)), null, 2);
+//read data from input file line by line
+const readData = (output, callback) => {
+  const instream = fs.createReadStream((pathOut.trim())); //create input stream
+  const outstream = new stream(); // create output stream
+  const rl = readline.createInterface(instream, outstream); //create channel to read lines
+  rl.on('line', function (line) { //read line by line function
+    if(line.slice(3, 7) == 'type'){ //check if line is road link
+      if(line[line.length - 1] == ','){ //check if line containes comma at the end
+        seg = JSON.parse(line.slice(0, (line.length - 1)), null, 2); //delete comma and parse
       } else {
-        seg = JSON.parse(line, null, 2);
+        seg = JSON.parse(line, null, 2); //parse data to JSON
       }
-      let data = JSON.stringify(reduceData(seg)) + ',\n';
-      fs.appendFile( output, data, (err) => {
-        if (err) throw err;
+      let data = JSON.stringify(reduceData(seg)) + ',\n'; //call reduceData and convert to string
+      fs.appendFile( output, data, (err) => { //write line to the output file
+        if (err) throw err; //check if error throw error
       });
     }
   });
-  rl.on('close', function (line) {
-    console.log('end of file');
-    fs.appendFile( output, ']', (err) => {
-      if (err) throw err;
+  rl.on('close', function (line) { //function close the read line channel
+    console.log('end of file'); //print "end of file" message
+    fs.appendFile( output, ']', (err) => { //write closing tags to file
+      if (err) throw err; //check if error throw error
     });
     callback();
   });
 }
 
 // find if OSM road is oneway
-isOneWayOSM = (tags) => {
+const isOneWayOSM = (tags) => {
   // find oneway tag and extract it from the string "other_tags" in OSM JSON data
   if(tags) {
     // check if private vehicles restricted from accessing road
@@ -129,13 +129,19 @@ isOneWayOSM = (tags) => {
     return 0;
 }
 
+//print messages to indicate script started running
 console.log('\n\t\t*****\t Script started at ' +
             new Date().toTimeString().slice(0,8) + ' \t*****\n');
 console.log('\n\tProcessing ' + mapData + ' data.\n'  );
 
-commandLine(ogrCommand, () => {
-  tm.print('\tData pre-processing and convertion finished in: \t', new Date() - totalTime);
-  readData(config.output.trim() + mapData + '-reduced.json', () => {
-    tm.print('\t\tTotal time taken is: \t', new Date() - totalTime);
+//commandLine(ogrCommand, () => { //call commandLine, main code functionality starts here
+  tm.print('\tData pre-processing and convertion finished in: \t', new Date() - totalTime); //prinet time of converison
+  let output = config.output.trim() + mapData + '-reduced.json';
+  fs.writeFile(output, '[ \n', (err) => { //creat file and write required opening tags
+    if (err) throw err //check error and throw error
+    console.log('\tOutput file created successfully at: ' + output); //confirmation message
+    readData(output, () => { //call readData with string (file name) as paramter
+      tm.print('\t\tTotal time taken is: \t', new Date() - totalTime); //print total time of script
+    });
   });
-});
+//});

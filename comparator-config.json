@@ -1,6 +1,6 @@
 {
   "inputFileOS": "./InputY/testUK-OS-reduced.json",
-  "inputFileOSM": "./InputY/testUK-OSM.json",
+  "inputFileOSM": "./InputY/testUK-OSM-reduced.json",
   "outputFile": "./Output/outputOneway.json",
   "mismatchOS": "./Output/mismatchOS.json",
   "mismatchOSM": "./Output/mismatchOSM.json",
