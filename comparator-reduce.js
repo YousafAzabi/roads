@@ -70,11 +70,15 @@ createOutputFiles().then((res) => {
     //dataOSM = res[0].toString(); //parse OSM data
 
     //console.log("Total nubmer of roads in OSM are: " +  dataOSM.features.length);
-
+iPrint = 0;
     rl.on('line', function (line) { //read line by line function
       if(line[2] == 'i'){ //check if line is road link
         if(line[line.length - 1] == ','){ //check if line containes comma at the end
           roadOS = JSON.parse(line.slice(0, (line.length - 1)), null, 2); //delete comma and parse
+iPrint++;
+if((iPrint % 100) == 0){
+  console.log(iPrint + 'links finished');
+}
         } else {
           roadOS = JSON.parse(line, null, 2); //parse data to JSON
         }

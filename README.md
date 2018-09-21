@@ -44,6 +44,8 @@ The output on the terminal shows the total number of roads in OS and OSM, the nu
 The output files can be imported to QGIS to see the roads mismatch and analyse the correctness of the output.
 
 ### Scripts short description:
-* comparatorY.js to compare data from OS against OSM data. Configuration file is comparatorY-config.json.
-* map-splitter.js to split map to smaller areas. COnifugration file is map-splitter-config.json.
-* map-processing.js to convert original map data to required format and reduce size of the file.
+* `comparatorY.js` to compare data from OS against OSM data. Configuration file is comparatorY-config.json.
+* `convert-array.js` to remove extra brackets from coordinates arrays in input files. Make coordinates array elemnt 2 element arrays
+* `map-splitter.js` to split map to smaller areas. Configuration file is map-splitter-config.json.
+* `map-processing.js` to convert original map data to required format and reduce size of the file.
+* `comparatar-reduce.js` to compare links of OS and OSM reduced data by map-processing.js.

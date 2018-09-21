@@ -1,6 +1,6 @@
 /*
 script to preprocess and convert OS and OSM maps to format required then
-splits the map to smaller areas fro parallel processing
+splits the map to smaller areas for parallel processing
 */
 const {execSync} = require('child_process'); //to run commandline Synchronous
 const {exec} = require('child_process'); //to run commandline Asynchronous
@@ -20,6 +20,7 @@ const latInc = (lat2 - lat) / config.latDivision;
 
 //output files for whole map and input for splitMap function
 const fileTag = config.fileTag;
+const asyncTag = config.Async.toLowerCase();
 
 //number of divisions (small areas)
 const numArea = config.latDivision * config.longDivision;
@@ -27,7 +28,7 @@ const numArea = config.latDivision * config.longDivision;
 //define ogr2ogr parameters
 let ogrCommand = '';
 // define output format (JSON)
-let ogrJSON = 'ogr2ogr -f GeoJSON -skipfailures ';
+let ogrJSON = 'ogr2ogr -f GeoJSON -skipfailures -dim XY';
 //define area coordinates of the map
 let ogrClip = ' -clipdst ' + long + ' ' + lat + ' ' + long2 + ' ' + lat2;
 //define SQL query for OSM map to select related links
@@ -77,7 +78,7 @@ splitMap = (() => {
 
 //function to execute commandline
 commandLine = (i, command, callback) => {
-  if(config.Async.toLowerCase() == 'yes') {  //execute commandline Synchronous
+  if(asyncTag == 'yes') {  //execute commandline Synchronous
     exec(command, (error, stdout, stderr) => {
       if (error) { //check for error
         console.error('exec error: ' + error); // print error
@@ -100,7 +101,7 @@ printTotalTime = () => {
 //script starts here
 let tempString, threads; //variables to initalizing Async or Sync
 //output the mode used Asynchronous or Synchronous
-if(config.Async.toLowerCase() == 'yes'){ //compare mode if Asynchronous
+if(asyncTag == 'yes'){ //compare mode if Asynchronous
   tempString = 'As'; //change mode message to Asynchronous
   threads = config.threads; //number of areas to be processed
 } else {
