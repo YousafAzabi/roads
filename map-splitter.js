@@ -7,8 +7,8 @@ const {exec} = require('child_process'); //to run commandline Asynchronous
 const config = require('./map-splitter-config.json'); //configaration file
 const tm = require('./timeprinter'); //to print time in **h:**m:**s format
 
-console.log('\n\t*****\t Script started at ' +
-            new Date().toTimeString().slice(0,8) + ' \t*****\n');
+console.log('\n**********\t Script started at ' +
+            new Date().toTimeString().slice(0,8) + ' \t**********\n');
 
 //record total time for script while running
 let totalTime = new Date();
@@ -25,7 +25,7 @@ const segements = Math.pow(2, (config.stages));
 
 let segArray = [];
 let timer = [];
-let checkFile = new Array(segements / 2).fill(0);
+let checkFile = new Array(segements).fill(0);
 
 //define ogr2ogr parameters
 let ogrCommand = '';
@@ -71,9 +71,9 @@ splitMap = (id, arr) => {
   let input = outPath.trim() + fileTag + Math.floor(id / 2) + '.json';
   ogrCommand = ogrJSON + output + input + ogrClip;
   segArray[id] = arr
-  console.log( id + '   ' + ogrCommand);
+  console.log( ' Now processing Area: ' + id);
   commandLine(id, ogrCommand, function(i) {
-    tm.print('\t\tArea number ' + i + ' took: \t', new Date() - timer[i]);
+    tm.print(' Area number ' + i + ' finished in: \t', new Date() - timer[i]);
     if (i < segements) {
       setMapDimensions(i);
     }
@@ -88,7 +88,7 @@ splitMap = (id, arr) => {
         console.log('File ' + file +  'has been deleted.');
       });
     }
-    if(++ checkFile[0] >= 30) {
+    if(++ checkFile[0] >= (Math.pow(2, segements + 1) - 2) ) {
       tm.print('\t\tTotal time taken: \t', new Date() - totalTime);
     }
   }); // call function
@@ -117,8 +117,8 @@ if(asyncTag == 'yes'){ //compare mode if Asynchronous
 } else {
   tempString = 'S'; //set mode message to default (Synchronous)
 }
-console.log('\n \t\t************************\n \t\t** ** ' + tempString +
-  'ynchronous ** **\n \t\t************************\n'); //output mode message
+console.log(' \t\t************************\n \t\t** ** ' + tempString +
+  'ynchronous ** **\n \t\t************************'); //output mode message
 
 //read map source type from config JSON file
 tempString = config.map.toUpperCase();
@@ -139,7 +139,7 @@ console.log('\n************* Script is runing for ' + tempString + ' map *******
 commandLine(1, ogrCommand, function(id) {
   tm.print('\nThe pre-processing of main map is done. It took: ', new Date() - totalTime);
   // output total number of divisions (areas) to console
-  console.log(' ********** Now dividing the map to ' + segements
+  console.log('********** Now dividing the map to ' + segements
               + ' areas **********');
   segArray[id] = [long1, lat1, long2, lat2];
   setMapDimensions(id); //

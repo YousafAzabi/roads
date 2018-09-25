@@ -43,6 +43,7 @@ The reason is Node JS default allocated memory is 512mb. The memory can be incre
 ```
 node --max-old-space-size=4096 convertArray.js
 ```
+The `--max-old-space-size` can have a value of `1024`, `2048`, `3072`, `4096`, `5120`, `6144`, `7168` or `8192`.
 Then the `node comparatorY.js` script can be executed, however when file size is large the command should be `node --max-old-space-size=4096 comparatorY.js`.
 
 # Easier way to get data is to combine the commands as follows:
@@ -67,20 +68,20 @@ ogr2ogr -f GeoJSON -sql "SELECT osm_id,name,other_tags FROM lines" "./lonOSM.jso
 
 # Script (map-splitter.js): Run ogr2ogr Automatically
 This is an explanation for the script `map-splitter.js` which runs the above procedure all automatically. The script converts the map and subdivides the map to small areas. The script has a configuration file `map-splitter-config.json` which has all the input parameters for the script. The inputs are explained in the table shown:
+
 | Key          | possible value                               |
 |--------------|:--------------------------------------------:|
 | map          | `OS` or `OSM` to run relevant code           |
-| Async        | `yes` for Asynchronous                       |
-| threads      | max number of areas processed simultaneously |
-| fileTag      | `./Output/map/EXAMPLE.json` map output file name and the file name without extension (EXAMPLE) is used for  small area output file names (must start with a space and dot)|
+| Async        | `yes` for Asynchronous, otherwise Synchronous|
+| stages       | Total number of smaller areas = 2^stages     |
+| fileTag      | fileTag + area number used for saving files  |
+| outPath      | Directory in which output files are saved    |
 | inputOS      | OS input file (must start with a space)      |
 | inputOSM     | OSM input file (must start with a space)     |
 | startLong    | smallest longitude of map                    |
 | startLat     | smallest latitude of map                     |
 | endLong      | largest longitude of map                     |
 | endLat       | largest latitude of map                      |
-| latDivision  | number of division in y-axis                 |
-| longDivision | number of division in x-axis                 |
 
-The script starts by preprocessing of the whole input map and generate output file in JSON format. Then calls function `splitMap` to divide map to `latDivision * longDivision` areas. The division part is run synchronous. This will be improved to run asynchronous.
-However, asynchronous script has been tested and if the map size is large then the script requires huge memory which results in freezing of machine. A proposal of running limited number of iteration before loading the rest. The author proposes to use callback function or promises to solve this issue.
+The script first preprocessing (convert projection system, filters the information using SQL query and reducing coordinates from 3D to 2D) of the whole input map and generate output file in JSON format. Then calls functions `setMapDimensions` and `splitMap` to split the map to `2^stages` areas by dividing every are to two subdivisions and so on. This script only works correctly in asynchronous mode for now.
+The script has been tested for the whole UK data with `stages = 4` on a macBook Pro with 16GB DDR3 RAM and 2.5GHz Intel iCore 7 processor. The script took around 2h:30m to process OS data and 45min for OSM data.
