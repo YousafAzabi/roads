@@ -13,18 +13,22 @@ const turf = require('@turf/turf');
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
 const config = require('./comparator-config.json');
+const tm = require('./timeprinter'); //to print time in **h:**m:**s format
 
 const distToler = 0.004; //distance tolerance for turf.lineOverlap in kilometers.
 const angleTolerance = 170; //tolerance of road vector angles in Degree.
-const overlapPercentage = 0.4; //percentage of overlap between OS & OSM.
+const overlapPercentage = 0.5; //percentage of overlap between OS & OSM.
 
-let onewayMismatchCount = 0;
 let dataOS, dataOSM = [];
 let onewayArray = [];
 let arrayOS = [];
 let arrayOSM = [];
+let totalTime = new Date();
 //uncomment to initialise to use in code to write to file road matches
 //let roadMatchesInOSM, matchedData = [];
+
+console.log('\n\t\t*****\t Script started at ' +
+            new Date().toTimeString().slice(0,8) + ' \t*****\n');
 
 // === Extract data from file ===========================
 readFile = (path) => {
@@ -65,14 +69,15 @@ createOutputFiles().then((res) => {
     // counters for number of road matches
     let zeroCounter = oneCounter = multiCounter = noNameCounter = 0;
 
-    dataOS = JSON.parse(res[0].toString()); //parse OS data
+    //dataOS = JSON.parse(res[0].toString()); //parse OS data
     dataOSM = JSON.parse(res[res.length-1].toString()); //parse OSM data
 
-    console.log("Total nubmer of roads in OS are: " + dataOS.features.length +
+    console.log("Total nubmer of roads in OS are: " + dataOS.length + //**** features
                 ", and in OSM are: " +  dataOSM.features.length);
 
     // for loop OS road
-    for (let roadOS of dataOS.features) {
+    for (let roadOS of dataOS) { //**** features
+      roadOS = convertToGIS(roadOS); //**** uncomment
       //compare retun number of matches
       switch(compareRoadsName(roadOS)) {
         case -1:
@@ -102,10 +107,11 @@ createOutputFiles().then((res) => {
     fs.writeFileAsync(config.mismatchOS, JSON.stringify(outputOS, null, 2));
     //write oneway mismatched OSM road
     const outputOSM = { "type": "FeatureCollection",
-                        "features": arrayOSM};
+                        "features": arrayOSM};  //change arrayOSM with addRoadOSM(null)
     fs.writeFileAsync(config.mismatchOSM, JSON.stringify(outputOSM, null, 2));
     //write on console number of matches report
     printReport(zeroCounter, oneCounter, multiCounter, noNameCounter);
+    tm.print('\t\tTotal time taken: \t', new Date() - totalTime);
   });
 });
 
@@ -113,7 +119,7 @@ createOutputFiles().then((res) => {
 compareRoadsName = (roadOS) => {
   let roadNameOS = roadOS.properties.roadname ? roadOS.properties.roadname : "";
   // extract name and convert to lower case
-  roadNameOS = roadNameOS.slice(3,roadNameOS.length-1).toLowerCase();
+  // roadNameOS = roadNameOS.slice(3,roadNameOS.length-1).toLowerCase(); //**** comment
   let roadNameOSM;
   let matchNameCounter = matchCoordinatesCounter = 0;
   //if road has no name in OS then retrun without comparing
@@ -147,7 +153,7 @@ compareRoadsName = (roadOS) => {
             && (Math.abs(angleOS - angleOSM) < (360 - angleTolerance)) ) {
             writeOutput(onewayArray, roadOS, roadOSM, "OS " + angleOS + "  OSM " +
                   angleOSM + "  direction mismatch");
-            onewayMismatchCount++;
+            onewayMismatchCount(1);
           }
         }
         //uncomment to write osm_id of roads to relevant match in OS in file
@@ -204,13 +210,18 @@ isOnewayOS = (roadOS) => {
 isOneWayOSM = (roadOSM) => {
   // find oneway tag and extract it from the string "other_tags" in OSM JSON data
   if(roadOSM.properties.other_tags) {
+    // check if private vehicles restricted from accessing road
+    if(roadOSM.properties.other_tags.search('motor_vehicle"=>"no') != -1) {
+      return NaN;
+    }
     //set index to point at oneway word
-    let index = roadOSM.properties.other_tags.search('oneway"=>');
+    let index = roadOSM.properties.other_tags.search("oneway\"=>");
     //check if search finds "oneway" substring and if first letter is n or y for no and yes respectively.
     if(index != -1 && roadOSM.properties.other_tags.charAt(index+10).toLowerCase() == "y") {
       return findDirectionAngle(roadOSM.geometry.coordinates);
     }
   }
+    //return NaN to function call so the road is not oneway
     return NaN;
 }
 
@@ -269,12 +280,13 @@ writeOutput = (array, roadOS, roadOSM, Note) => {
     "roadName": roadOS.properties.roadname.slice(3,roadOS.properties.roadname.length-1),
     "OSId": (roadOS.properties.localid).toString(),
     "OSMId": roadOSM.properties.osm_id,
-    "note": Note,
+    "note": Note
   };
 
   array.push(data);
   arrayOS.push(roadOS);
   arrayOSM.push(roadOSM);
+  //addRoadOSM(roadOSM);
 }
 
 printReport = (zeroCounter, oneCounter, multiCounter, noNameCounter) => {
@@ -282,7 +294,66 @@ printReport = (zeroCounter, oneCounter, multiCounter, noNameCounter) => {
   console.log("Number of roads from OS with ONE match in OSM: \t\t" + oneCounter);
   console.log("Number of roads from OS with MULTIPLE match in OSM: \t" + multiCounter);
   console.log("Number of roads without a name in OS: \t\t\t" + noNameCounter);
-  console.log("Number of ONEWAY mismatchbetween OS and OSM: \t\t" + onewayMismatchCount);
+  console.log("Number of ONEWAY mismatchbetween OS and OSM: \t\t" + onewayMismatchCount());
+}
+
+/*var addRoadOSM = (function() {
+                var arrayOSM = [];
+                return function(roadOSM) {
+                        if (roadOSM != null){
+                          arrayOSM.push(roadOSM)
+                        }
+                        return arrayOSM;
+                      }
+})();*/
+
+//closure to keep track of oneway road mismatches
+var onewayMismatchCount = ( () => {
+                        var count = 0;
+                        return (value) => {
+                            if(value) count += value;
+                            return count;
+                          }
+})();
+
+//****
+convertToGIS = (road) => {
+  switch (road.way){
+    case 1:
+      way = 'Single Carriageway';
+      break;
+    case 2:
+      way = 'Dual Carriageway';
+      break;
+    case 0:
+      way = '';
+  }
+  switch (road.dir){
+    case 1:
+      dir = 'in direction';
+      break;
+    case -1:
+      dir = 'in opposite direction';
+      break;
+    case 0:
+      dir = 'both directions';
+      break;
+    default :
+      dir = '';
+  }
+  return ({
+    "type": "Feature",
+    "properties": {
+      "localid": road.i,
+      "roadname": road.n,
+      "formofway": way,
+      "directionality": dir
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": road.coor
+    }
+  });
 }
 
 exports.convertToDegree = convertToDegree;
