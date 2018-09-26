@@ -284,3 +284,5 @@ printReport = (zeroCounter, oneCounter, multiCounter, noNameCounter) => {
   console.log("Number of roads without a name in OS: \t\t\t" + noNameCounter);
   console.log("Number of ONEWAY mismatchbetween OS and OSM: \t\t" + onewayMismatchCount);
 }
+
+exports.convertToDegree = convertToDegree;
