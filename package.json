@@ -4,7 +4,7 @@
   "description": "The direction of traffic for oneway roads can change, leading to out-of-date online data. The current process for detecting these changes in direction is a manual approach, including trawling through newspaper extracts and through word of mouth from local authorities to see which roads have changed. This results in a slow, time-consuming update process where the majority of surveyors will be sent to random locations in order to determine if the directions are still valid, most of which will already be correct. There is a clear need for a better suited detection system, to avoid the waste of time in sending surveyors to locations where the directions of roads are likely already correct.",
   "main": "compare.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +21,9 @@
     "save": "^2.3.2",
     "string-similarity": "^1.2.2",
     "turf": "^3.0.14",
-    "uuid": "^3.3.2"
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
   }
 }

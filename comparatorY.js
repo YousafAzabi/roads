@@ -355,3 +355,5 @@ convertToGIS = (road) => {
     }
   });
 }
+
+exports.convertToDegree = convertToDegree;
