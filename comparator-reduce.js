@@ -282,7 +282,7 @@ printReport = (zeroCounter, oneCounter, multiCounter, noNameCounter) => {
   console.log("Number of roads without a name in OS: \t\t\t" + noNameCounter);
   console.log("Number of ONEWAY mismatchbetween OS and OSM: \t\t" + onewayMismatchCount());
   console.log("\n\t***********************************\n");
-  tm.print('\t\tTotal time taken: \t', new Date() - totalTime);
+  console.log('\t\tTotal time taken: \t' + tm.print(new Date() - totalTime) + '\n');
 }
 
 /*var addRoadOSM = (function() {

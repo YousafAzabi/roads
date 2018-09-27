@@ -135,13 +135,14 @@ console.log('\n\t\t*****\t Script started at ' +
 console.log('\n\tProcessing ' + mapData + ' data.\n'  );
 
 //commandLine(ogrCommand, () => { //call commandLine, main code functionality starts here
-  tm.print('\tData pre-processing and convertion finished in: \t', new Date() - totalTime); //prinet time of converison
+  console.log('\tData pre-processing and convertion finished in: \t' +
+              tm.print(new Date() - totalTime) + '\n'); //prinet time of converison
   let output = config.output.trim() + mapData + '-reduced.json';
   fs.writeFile(output, '[ \n', (err) => { //creat file and write required opening tags
     if (err) throw err //check error and throw error
     console.log('\tOutput file created successfully at: ' + output); //confirmation message
     readData(output, () => { //call readData with string (file name) as paramter
-      tm.print('\t\tTotal time taken is: \t', new Date() - totalTime); //print total time of script
+      console.log('\t\tTotal time taken is: \t' + tm.print(new Date() - totalTime) + '\n'); //print total time of script
     });
   });
 //});

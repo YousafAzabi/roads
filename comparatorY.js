@@ -111,7 +111,7 @@ createOutputFiles().then((res) => {
     fs.writeFileAsync(config.mismatchOSM, JSON.stringify(outputOSM, null, 2));
     //write on console number of matches report
     printReport(zeroCounter, oneCounter, multiCounter, noNameCounter);
-    tm.print('\t\tTotal time taken: \t', new Date() - totalTime);
+    console.log('\t\tTotal time taken: \t' + tm.print(new Date() - totalTime) + '\n');
   });
 });
 

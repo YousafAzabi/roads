@@ -12,6 +12,7 @@
     "@turf/line-overlap": "^6.0.2",
     "@turf/turf": "^5.1.6",
     "bluebird": "^3.5.2",
+    "chai": "^4.2.0",
     "express": "^4.16.3",
     "fs": "0.0.1-security",
     "lodash": "^4.17.11",

@@ -73,7 +73,8 @@ splitMap = (id, arr) => {
   segArray[id] = arr
   console.log( ' Now processing Area: ' + id);
   commandLine(id, ogrCommand, function(i) {
-    tm.print(' Area number ' + i + ' finished in: \t', new Date() - timer[i]);
+    console.log(' Area number ' + i + ' finished in: \t' +
+                  tm.print(new Date() - timer[i]) + '\n');
     if (i < segements) {
       setMapDimensions(i);
     }
@@ -137,7 +138,8 @@ switch(tempString){
 console.log('\n************* Script is runing for ' + tempString + ' map *************');
 
 commandLine(1, ogrCommand, function(id) {
-  tm.print('\nThe pre-processing of main map is done. It took: ', new Date() - totalTime);
+  console.log('\nThe pre-processing of main map is done. It took: '
+              + tm.print(new Date() - totalTime) + '\n');
   // output total number of divisions (areas) to console
   console.log('********** Now dividing the map to ' + segements
               + ' areas **********');

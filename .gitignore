@@ -5,12 +5,19 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
 # Files
 Output/**/*
 Data/*
 InputY/**/*
 esting_distance_tolerance.ods
 old*.*
+=======
+# Output Files
+Output/*.*
+Data/*
+InputY/*.*
+>>>>>>> Add files to gitignore
 
 # Don't ignore README.md and OSTN.... files
 !*/README.md
@@ -72,3 +79,8 @@ typings/
 .next
 
 .DS_Store
+<<<<<<< HEAD
+=======
+
+testing_distance_tolerance.ods
+>>>>>>> Add files to gitignore
