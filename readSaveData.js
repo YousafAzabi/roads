@@ -1,6 +1,8 @@
-/* Script to convert coordinates array to be constructed of 2 element arrays.
-   Reads data from file and make changes then save to the same file.
-   The data is manpulated in the function deleteExtraBrackets */
+/*
+input value is GIS data (features)
+calls module to process coordinates array
+returns output GIS data with processed coordinates array
+*/
 
 const fs = require('fs');
 const brackets = require('./extra-brackets')
