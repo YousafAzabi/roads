@@ -16,6 +16,5 @@ exports.delete = (input, output = []) => {
       output = this.delete(temp, output);
     }
   }
-  console.log(output);
   return output; //return output array
 }

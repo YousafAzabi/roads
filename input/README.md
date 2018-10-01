@@ -36,13 +36,14 @@ ogr2ogr -f GeoJSON -sql "SELECT * FROM lines WHERE highway in ('motorway', 'trun
 ```
 
 ### For both files (OS and OSM) input files:
-When data converted to JSON, all coordinates should be of arrays of two element arrays (longitude and latitude). However in the conversion process some of the arrays have a sub arrays of coordinates. The user should transform the arrays to arrays of arrays with two elements. This is done by running the script `convertArray.js`. The input file should be typed in the `path = "./inputY/inputFile.json";` line of the script. The output will be the same file with the required format. This process should be run for both files to avoid the possibility of any incorrectly converted coordinates. This script improved to delete empty entries (coordinates of empty array) in features array because they cause errors when running `comparatorY.js` script.
-When running script `convetArray.js` for a file with large size, an error message is displayed:
+When data converted to JSON, all coordinates should be of arrays of two element arrays (longitude and latitude). However in the conversion process some of the arrays have a sub arrays of coordinates. The user should transform the arrays to arrays of arrays with two elements. This is done by running the script `convert-array.js`. The input and output file are input files to function `process`. This process should be run for both files to avoid the possibility of any incorrectly converted coordinates. This script improved to delete empty entries (coordinates of empty array) in features array because they cause errors when running `comparatorY.js` script.
+When running script `convet-array.js` for a file with large size, an error message is displayed:
 >FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
 The reason is Node JS default allocated memory is 512mb. The memory can be increased by running **node** command line as follows:
 ```
-node --max-old-space-size=4096 convertArray.js
+node --max-old-space-size=4096 convert-array.js
 ```
+
 The `--max-old-space-size` can have a value of `1024`, `2048`, `3072`, `4096`, `5120`, `6144`, `7168` or `8192`.
 Then the `node comparatorY.js` script can be executed, however when file size is large the command should be `node --max-old-space-size=4096 comparatorY.js`.
 

@@ -1,6 +1,6 @@
 {
   "map": "os",
-  "inputOS": " ./InputY/OSMM_HIGHWAYS_June18.gpkg ",
-  "inputOSM": " ./InputY/testUK.pbf ",
-  "output": " ./Output/map/testUK-"
+  "inputOS": " ./input/OSMM_HIGHWAYS_June18.gpkg ",
+  "inputOSM": " ./input/testUK.pbf ",
+  "output": " ./output/map/testUK-"
 }

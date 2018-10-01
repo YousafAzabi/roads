@@ -5,7 +5,7 @@ const extractor = require('../process-features/feature-extractor.js');
 describe('feature-extractor.js receives GIS JSON data and returns data ' +
          'processed. Calls extra-brackets.js', () => {
 
-  it('Test if feature is empty with no data. Returns empty array', () => {
+  it('Test if feature is empty with no data. Returns empty array []', () => {
     const input = [];
     const expected = [];
     const output = extractor.filter(input);
@@ -28,7 +28,7 @@ describe('feature-extractor.js receives GIS JSON data and returns data ' +
     expect(output).to.eql(expected);
   });
 
-  it('Test if feature has empty coordinates. Return empty array', () => {
+  it('Test if feature has empty coordinates. Return empty array []', () => {
     const input = [{ "type": "Feature",
                      "geometry": { "type": "LineString",
                                    "coordinates": [ ]

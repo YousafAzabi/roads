@@ -3,13 +3,13 @@ const {expect} = require('chai');
 const brackets = require('../process-features/extra-brackets.js');
 
 describe('extra-brackets.js script to delete extra brackets from arrays',() => {
-  it('Test if input is not an array. Should return 0', () => {
+  it('Test if input is not an array. Should return empty array []', () => {
     const input = 1;
     const expected = [];
     const output = brackets.delete(input);
     expect(output).to.eql(expected);
   });
-  it('Test if input is an empty array. Should return 0', () => {
+  it('Test if input is an empty array. Should return empty array []', () => {
     const input = [];
     const expected = [];
     const output = brackets.delete(input);
