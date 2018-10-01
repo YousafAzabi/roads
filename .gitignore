@@ -9,6 +9,7 @@ yarn-error.log*
 # Files
 Output/**/*
 Data/**/*
+
 input/**/*
 esting_distance_tolerance.ods
 old*.*
