@@ -7,14 +7,15 @@ yarn-error.log*
 
 <<<<<<< HEAD
 # Files
-output/**/*
-
+Output/**/*
+Data/**/*
 input/**/*
 esting_distance_tolerance.ods
 old*.*
 =======
 # Output Files
-output/*.*
+Output/*.*
+Data/*.*
 input/*.*
 >>>>>>> Add files to gitignore
 
