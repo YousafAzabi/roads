@@ -72,12 +72,12 @@ createOutputFiles().then((res) => {
     //dataOS = JSON.parse(res[0].toString()); //parse OS data
     dataOSM = JSON.parse(res[res.length-1].toString()); //parse OSM data
 
-    console.log("Total nubmer of roads in OS are: " + dataOS.length + //**** features
+    console.log("Total nubmer of roads in OS are: " + dataOS.features.length + //**** features
                 ", and in OSM are: " +  dataOSM.features.length);
 
     // for loop OS road
-    for (let roadOS of dataOS) { //**** features
-      roadOS = convertToGIS(roadOS); //**** uncomment
+    for (let roadOS of dataOS.features) { //**** features
+      //roadOS = convertToGIS(roadOS); //**** uncomment
       //compare retun number of matches
       switch(compareRoadsName(roadOS)) {
         case -1:
@@ -119,7 +119,7 @@ createOutputFiles().then((res) => {
 compareRoadsName = (roadOS) => {
   let roadNameOS = roadOS.properties.roadname ? roadOS.properties.roadname : "";
   // extract name and convert to lower case
-  // roadNameOS = roadNameOS.slice(3,roadNameOS.length-1).toLowerCase(); //**** comment
+  roadNameOS = roadNameOS.slice(3,roadNameOS.length-1).toLowerCase(); //**** comment
   let roadNameOSM;
   let matchNameCounter = matchCoordinatesCounter = 0;
   //if road has no name in OS then retrun without comparing
@@ -317,43 +317,43 @@ var onewayMismatchCount = ( () => {
 })();
 
 //****
-convertToGIS = (road) => {
-  switch (road.way){
-    case 1:
-      way = 'Single Carriageway';
-      break;
-    case 2:
-      way = 'Dual Carriageway';
-      break;
-    case 0:
-      way = '';
-  }
-  switch (road.dir){
-    case 1:
-      dir = 'in direction';
-      break;
-    case -1:
-      dir = 'in opposite direction';
-      break;
-    case 0:
-      dir = 'both directions';
-      break;
-    default :
-      dir = '';
-  }
-  return ({
-    "type": "Feature",
-    "properties": {
-      "localid": road.i,
-      "roadname": road.n,
-      "formofway": way,
-      "directionality": dir
-    },
-    "geometry": {
-      "type": "LineString",
-      "coordinates": road.coor
-    }
-  });
-}
+// convertToGIS = (road) => {
+//   switch (road.way){
+//     case 1:
+//       way = 'Single Carriageway';
+//       break;
+//     case 2:
+//       way = 'Dual Carriageway';
+//       break;
+//     case 0:
+//       way = '';
+//   }
+//   switch (road.dir){
+//     case 1:
+//       dir = 'in direction';
+//       break;
+//     case -1:
+//       dir = 'in opposite direction';
+//       break;
+//     case 0:
+//       dir = 'both directions';
+//       break;
+//     default :
+//       dir = '';
+//   }
+//   return ({
+//     "type": "Feature",
+//     "properties": {
+//       "localid": road.i,
+//       "roadname": road.n,
+//       "formofway": way,
+//       "directionality": dir
+//     },
+//     "geometry": {
+//       "type": "LineString",
+//       "coordinates": road.coor
+//     }
+//   });
+// }
 
 exports.convertToDegree = convertToDegree;
