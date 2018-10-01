@@ -8,17 +8,18 @@ write data to output file
 const fs = require('fs');
 const extractor = require('./feature-extractor.js')
 
-exports.process = (input, output) => {
+//input variable is array of 2 elements [inputFile, outputFile]
+exports.process = (file = []) => {
 //read data from input file and parse to JSON object
-let data = JSON.parse(fs.readFileSync(input).toString());
-console.log("Data is read from file: " + input);
+let data = JSON.parse(fs.readFileSync(file[0]).toString());
+console.log("Data is read from file: " + file[0]);
 //call module to convert array with parameter features
 data.features = extractor.filter(data.features);
 
-console.log("Writing data to the file: " + output);
+console.log("Writing data to the file: " + file[1]);
 //write JSON data of orginized coordinates array to same input file
-fs.writeFileSync( output, JSON.stringify(data, null, 2));
-console.log("Data is saved to: " + output);
+fs.writeFileSync( file[1], JSON.stringify(data, null, 2));
+console.log("Data is saved to: " + file[1]);
 //return true when no error incountered
 return true;
 }

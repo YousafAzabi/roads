@@ -30,20 +30,20 @@ let checkFile = new Array(segements).fill(0);
 //define ogr2ogr parameters
 let ogrCommand = '';
 // define output format (JSON)
-let ogrJSON = 'ogr2ogr -f GeoJSON -skipfailures -dim XY ';
+const ogrJSON = 'ogr2ogr -f GeoJSON -skipfailures -dim XY ';
 //define area coordinates of the map
 let ogrClip = ' -clipdst ' + long1 + ' ' + lat1 + ' ' + long2 + ' ' + lat2;
 //define SQL query for OSM map to select related links
-let ogrSQLOSM = " -sql \"SELECT * FROM lines WHERE highway in " +
+const ogrSQLOSM = " -sql \"SELECT * FROM lines WHERE highway in " +
             "('motorway', 'trunk', 'motorway_link', 'trunk_link', " +
             "'tertiary', 'primary', 'secondary', 'tertiary_link', " +
             "'primary_link', 'secondary_link', 'residential', " +
             "'service', 'living_street', 'unclassified')\" ";
 //define SQL query for OS map to select related data
-let ogrSQLOS = ' -sql "SELECT localid, roadname, directionality, formofway, geom ' +
+const ogrSQLOS = ' -sql "SELECT localid, roadname, directionality, formofway, geom ' +
             'FROM roadlink " ';
 //define projection system for OS map
-let ogrProj = ' -s_srs "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.999601 ' +
+const ogrProj = ' -s_srs "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.999601 ' +
             '+x_0=400000 +y_0=-100000 +ellps=airy +units=m +no_defs ' +
             '+nadgrids=./InputY/OSTN15_NTv2_OSGBtoETRS.gsb" -t_srs Epsg:4326 ';
 
