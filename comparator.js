@@ -69,7 +69,7 @@ createOutputFiles().then((res) => {
     // counters for number of road matches
     let zeroCounter = oneCounter = multiCounter = noNameCounter = 0;
 
-    //dataOS = JSON.parse(res[0].toString()); //parse OS data
+    dataOS = JSON.parse(res[0].toString()); //parse OS data //**** comment
     dataOSM = JSON.parse(res[res.length-1].toString()); //parse OSM data
 
     console.log("Total nubmer of roads in OS are: " + dataOS.features.length + //**** features

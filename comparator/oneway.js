@@ -3,7 +3,6 @@ module.exports{
   OS = (road) => {
     let direction = road.properties.directionality ? roadOS.properties.directionality : "";
     if ( (direction.search("in") != -1) && (road.properties.formofway.search("Single") != -1) ) {
-      //onewayCounterOS ++;
       let angle = findDirectionAngle(road.geometry.coordinates);
       if(road.properties.directionality.search("opposite") != -1) {
         //opposite direction so add 180 to change directionilty, % 360 to range (0-360)

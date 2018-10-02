@@ -21,7 +21,7 @@ exports.filter = (features) => {
       features[i].geometry.coordinates = coordinates;
     } else {
       //delete element i form features
-      features.splice(i,1);
+      features.splice(i, 1);
     }
     //console.log(coordinates);
   }
