@@ -1,12 +1,9 @@
-/*
-module to delete extra brackets in arrays mainly used for GIS coordinates array
-array output format [[X1, Y1], [X2, Y2], [X3, Y3], .....[Xn, Yn]]
-*/
-
-exports.delete = (input, output = []) => {
+//module to delete extra brackets in coordinates arrays
+let output = [];
+exports.delete = (input) => {
   //if input not an array or array is empty, return 0 (false)
   if ( (!Array.isArray(input)) || (input.length == 0) ) {
-    return [];
+    return 0;
   }
   //loop through array elements
   for (let temp of input) {
@@ -14,7 +11,7 @@ exports.delete = (input, output = []) => {
     if (!Array.isArray(temp[0])) {
       output.push(temp);
     } else { //else element array call function again (recursion)
-      output = this.delete(temp, output);
+      delete(temp);
     }
   }
   return output; //return output array

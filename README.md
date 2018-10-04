@@ -45,11 +45,11 @@ The output files can be imported to QGIS to see the roads mismatch and analyse t
 
 ### Scripts short description:
 * `comparatorY.js` to compare data from OS against OSM data. Configuration file is comparatorY-config.json.
-* `process-features` to remove extra brackets from coordinates arrays in input files. Assures that coordinates array is constructed of 2 element arrays. It consists of 3 files (`convert-array.js`, `extra-array.js`, `features-extractor.js`).
+* `convert-array.js` to remove extra brackets from coordinates arrays in input files. Make coordinates array elemnt 2 element arrays
 * `map-splitter.js` to split map to smaller areas. Configuration file is map-splitter-config.json.
 * `map-processing.js` to convert original map data to required format and reduce size of the file.
 * `comparatar-reduce.js` to compare links of OS and OSM reduced data by map-processing.js.
-* `timeprinter.js` is a module that accepts date value (in milliseconds). Used to calculate and return time in the format of `0h:0m:0s` hours, minutes and seconds. It is implemented in `comparatorY.js`, `map-splitter.js`, `map-processing.js` and `comparator-reduce.js`.
+* `timeprinter.js` is a module that accepts two values (string and date in milliseconds). Used to calculate time in the format of `0h:0m:0s` hours, minutes and seconds. It is implemented in `comparatorY.js`, `map-splitter.js`, `map-processing.js` and `comparator-reduce.js`.
 
 # Unit Tests
 The testing is unit tests based which are implemented using Mocha and Chai to run and check for errors in the code.

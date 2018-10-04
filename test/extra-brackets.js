@@ -1,27 +1,27 @@
 const assert = require('assert');
 const {expect} = require('chai');
-const brackets = require('../process-features/extra-brackets.js');
+const brackets = require('../convert-array/extra-brackets.js');
 
-describe('extra-brackets.js script to delete extra brackets from arrays',() => {
-  it('Test if input is not an array. Should return empty array []', () => {
+describe('extra-brackets.js script to delete extra brackets',() => {
+  it('Should return 0 if input is not an array', () => {
     const input = 1;
-    const expected = [];
+    const expected = 0;
     const output = brackets.delete(input);
-    expect(output).to.eql(expected);
+    assert.equal(expected, output);
   });
-  it('Test if input is an empty array. Should return empty array []', () => {
+  it('Should return 0 if array is empty', () => {
     const input = [];
-    const expected = [];
+    const expected = 0;
     const output = brackets.delete(input);
-    expect(output).to.eql(expected);
+    assert.equal(expected, output);
   });
-  it('Test if input array has NO extra brackets. Should return same input array', () => {
+  it('Should return same input array if array correctly orgnized', () => {
     const input = [[1,1],[2,2]];
     const expected = [[1,1],[2,2]];
     const output = brackets.delete(input);
     expect(output).to.eql(expected);
   });
-  it('Test if input array has extra brackets. Should return array without extra brackets', () => {
+  it('Should return array without extra brackets', () => {
     const input = [[[1,1], [2,2]], [3,3]];
     const expected = [[1,1], [2,2], [3,3]];
     const output = brackets.delete(input);

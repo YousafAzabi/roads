@@ -1,9 +1,9 @@
 {
-  "inputFileOS": "./input/codeOS12.json",
-  "inputFileOSM": "./input/codeOSM5.json",
-  "outputFile": "./output/outputOneway.json",
-  "mismatchOS": "./output/mismatchOS.json",
-  "mismatchOSM": "./output/mismatchOSM.json",
-  "overlap": "./output/overlap.json",
+  "inputFileOS": "./InputY/testUK-OS-reduced.json",
+  "inputFileOSM": "./InputY/testUK-OSM-reduced.json",
+  "outputFile": "./Output/outputOneway.json",
+  "mismatchOS": "./Output/mismatchOS.json",
+  "mismatchOSM": "./Output/mismatchOSM.json",
+  "overlap": "./Output/overlap.json",
   "outputMode": "new"
 }

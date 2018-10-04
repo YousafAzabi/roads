@@ -7,22 +7,21 @@ yarn-error.log*
 
 <<<<<<< HEAD
 # Files
-output/**/*
-data/**/*
-
-input/**/*
+Output/**/*
+Data/*
+InputY/**/*
 esting_distance_tolerance.ods
 old*.*
 =======
 # Output Files
-output/*.*
-data/*.*
-input/*.*
+Output/*.*
+Data/*
+InputY/*.*
 >>>>>>> Add files to gitignore
 
 # Don't ignore README.md and OSTN.... files
 !*/README.md
-!input/OSTN15_NTv2_OSGBtoETRS.gsb
+!InputY/OSTN15_NTv2_OSGBtoETRS.gsb
 
 # Runtime data
 pids

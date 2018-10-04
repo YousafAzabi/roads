@@ -1,32 +1,32 @@
 const assert = require('assert');
 const timeprinter = require('../timeprinter.js');
 
-describe('Script to convert input (date) in milliseconds to time format 0h:0m:0s', () => {
-  it('Test if hours converted correctly. Return string "1h:0m:0s"', () => {
+describe('timeprinter.js script', () => {
+  it('Test converting of hours', () => {
     const input = 3600000;
     const expected = '1h:0m:0s';
     const output = timeprinter.print(input);
     assert.equal(expected, output);
   });
-  it('Test if minutes converted correctly. Return string "10m:0s"', () => {
+  it('Test converting of minutes', () => {
     const input = 600000;
     const expected = '10m:0s';
     const output = timeprinter.print(input);
     assert.equal(expected, output);
   });
-  it('Test if seconds converted correctly. Return string "15s"', () => {
+  it('Test converting of seconds', () => {
     const input = 15000;
     const expected = '15s';
     const output = timeprinter.print(input);
     assert.equal(expected, output);
   });
-  it('Test if date in millseconds < 1000. Return string "less than a second"', () => {
+  it('Test time less than a second', () => {
     const input = 900;
     const expected = 'less than a second';
     const output = timeprinter.print(input);
     assert.equal(expected, output);
   });
-  it('Test if input value is negative. Return string "ERROR! negative value"', () => {
+  it('Test negative value', () => {
     const input = -1;
     const expected = 'ERROR! negative value';
     const output = timeprinter.print(input);
