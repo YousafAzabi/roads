@@ -2,7 +2,7 @@ const {exec} = require('child_process'); //to run commandline Asynchronous
 const fs = require('fs'); //to use file system
 const readline = require('readline'); //to read file lien by line
 const stream = require('stream'); //to create stream for read line
-const tm = require('./timeprinter.js'); //import file timeprinter.js
+const tm = require('./time.js'); //import file timeprinter.js
 const config = require('./map-processing-config.json'); //import configuration file
 
 let mapData = config.map.toUpperCase(); //convert choice to upper case for comparison
@@ -136,13 +136,13 @@ console.log('\n\tProcessing ' + mapData + ' data.\n'  );
 
 //commandLine(ogrCommand, () => { //call commandLine, main code functionality starts here
   console.log('\tData pre-processing and convertion finished in: \t' +
-              tm.print(new Date() - totalTime) + '\n'); //prinet time of converison
+              tm.format(new Date() - totalTime) + '\n'); //prinet time of converison
   let output = config.output.trim() + mapData + '-reduced.json';
   fs.writeFile(output, '[ \n', (err) => { //creat file and write required opening tags
     if (err) throw err //check error and throw error
     console.log('\tOutput file created successfully at: ' + output); //confirmation message
     readData(output, () => { //call readData with string (file name) as paramter
-      console.log('\t\tTotal time taken is: \t' + tm.print(new Date() - totalTime) + '\n'); //print total time of script
+      console.log('\t\tTotal time taken is: \t' + tm.format(new Date() - totalTime) + '\n'); //print total time of script
     });
   });
 //});

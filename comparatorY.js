@@ -13,7 +13,7 @@ const turf = require('@turf/turf');
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
 const config = require('./comparator-config.json');
-const tm = require('./timeprinter'); //to print time in **h:**m:**s format
+const tm = require('./time'); //to print time in **h:**m:**s format
 
 const distToler = 0.004; //distance tolerance for turf.lineOverlap in kilometers.
 const angleTolerance = 170; //tolerance of road vector angles in Degree.
@@ -111,7 +111,7 @@ createOutputFiles().then((res) => {
     fs.writeFileAsync(config.mismatchOSM, JSON.stringify(outputOSM, null, 2));
     //write on console number of matches report
     printReport(zeroCounter, oneCounter, multiCounter, noNameCounter);
-    console.log('\t\tTotal time taken: \t' + tm.print(new Date() - totalTime) + '\n');
+    console.log('\t\tTotal time taken: \t' + tm.format(new Date() - totalTime) + '\n');
   });
 });
 

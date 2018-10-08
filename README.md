@@ -51,5 +51,12 @@ The output files can be imported to QGIS to see the roads mismatch and analyse t
 * `comparatar-reduce.js` to compare links of OS and OSM reduced data by map-processing.js.
 * `timeprinter.js` is a module that accepts two values (string and date in milliseconds). Used to calculate time in the format of `0h:0m:0s` hours, minutes and seconds. It is implemented in `comparatorY.js`, `map-splitter.js`, `map-processing.js` and `comparator-reduce.js`.
 
-# Unit Tests
-The testing is unit tests based which are implemented using Mocha and Chai to run and check for errors in the code.
+## Testing
+* The code is split into smaller pieces of code modules (functions) to write a test for each part individually.
+* The tests are saved in test folder and are implemented using Mocha and Chai.
+* The scripts are split in individual folders;
+    1. `fliter` folder contains files that use ogr2ogr to filter data.
+    2. `process-features` folder contains files that assures input file coordinates are in right format.
+    3. `comparator` folder contains files that compare between road links from different data sources.
+* Every folder contains a README file which contains more information about the files in a specific folder.
+* The scripts should be executed in the order shown in the sublist above (folders).

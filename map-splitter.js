@@ -5,7 +5,7 @@ splits the map to smaller areas for parallel processing
 const {execSync} = require('child_process'); //to run commandline Synchronous
 const {exec} = require('child_process'); //to run commandline Asynchronous
 const config = require('./map-splitter-config.json'); //configaration file
-const tm = require('./timeprinter'); //to print time in **h:**m:**s format
+const tm = require('./time'); //to print time in **h:**m:**s format
 
 console.log('\n**********\t Script started at ' +
             new Date().toTimeString().slice(0,8) + ' \t**********\n');
@@ -74,7 +74,7 @@ splitMap = (id, arr) => {
   console.log( ' Now processing Area: ' + id);
   commandLine(id, ogrCommand, function(i) {
     console.log(' Area number ' + i + ' finished in: \t' +
-                  tm.print(new Date() - timer[i]) + '\n');
+                  tm.format(new Date() - timer[i]) + '\n');
     if (i < segements) {
       setMapDimensions(i);
     }
@@ -90,7 +90,7 @@ splitMap = (id, arr) => {
       });
     }
     if(++ checkFile[0] >= (Math.pow(2, segements + 1) - 2) ) {
-      tm.print('\t\tTotal time taken: \t', new Date() - totalTime);
+      tm.format('\t\tTotal time taken: \t', new Date() - totalTime);
     }
   }); // call function
 }
@@ -139,7 +139,7 @@ console.log('\n************* Script is runing for ' + tempString + ' map *******
 
 commandLine(1, ogrCommand, function(id) {
   console.log('\nThe pre-processing of main map is done. It took: '
-              + tm.print(new Date() - totalTime) + '\n');
+              + tm.format(new Date() - totalTime) + '\n');
   // output total number of divisions (areas) to console
   console.log('********** Now dividing the map to ' + segements
               + ' areas **********');

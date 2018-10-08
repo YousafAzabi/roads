@@ -17,7 +17,7 @@ const fs = Promise.promisifyAll(require('fs')); //to use file system
 const readline = require('readline'); //to read file lien by line
 const stream = require('stream'); //to create stream for read line
 const config = require('./comparator-config.json');
-const tm = require('./timeprinter'); //to print time in **h:**m:**s format
+const tm = require('./time'); //to print time in **h:**m:**s format
 
 const distToler = 0.004; //distance tolerance for turf.lineOverlap in kilometers.
 const angleTolerance = 170; //tolerance of road vector angles in Degree.
@@ -282,7 +282,7 @@ printReport = (zeroCounter, oneCounter, multiCounter, noNameCounter) => {
   console.log("Number of roads without a name in OS: \t\t\t" + noNameCounter);
   console.log("Number of ONEWAY mismatchbetween OS and OSM: \t\t" + onewayMismatchCount());
   console.log("\n\t***********************************\n");
-  console.log('\t\tTotal time taken: \t' + tm.print(new Date() - totalTime) + '\n');
+  console.log('\t\tTotal time taken: \t' + tm.format(new Date() - totalTime) + '\n');
 }
 
 /*var addRoadOSM = (function() {

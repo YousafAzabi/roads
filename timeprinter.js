@@ -1,4 +1,4 @@
-exports.print = (milliseconds) => {
+exports.format = (milliseconds) => {
   if (milliseconds < 0) {return 'ERROR! negative value'; }
   let time = ''; // reset time to blank string
   let seconds = Math.floor(milliseconds / 1000); // calculate total seconds
