@@ -7,9 +7,17 @@ yarn-error.log*
 
 <<<<<<< HEAD
 # Files
+<<<<<<< HEAD
 Output/**/*
 Data/*
 InputY/**/*
+=======
+output/**/*
+data/**/*
+temp/**/*
+
+input/**/*
+>>>>>>> Tested working index.js for all UK
 esting_distance_tolerance.ods
 old*.*
 =======
