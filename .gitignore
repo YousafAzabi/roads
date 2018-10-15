@@ -15,7 +15,8 @@ InputY/**/*
 output/**/*
 data/**/*
 temp/**/*
-
+test/io/testdataOS.gpkg
+test/io/testdataOS.json
 
 
 input/**/*
