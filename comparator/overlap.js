@@ -1,12 +1,9 @@
 //compare roads coordinates for overlap
-
 const turf = require('@turf/turf');
 
-const distToler = 0.004; //distance tolerance for turf.lineOverlap in kilometers.
-const overlapPercentage = 0.5; //percentage of overlap between OS & OSM.
-
-//input values are coordinates of two roads to be compared
-exports.compare = (coordinatesOne, coordinatesTwo) => {
+//input coordinates of two roads, distance tolerance for turf.lineOverlap in kilometers, and
+//percentage of overlap between OS & OSM.
+exports.compare = (coordinatesOne, coordinatesTwo, distToler = 0.004, overlapPercentage = 0.5) => {
   if (coordinatesOne.length && coordinatesTwo.length) { //check coordinates array not empty
     const turfRoad1 = turf.lineString(coordinatesOne); //convert OS coordinates to turf lineString
     const turfRoad2 = turf.lineString(coordinatesTwo); //convert OSM coordinates to turf lineString

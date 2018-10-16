@@ -3,21 +3,23 @@ const {expect} = require('chai');
 const filter = require('../filter/oneway.js');
 
 describe('filter/oneway.js using ogr2ogr to filter oneway files', () => {
-  it('Test with OSM input data. Return true', () => {
+  it('Test with OSM input data. Return true', (done) => {
     const source = 'osm';
     const inputFile = './test/io/testdataOSM.xml';
     const outputFile = './test/io/testoutput.json';
     const expected = true;
     const output = filter.execute(source, inputFile, outputFile);
+    done();
     assert.equal(expected, output);
   });
 
-  it('Test with OS input data. Return true', () => {
+  it('Test with OS input data. Return true', (done) => {
     const source = 'oS';
     const inputFile = './test/io/testdataOS.gpkg';
     const outputFile = './test/io/testoutput.json';
     const expected = true;
     const output = filter.execute(source, inputFile, outputFile);
+    done();
     assert.equal(expected, output);
   });
 
