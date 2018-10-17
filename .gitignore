@@ -1,27 +1,24 @@
 # Logs
-logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-<<<<<<< HEAD
 # Files
-Output/**/*
-Data/*
-InputY/**/*
-esting_distance_tolerance.ods
+input/**/*
+output/**/*
+temp/**/
+#test/io/testoutput.json
+
 old*.*
-=======
-# Output Files
-Output/*.*
-Data/*
-InputY/*.*
->>>>>>> Add files to gitignore
 
 # Don't ignore README.md and OSTN.... files
-!*/README.md
-!InputY/OSTN15_NTv2_OSGBtoETRS.gsb
+
+!input/OSTN15_NTv2_OSGBtoETRS.gsb
+!input/README.md
+!output/README.md
+!temp/README.md
+.DS_Store
 
 # Runtime data
 pids
@@ -77,10 +74,3 @@ typings/
 
 # next.js build output
 .next
-
-.DS_Store
-<<<<<<< HEAD
-=======
-
-testing_distance_tolerance.ods
->>>>>>> Add files to gitignore

@@ -33,23 +33,31 @@ There is a general work flow you can follow to get to the point of comparing roa
 
 1. The first step is to collect your data. OS data can be downloaded/purchased from the official [website](https://www.ordnancesurvey.co.uk/business-and-government/products/os-mastermap-highways-network.html) in formats including GML. OSM data can be collected in a number of ways, the method we will focus on is through the website [geofabrik](http://download.geofabrik.de/). From here you can download data for entire countries or cities, in an OSM file format. Once you have downloaded and unzipped your data, you can move onto the next step.
 
-2. Once you have your data files, you can place these in the `inputY` directory. Once there, you can follow the instructions displayed in the `inputY` directory's `README.md` file in order to convert your files into JSON format and with a correct coordinate projection. Once your files have been successfully converted, you can move onto the next step.
+2. Once you have your data files, you can place these in the `input` directory. Once there, you can follow the instructions displayed in the `input` directory's `README.md` file in order to convert your files into JSON format and with a correct coordinate projection. Once your files have been successfully converted, you can move onto the next step.
 
 3. Now that you have your data files in a parsable format, you can compare the two data sets to identify common roads between the two. There are two files that make up the OS & OSM Road Comparison Script, `comparator-config.json` and `comparatorY.js`. `comparator-config.json` is where you will edit the I/O settings for the script, telling the script where your input files are, and where you would like it to output results. Once this file has been configured, you can then run the following command in your terminal, while in the root directory.
 ```
-node comparatorY.js
+node comparator.js
 ```
 The output on the terminal shows the total number of roads in OS and OSM, the number of roads with zero, one and multi matches, and how many roads with no name in OS. The last line shows number of oneway mismatches between the two datasets (OS & OSM).
 
 The output files can be imported to QGIS to see the roads mismatch and analyse the correctness of the output.
 
 ### Scripts short description:
-* `comparatorY.js` to compare data from OS against OSM data. Configuration file is comparatorY-config.json.
-* `convert-array.js` to remove extra brackets from coordinates arrays in input files. Make coordinates array elemnt 2 element arrays
+* `comparator.js` to compare data from OS against OSM data. Configuration file is comparatorY-config.json.
+* `process-features` to remove extra brackets from coordinates arrays in input files. Assures that coordinates array is constructed of 2 element arrays. It consists of 3 files (`convert-array.js`, `extra-array.js`, `features-extractor.js`).
 * `map-splitter.js` to split map to smaller areas. Configuration file is map-splitter-config.json.
 * `map-processing.js` to convert original map data to required format and reduce size of the file.
 * `comparatar-reduce.js` to compare links of OS and OSM reduced data by map-processing.js.
-* `timeprinter.js` is a module that accepts two values (string and date in milliseconds). Used to calculate time in the format of `0h:0m:0s` hours, minutes and seconds. It is implemented in `comparatorY.js`, `map-splitter.js`, `map-processing.js` and `comparator-reduce.js`.
+* `timeprinter.js` is a module that accepts date value (in milliseconds). Used to calculate and return time in the format of `0h:0m:0s` hours, minutes and seconds. It is implemented in `comparator.js`, `map-splitter.js`, `map-processing.js` and `comparator-reduce.js`.
+* folder `standalone-scripts` contains scripts which include all the code where some of them are divided to smaller scripts in other folders.
 
-# Unit Tests
-The testing is unit tests based which are implemented using Mocha and Chai to run and check for errors in the code.
+## Testing
+* The code is split into smaller pieces of code modules (functions) to write a test for each part individually.
+* The tests are saved in test folder and are implemented using Mocha and Chai.
+* The scripts are split in individual folders;
+    1. `fliter` folder contains files that use ogr2ogr to filter data.
+    2. `process-features` folder contains files that assures input file coordinates are in right format.
+    3. `comparator` folder contains files that compare between road links from different data sources.
+* Every folder contains a README file which contains more information about the files in a specific folder.
+* The scripts should be executed in the order shown in the sublist above (folders).
