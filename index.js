@@ -20,7 +20,7 @@ mapFilter = (source, fileName) => {
 }
 
 //========== start of the code ==========
-mapFilter('OS', 'exiOS.gpkg');
+mapFilter('OS', 'testdataOS.gpkg');
 mapFilter('OSM', 'exiOSM.xml');
 
 Promise.all(promise).then( values => {
