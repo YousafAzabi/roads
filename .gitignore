@@ -8,7 +8,7 @@ yarn-error.log*
 input/**/*
 output/**/*
 temp/**/
-test/io/testoutput.json
+#test/io/testoutput.json
 
 old*.*
 
