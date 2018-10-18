@@ -38,9 +38,9 @@ exports.execute = (source, input, output) => {
     exec(ogrCommand, (error, stdout, stderr) => {
       if (error) { //check for error
         console.error(error); // print error
-        reject(false);
+        reject(false); //if exec fail, Promise rejcet and retutn false
       }
-      resolve(true);
+      resolve(true); //Promise resolve and return true
     });
   });
 }

@@ -49,15 +49,16 @@ The output files can be imported to QGIS to see the roads mismatch and analyse t
 * `map-splitter.js` to split map to smaller areas. Configuration file is map-splitter-config.json.
 * `map-processing.js` to convert original map data to required format and reduce size of the file.
 * `comparatar-reduce.js` to compare links of OS and OSM reduced data by map-processing.js.
-* `timeprinter.js` is a module that accepts date value (in milliseconds). Used to calculate and return time in the format of `0h:0m:0s` hours, minutes and seconds. It is implemented in `comparator.js`, `map-splitter.js`, `map-processing.js` and `comparator-reduce.js`.
-* folder `standalone-scripts` contains scripts which include all the code where some of them are divided to smaller scripts in other folders.
+* `time.js` is a module that accepts date value (in milliseconds). Used to calculate and return time in the format of `0h:0m:0s` hours, minutes and seconds. It is implemented in `comparator.js`, `map-splitter.js`, `map-processing.js` and `comparator-reduce.js`.
+* folder `standalone-scripts` contains scripts which include all the code. Some of the scripts are split to smaller modules in other folders.
 
 ## Testing
 * The code is split into smaller pieces of code modules (functions) to write a test for each part individually.
 * The tests are saved in test folder and are implemented using Mocha and Chai.
 * The scripts are split in individual folders;
-    1. `fliter` folder contains files that use ogr2ogr to filter data.
+    1. `filter` folder contains files that use ogr2ogr to filter data.
     2. `process-features` folder contains files that assures input file coordinates are in right format.
     3. `comparator` folder contains files that compare between road links from different data sources.
+    4. `map-splitter` folder not finished yet, needs more work.
 * Every folder contains a README file which contains more information about the files in a specific folder.
 * The scripts should be executed in the order shown in the sublist above (folders).

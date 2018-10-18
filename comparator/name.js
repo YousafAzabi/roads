@@ -11,3 +11,12 @@ exports.compare = (nameOne, nameTwo) => {
   }
   return false;
 }
+
+exports.trim = (name) => {
+  return name.slice(3, (name.length - 1));
+}
+
+exports.canonical = (name) => {
+  const words = name.split(' ');
+  const key = words[words.length - 1];
+}

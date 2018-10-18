@@ -1,16 +1,16 @@
-const io = require('./io.js');
-const name = require('./name.js');
-const overlap = require('./overlap.js');
-const direction = require('./direction.js');
-const toDegree = require('./to-degree.js');
-const nt = require('./note-generator.js');
-const print = require('./print.js');
+const io = require('./io.js'); //module for reading and writing files
+const name = require('./name.js'); //module to compare names of road links
+const overlap = require('./overlap.js'); //module to check overlap between road links
+const direction = require('./direction.js'); //module to calculate angle of vector
+const toDegree = require('./to-degree.js'); //module convert radian to degree
+const nt = require('./note-generator.js'); //module check if links different dirrection
+const print = require('./print.js'); //module print header, footer and report about results
 
 //compare names of the roads for match betwwen OS and OSM
 loop = (input) => {
-  let mismatch = [];
-  let arrayOS = [];
-  let arrayOSM = [];
+  let mismatch = []; //holds OS ID, OSM ID,road name and note of mismatched links
+  let arrayOS = []; //holds OS data of mismatched links
+  let arrayOSM = []; //holds OSM data of mismatched links
   //counter for number of [0, 1, Multi matchs & NoName roads] respectively
   let roadCounter = [0, 0, 0, 0];
   [dataOS, dataOSM] = io.read(input[0], input[1]); //read input files
@@ -20,7 +20,7 @@ loop = (input) => {
   for (let roadOS of dataOS.features) { //loop through OS links
     if (!roadOS.properties.name) { //check if no name increment counter
       roadCounter[3] ++;
-      continue;
+      continue; //continue the for loop
     }
     let index = 0; //reset counter for number of matches
     for (let roadOSM of dataOSM.features) { //loop OSM links
@@ -31,7 +31,7 @@ loop = (input) => {
           angleOS = roadOS.properties.direction ? angleOS : (angleOS + 180) % 360; //opposite direction rotate 180
           let angleOSM = calculateAngle(roadOSM.geometry.coordinates); //find OSM angle
           let note = nt.generate(angleOS, angleOSM); //generate note if mismatch occure
-          if (note) { //if mismatch add data to arrays
+          if (note) { //if mismatch push data to arrays
             mismatch.push(format(roadOS, roadOSM, note));
             arrayOS.push(roadOS);
             arrayOSM.push(roadOSM);
