@@ -5,6 +5,7 @@ const direction = require('./direction.js');
 const toDegree = require('./to-degree.js');
 const nt = require('./note-generator.js');
 const print = require('./print.js');
+const turf = require('@turf/turf');
 
 //compare names of the roads for match betwwen OS and OSM
 loop = (input) => {
@@ -25,9 +26,18 @@ loop = (input) => {
     let index = 0; //reset counter for number of matches
     for (let roadOSM of dataOSM.features) { //loop OSM links
 
+      // find 1 point in roadOSM
+      const roadOSMPoint = roadOSM.geometry.coordinates[0];
+      // find 1 point in roadOS
+      const roadOSPoint = roadOS.geometry.coordinates[0];
+      // find distance
+      const distance = turf.distance(roadOSPoint,roadOSMPoint);
+      // ingore if longer than the longest segment
+      if (distance > 1) continue;
+
       // cleaning up OS names: removing 1.()
       const osName = roadOS.properties.name.slice(3, (roadOS.properties.name.length - 1))
-      
+
       if ( name.compare(osName, roadOSM.properties.name) ) { //comapre names of OS and OSM
         if ( overlap.compare(roadOS.geometry.coordinates, roadOSM.geometry.coordinates) ) { //check if links overlap
           index ++; //increment links' match counter
