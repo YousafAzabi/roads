@@ -1,3 +1,9 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/37fdd8c4138d93df9b0d/maintainability)](https://codeclimate.com/github/Geovation/roads/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/37fdd8c4138d93df9b0d/test_coverage)](https://codeclimate.com/github/Geovation/roads/test_coverage)
+
+[![Build Status](https://travis-ci.org/Geovation/roads.svg?branch=master)](https://travis-ci.org/Geovation/roads)
+
 ## Synopsis
 
 Recording and maintaining the correct direction of traffic for oneway roads is important for routing, and needs to be monitored. The current process for validating the direction is a manual approach, which results in a slow, time-consuming update process where the majority of surveyors will be sent to random locations in order to determine if the directions are valid, most of which will already be correct. There is a clear need for a better suited detection system to reduce wasted time caused by sending surveyors to locations where the directions of roads are likely already correct.

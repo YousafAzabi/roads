@@ -4,7 +4,7 @@
   "description": "The direction of traffic for oneway roads can change, leading to out-of-date online data. The current process for detecting these changes in direction is a manual approach, including trawling through newspaper extracts and through word of mouth from local authorities to see which roads have changed. This results in a slow, time-consuming update process where the majority of surveyors will be sent to random locations in order to determine if the directions are still valid, most of which will already be correct. There is a clear need for a better suited detection system, to avoid the waste of time in sending surveyors to locations where the directions of roads are likely already correct.",
   "main": "compare.js",
   "scripts": {
-    "test": "mocha"
+    "test": "nyc --all --reporter=html --reporter=text --reporter=lcov mocha "
   },
   "author": "",
   "license": "ISC",
@@ -12,9 +12,6 @@
     "@turf/line-overlap": "^6.0.2",
     "@turf/turf": "^5.1.6",
     "bluebird": "^3.5.2",
-    "chai": "^4.2.0",
-    "chai-as-promised": "^7.1.1",
-    "express": "^4.16.3",
     "fs": "0.0.1-security",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
@@ -26,6 +23,9 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
   }
 }
