@@ -1,7 +1,5 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/37fdd8c4138d93df9b0d/maintainability)](https://codeclimate.com/github/Geovation/roads/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/37fdd8c4138d93df9b0d/test_coverage)](https://codeclimate.com/github/Geovation/roads/test_coverage)
-
 [![Build Status](https://travis-ci.org/Geovation/roads.svg?branch=master)](https://travis-ci.org/Geovation/roads)
 
 ## Synopsis
