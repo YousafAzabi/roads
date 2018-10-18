@@ -24,7 +24,11 @@ loop = (input) => {
     }
     let index = 0; //reset counter for number of matches
     for (let roadOSM of dataOSM.features) { //loop OSM links
-      if ( name.compare(roadOS.properties.name, roadOSM.properties.name) ) { //comapre names of OS and OSM
+
+      // cleaning up OS names: removing 1.()
+      const osName = roadOS.properties.name.slice(3, (roadOS.properties.name.length - 1))
+      
+      if ( name.compare(osName, roadOSM.properties.name) ) { //comapre names of OS and OSM
         if ( overlap.compare(roadOS.geometry.coordinates, roadOSM.geometry.coordinates) ) { //check if links overlap
           index ++; //increment links' match counter
           let angleOS = calculateAngle(roadOS.geometry.coordinates); //find OS angle
