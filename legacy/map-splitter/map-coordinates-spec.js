@@ -1,6 +1,6 @@
 const assert = require('assert');
 const {expect} = require('chai');
-const coordinates = require('../map-splitter/map-coordinates.js');
+const coordinates = require('../src/map-splitter/map-coordinates.js');
 
 describe('map-coordinates.js sets coordinates of divided new maps', () => {
   it('Test if mid value is calculated correctly. Return (array fifth element) is 3.5', () => {

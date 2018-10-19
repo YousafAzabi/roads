@@ -1,5 +1,5 @@
 const assert = require('assert');
-const time = require('../time.js');
+const time = require('../src/time.js');
 
 describe('Script to convert input (date) in milliseconds to time format 0h:0m:0s', () => {
   it('Test if hours converted correctly. Return string "1h:0m:0s"', () => {

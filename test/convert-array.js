@@ -1,6 +1,6 @@
 const assert = require('assert');
 const {expect} = require('chai');
-const converter = require('../process-features/convert-array.js');
+const converter = require('../src/process-features/convert-array.js');
 
 describe('convert-array.js read/write and parse JSON done here.', () => {
   it('Test script with input test file containing correct OSM data format', () => {

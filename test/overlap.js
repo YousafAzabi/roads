@@ -1,5 +1,5 @@
 const assert = require('assert');
-const overlap = require('../comparator/overlap.js');
+const overlap = require('../src/comparator/overlap.js');
 
 describe('overlap.js to find if two GIS segements overlap', () => {
   it('Test two segements that are overlaping. Return ture', () => {

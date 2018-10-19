@@ -1,6 +1,6 @@
 const assert = require('assert');
 const {expect} = require('chai');
-const degree = require('../comparator/to-degree.js');
+const degree = require('../src/comparator/to-degree.js');
 
 describe('to-degree.js converts angle from radian to degree', () => {
   it('Test if input is not a number. Return ERROR', () => {

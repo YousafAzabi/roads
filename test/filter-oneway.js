@@ -1,6 +1,6 @@
 const assert = require('assert');
 const {expect} = require('chai');
-const filter = require('../filter/oneway.js');
+const filter = require('../src/filter/oneway.js');
 
 describe('filter/oneway.js using ogr2ogr to filter oneway files', () => {
   it('Test with OSM input data. Return true', (done) => {

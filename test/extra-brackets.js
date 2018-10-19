@@ -1,6 +1,6 @@
 const assert = require('assert');
 const {expect} = require('chai');
-const brackets = require('../process-features/extra-brackets.js');
+const brackets = require('../src/process-features/extra-brackets.js');
 
 describe('extra-brackets.js script to delete extra brackets from arrays',() => {
   it('Test if input is not an array. Should return empty array []', () => {

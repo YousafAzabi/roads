@@ -1,5 +1,5 @@
 const assert = require('assert');
-const generator = require('../comparator/note-generator.js');
+const generator = require('../src/comparator/note-generator.js');
 
 const input1 = -76;
 

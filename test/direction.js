@@ -1,6 +1,6 @@
 const assert = require('assert');
 const {expect} = require('chai');
-const direction = require('../comparator/direction.js');
+const direction = require('../src/comparator/direction.js');
 
 describe('direction.js finds the dirction of the road based on angle', () => {
   it('Test when angle in 1st quadrant', () => {

@@ -1,6 +1,6 @@
 const assert = require('assert');
 const {expect} = require('chai');
-const io = require('../comparator/io.js');
+const io = require('../src/comparator/io.js');
 
 describe('io.js function "read" is to read two files and return data', () => {
   it('Test reading file with correct format. Return two element array', () => {

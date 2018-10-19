@@ -1,5 +1,5 @@
 const assert = require('assert');
-const print = require('../comparator/print.js');
+const print = require('../src/comparator/print.js');
 
 describe('print.js displays information about script time & number of matched roads ', () => {
   it('Test header function with two input parameters. Return true', () => {
