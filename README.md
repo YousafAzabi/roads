@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/Geovation/roads.svg?branch=master)](https://travis-ci.org/Geovation/roads)
 [![Maintainability](https://api.codeclimate.com/v1/badges/37fdd8c4138d93df9b0d/maintainability)](https://codeclimate.com/github/Geovation/roads/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/37fdd8c4138d93df9b0d/test_coverage)](https://codeclimate.com/github/Geovation/roads/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/Geovation/roads/badge.svg?branch=master)](https://coveralls.io/github/Geovation/roads?branch=master)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FGeovation%2Froads.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FGeovation%2Froads?ref=badge_shield)
 [![dependencies Status](https://david-dm.org/geovation/roads/status.svg)](https://david-dm.org/geovation/roads)
 ## Synopsis
