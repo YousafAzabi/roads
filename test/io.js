@@ -70,4 +70,14 @@ describe('io.js function "write" is to write data to file', () => {
     const expected = 'ERROR! Either file name or data is missing';
     expect( () => { output = io.write(input2) } ).throw(expected);
   });
+
+  it('Test missing file name. Return ERROR', () => {
+    const input1 = './test/io/testoutput.json'
+    const input2 = {
+                    "id":01,
+                    "name": "Oxford Street",
+                  };
+    const expected = 'ERROR! Either file name or data is missing';
+    expect( () => { output = io.write() } ).throw(expected);
+  });
 });

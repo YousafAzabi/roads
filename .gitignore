@@ -7,10 +7,8 @@ yarn-error.log*
 # Files
 input/**/*
 output/**/*
-temp/**/
+temp/**/*
 test/io/testoutput.json
-
-old*.*
 
 # Don't ignore README.md and OSTN.... files
 

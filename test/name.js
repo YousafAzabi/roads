@@ -49,4 +49,12 @@ describe('name.js comapres names of two roads', () => {
     const output = name.compare(inputOne, inputTwo);
     assert.equal(expected, output);
   });
+
+  it('Test to compare roads are undefined. Return false', () => {
+    const inputOne = undefined;
+    const inputTwo = undefined;
+    const expected = false;
+    const output = name.compare(inputOne, inputTwo);
+    assert.equal(expected, output);
+  });
 });

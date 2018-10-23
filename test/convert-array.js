@@ -23,4 +23,18 @@ describe('convert-array.js read/write and parse JSON done here.', () => {
                      '\tInput and Output file names';
     expect(() => {converter.process(input)}).throw(expected);
   });
+
+  it('Test when only NONE of file names are given in parameter input array.', () => {
+    const input = [];
+    const expected = 'ERROR! Parameter array must include 2 values:\n' +
+                     '\tInput and Output file names';
+    expect(() => {converter.process(input)}).throw(expected);
+  });
+
+  it('Test when NO input is given to the function.', () => {
+    const input = [];
+    const expected = 'ERROR! Parameter array must include 2 values:\n' +
+                     '\tInput and Output file names';
+    expect(() => {converter.process()}).throw(expected);
+  });
 });

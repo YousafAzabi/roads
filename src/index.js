@@ -1,5 +1,6 @@
 const comparator = require('./comparator/comparator.js');
 const filter = require('./filter/oneway.js');
+const convertArray = require('./process-features/convert-array.js');
 
 console.log('***** Start ' + new Date().toLocaleTimeString() + ' *****\n');
 
@@ -20,12 +21,19 @@ mapFilter = (source, fileName) => {
 }
 
 //========== start of the code ==========
-mapFilter('OS', 'testdataOS.gpkg');
-mapFilter('OSM', 'exiOSM.xml');
+mapFilter('OS', 'LondonOStest.gpkg');
+mapFilter('OSM', 'testLondon.pbf');
 
-Promise.all(promise).then( values => {
-  console.log('FINISHED pre-processing data');
-  comparator.start(tempInput, output, totalTime);
-}, reason => {
+Promise.all(promise)
+  .then( (values) => {
+    convertArray.process([tempInput[0], tempInput[0]]);
+  })
+  .then( (values) => {
+    convertArray.process([tempInput[1], tempInput[1]]);
+  })
+  .then( (values) => {
+    console.log('FINISHED pre-processing data');
+    comparator.start(tempInput, output, totalTime);
+  }, reason => {
   console.log(reason);
 });

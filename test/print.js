@@ -18,6 +18,22 @@ describe('print.js displays information about script time & number of matched ro
     assert.equal(expected, output);
   });
 
+  it('Test header function if one of input arguments is NaN. Return false', () => {
+    const input1 = NaN;
+    const input2 = NaN;
+    const expected = false;
+    const output = print.header(input1, input2);
+    assert.equal(expected, output);
+  });
+
+  it('Test header function if both input arguments are missing. Return false', () => {
+    const input1 = 674;
+    const input2 = 450;
+    const expected = false;
+    const output = print.header();
+    assert.equal(expected, output);
+  });
+
   it('Test report function if input array is given. Return true', () => {
     const input = [1, 2, 3, 4];
     const expected = true;
@@ -35,14 +51,22 @@ describe('print.js displays information about script time & number of matched ro
   it('Test footer function if input time is given. Return true', () => {
     const input = new Date();
     const expected = true;
-    const output = print.report(input);
+    const output = print.footer(input);
     assert.equal(expected, output);
   });
 
   it('Test footer function if input time missing. Return fales', () => {
     const input = new Date();
     const expected = false;
-    const output = print.report();
+    const output = print.footer();
     assert.equal(expected, output);
   });
+
+  it('Test footer function if input time is greater than current time', () => {
+    const input = new Date() * 1.1;
+    const expected = false;
+    const output = print.footer(input);
+    assert.equal(expected, output);
+  });
+
 });

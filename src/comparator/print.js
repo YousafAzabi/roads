@@ -17,17 +17,23 @@ exports.report = (counter = []) => {
     console.log('ERROR! The input is empty no values to print');
     return false;
   } else {
-    console.log('Number of OS links with NO match in OSM: \t\t' + counter[0]);
-    console.log('Number of OS links with ONE match in OSM: \t\t' + counter[1]);
-    console.log('Number of OS links with MULTIPLE match in OSM: \t\t' + counter[2]);
-    console.log('Number of roads with No-Name in OS: \t\t\t' + counter[3]);
+    console.log('Number of OS links with NO match in OSM: \t\t' + counter.noMatch);
+    console.log('Number of OS links with ONE match in OSM: \t\t' + counter.oneMatch);
+    console.log('Number of OS links with MULTIPLE match in OSM: \t\t' + counter.multiMatch);
+    console.log('Number of roads with No-Name in OS: \t\t\t' + counter.noName);
     return true;
   }
 }
 
 exports.footer = (time = -1) => {
   if (time === -1) {
-    console.log('ERROR! time cannot be calcualted. No starting time (input) provided');
+    console.log('ERROR! time cannot be calcualted. No starting (input) time provided');
+    return false;
+  }
+  let duration = new Date() - time;
+  console.log('***************************************\n',duration);
+  if (duration < 0) {
+    console.log("ERROR! starting (input) time is greater than end (current) time.");
     return false;
   } else {
     console.log('\t\tTotal time taken: \t' + tm.format(new Date() - time) + '\n');
