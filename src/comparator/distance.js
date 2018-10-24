@@ -3,7 +3,7 @@
 const turf = require('@turf/turf');
 const _ = require('lodash');
 
-exports.inRange = (roadOne ='', roadTwo='', range = 1) => {
+exports.inRange = (roadOne, roadTwo, range = 1) => {
     if ( _.has(roadOne , "geometry.coordinates[0]") && _.has(roadTwo , "geometry.coordinates[0]")) {
       // find 1 point in first road
       const pointOne = roadOne.geometry.coordinates[0];

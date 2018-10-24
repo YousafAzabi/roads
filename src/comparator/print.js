@@ -25,13 +25,24 @@ exports.report = (counter = []) => {
   }
 }
 
+exports.progress = (timePassed, estimateTimeLeft, Progresspercentage) => {
+  if (!timePassed || !estimateTimeLeft || !Progresspercentage) {
+    console.log('ERROR! One or more of input values are missing.');
+    return false;
+  }
+  console.log('Time passed: ', tm.format(timePassed));
+  console.log('Estimate Time Left: ', tm.format(estimateTimeLeft));
+  console.log('Progress: ', Progresspercentage.toFixed(2), '%')
+  return true;
+}
+
 exports.footer = (time = -1) => {
   if (time === -1) {
     console.log('ERROR! time cannot be calcualted. No starting (input) time provided');
     return false;
   }
   let duration = new Date() - time;
-  console.log('***************************************\n',duration);
+  console.log('\t***************************************\n');
   if (duration < 0) {
     console.log("ERROR! starting (input) time is greater than end (current) time.");
     return false;
