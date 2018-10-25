@@ -14,12 +14,9 @@ loop = (input) => {
     totalRoadsOS: 0
   };
   let mismatch = [], arrayOS = [], arrayOSM = [];
-  let startTime = new Date();
   let i = 0;
   [dataOS, dataOSM] = io.read(input[0], input[1]); //read input files
-  if (!print.header(dataOS.features.length, dataOSM.features.length)) {
-      throw 'ERROR! Input files length error.'
-  }
+  print.header(dataOS.features.length, dataOSM.features.length);
   roadCounters.totalRoadsOS = dataOS.features.length;
   for (let roadOS of dataOS.features) { //loop through OS links
     roadCounters.processedOS ++;
@@ -30,23 +27,26 @@ loop = (input) => {
     }
     compareOSroadWithOSM.compare(roadOS, dataOSM, roadCounters, mismatch, arrayOS, arrayOSM);
 
-    progress.calculate(startTime, roadCounters);
+    returnProgress = progress.calculate(roadCounters);
+    if (returnProgress) {
+      print.progress(returnProgress);
+    }
   }
   return [arrayOS, arrayOSM, mismatch, roadCounters];
 }
 
 //========== script start here ==========
-exports.start = (input, output, time = new Date()) => {
+exports.start = (input, output, startTime = new Date()) => {
   let promise = new Promise((resolve, reject) => {
     resolve(loop(input));
   });
 
   promise.then( (values) => { //call main function loop
-    console.log('Writing data to files');
+    print.message('Writing data to files');
     io.write(output[0], values[0]); //write data to files
     io.write(output[1], values[1]);
     io.write(output[2], values[2]);
-    print.report(values[3].counters); //print report of number of link matches
-    print.footer(time); //print time taken
+    print.report(values[3]); //print report of number of link matches
+    print.footer(startTime); //print time taken
   });
 }
