@@ -28,7 +28,7 @@ describe('time.js convert input (date) in milliseconds to time format 0h:0m:0s',
   });
   it('Test if input value is negative. Return string "ERROR! negative value"', () => {
     const input = -1;
-    const expected = 'ERROR! negative value';
+    const expected = 'ERROR! time is negative value';
     const output = time.format(input);
     assert.equal(expected, output);
   });

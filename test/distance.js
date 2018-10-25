@@ -1,7 +1,7 @@
 const assert = require('assert');
 const distance = require('../src/comparator/distance.js');
 
-describe('distance.js finds if distance between statring points of two links if are in range', () => {
+describe('distance.js checks distance between statring points of two links if there are in range', () => {
   it('Test when road links in range. Return true', () => {
     const input1 = {"geometry": {"coordinates": [[0.13, 52],[0.1, 53], [0, 54]]}};
     const input2 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;

@@ -1,8 +1,8 @@
 const {expect} = require('chai');
 const data = require('../src/comparator/data.js');
 
-describe('', () =>{
-  it('', () => {
+describe('data.js arranges data from OS and OSM to be written to output file', () =>{
+  it('Test if data is in correct format. Return object', () => {
     const input1 = {"properties": {"id": '10'}};
     const input2 = {"properties": {"id": 22, "name": 'Oxford Street'}};
     const input3 = 'some note';
