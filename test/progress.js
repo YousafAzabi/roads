@@ -1,50 +1,34 @@
-const {expect} = require('chai');
+const assert = require('assert');
 const sinon = require('sinon');
 const progress = require('../src/comparator/progress.js');
-const print = require('../src/comparator/print.js');
 
-let printStub, consoleStub;
-
-describe.skip('progress.js calculates time passed, estaimated time to finish and percentage of progress', () => {
-  beforeEach(function() {
-    printStub = sinon.stub(print,'progress');
-    consoleStub = sinon.stub(console,'log');
-  });
-
-  afterEach(function(){
-    printStub.restore();
-    consoleStub.restore();
-  });
-
-  it('Test when both input data are given.', () => {
-    const input1 = {
-      "totalRoadsOS": 0,
-      "processedOS": 0
+describe('progress.js calculates time passed, estaimated time to finish and percentage of progress', () => {
+  it('Test when both input parameters are given. Return true', () => {
+    const input = {
+      "totalRoadsOS": 100,
+      "processedOS": 20
     };
-    const input2 = new Date() - 5000;
-    progress.calculate(input1, input2);
-    expect(print.progress.calledOnce).to.be.true;
+    const expected = 3;
+    clock = sinon.useFakeTimers(new Date());
+    clock.tick(4000);
+    const output = progress.calculate(input).length;
+    clock.restore();
+    assert.equal(expected, output);
   });
 
-  it('Test when one input data is given.', () => {
-    const input1 = {
-      "totalRoadsOS": 0,
-      "processedOS": 0
+  it('Test when one input parameter is given. Return false', () => {
+    const input = {
+      "totalRoadsOS": 100,
+      "processedOS": 20
     };
-    const input2 = new Date() - 5000;
-    progress.calculate(input1);
-    expect(print.progress.notCalled).to.be.true;
+    const expected = false;
+    const output = progress.calculate(input);
+    assert.equal(expected, output);
   });
 
-  it('Test when both input data are missing.', () => {
-    const input1 = {
-      "totalRoadsOS": 0,
-      "processedOS": 0
-    };
-    const input2 = new Date() - 5000;
-    expected = 'ERROR! Counters input is missing.';
-    progress.calculate();
-    expect(print.progress.notCalled).to.be.true;
-    expect(console.log.calledWith(expected)).to.be.true;
+  it('Test when both input parameters are missing. Return false', () => {
+    const expected = false;
+    const output = progress.calculate();
+    assert.equal(expected, output);
   });
 });

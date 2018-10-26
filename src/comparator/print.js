@@ -25,13 +25,18 @@ exports.report = (counter = []) => {
   }
 }
 
-exports.progress = ([timePassed, estimateTimeLeft, Progresspercentage]) => {
-  if (!timePassed || !estimateTimeLeft || !Progresspercentage) {
-    throw ('ERROR! One or more of input values are missing.');
+exports.progress = (inputArray) => {
+  if (inputArray && inputArray.length === 3) {
+    [timePassed, estimateTimeLeft, Progresspercentage] = inputArray;
+    if (isNaN(timePassed) || isNaN(estimateTimeLeft) || isNaN(Progresspercentage)) {
+      console.info('ERROR! One or more of input values are NOT numbers.');
+    } else {
+      console.info('Time passed: ' + tm.format(timePassed));
+      console.info('Estimate Time Left: ' + tm.format(estimateTimeLeft));
+      console.info('Progress: ' + Progresspercentage.toFixed(2) + '%');
+    }
   } else {
-    console.info('Time passed: ', tm.format(timePassed));
-    console.info('Estimate Time Left: ', tm.format(estimateTimeLeft));
-    console.info('Progress: ', Progresspercentage.toFixed(2), '%');
+    console.info('ERROR! One or more of input values are missing.');
   }
 }
 

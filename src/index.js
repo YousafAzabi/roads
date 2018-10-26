@@ -6,9 +6,9 @@ console.log('***** Start ' + new Date().toLocaleTimeString() + ' *****\n');
 
 let totalTime = new Date();
 let tempInput = [];
-let output = ['./output/onewayUKOS.json',
-              './output/onewayUKOSM.json',
-              './output/onewayMismatch.json'];
+let output = {"outputFileOS": './output/onewayUKOS.json',
+              "outputFileOSM": './output/onewayUKOSM.json',
+              "outputFileInfo":'./output/onewayMismatch.json'};
 
 let promise = [];
 
