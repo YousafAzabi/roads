@@ -13,8 +13,10 @@ cache:
     - node_modules/
 
 before install:
-  - sudo apt-get install libgdal-dev=2.1.3+dfsg-1~xenial2
-  
+  - #sudo add-apt-repository ppa:ubuntugis/ppa -y
+  - sudo apt-get update -q
+  - sudo apt-get install gdal-bin
+
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
