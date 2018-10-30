@@ -2,8 +2,7 @@ const assert = require('assert');
 const {expect} = require('chai');
 const extractor = require('../src/process-features/feature-extractor.js');
 
-describe('feature-extractor.js receives GIS JSON data and returns data ' +
-         'processed. Calls extra-brackets.js', () => {
+describe('feature-extractor.js receives GIS JSON data and returns data processed', () => {
 
   it('Test if feature is empty with no data. Returns empty array []', () => {
     const input = [];

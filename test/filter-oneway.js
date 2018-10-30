@@ -1,26 +1,34 @@
-const assert = require('assert');
-const {expect} = require('chai');
+const chai = require('chai');
+const expect = chai.expect;
+const chaiAsPromsied = require('chai-as-promised');
+chai.use(chaiAsPromsied);
 const filter = require('../src/filter/oneway.js');
 
-describe('filter/oneway.js using ogr2ogr to filter oneway files', () => {
-  it('Test with OSM input data. Return true', (done) => {
+describe('filter/oneway.js using ogr2ogr to filter oneway road links', () => {
+  it('Test with OSM input data. Return true', async () => {
     const source = 'osm';
     const inputFile = './test/io/testdataOSM.xml';
     const outputFile = './test/io/testoutput.json';
     const expected = true;
-    const output = filter.execute(source, inputFile, outputFile);
-    done();
-    assert.equal(expected, output);
+    const output = await filter.execute(source, inputFile, outputFile);
+    expect(output).to.equal(expected);
   });
 
-  it('Test with OS input data. Return true', (done) => {
+  it('Test with OS input data. Return true', async () => {
     const source = 'oS';
     const inputFile = './test/io/testdataOS.gpkg';
     const outputFile = './test/io/testoutput.json';
     const expected = true;
-    const output = filter.execute(source, inputFile, outputFile);
-    done();
-    assert.equal(expected, output);
+    const output = await filter.execute(source, inputFile, outputFile);
+    expect(output).to.equal(expected);
+  });
+
+  it.skip('Test if input file name wrong or any ogr2ogr error.', () => {
+    const source = 'os';
+    const inputFile = './test/io/dataOS.gpkg';
+    const outputFile = './test/io/testoutput.json';
+    const expected = 'hi';
+    return expect(filter.execute(source, inputFile, outputFile)).to.be.rejectedWith(expected);
   });
 
   it('Test with none valid source name. Return ERROR', () => {
@@ -45,14 +53,5 @@ describe('filter/oneway.js using ogr2ogr to filter oneway files', () => {
     const outputFile = './test/io/testoutput.json';
     const expected = 'ERROR! Please input three paramters to function call';
     expect( () => { filter.execute(source, outputFile) }).throw(expected);
-  });
-
-  it.skip('Test if input file name wrong or any ogr2ogr error. Return ERROR', () => {
-    const source = 'os';
-    const inputFile = './test/io/dataOS.gpkg';
-    const outputFile = './test/io/testoutput.json';
-    const expected = false;
-    const output = filter.execute(source, inputFile, outputFile);
-    assert.equal(expected, output);
   });
 });

@@ -1,42 +1,55 @@
 const tm = require('../time.js');
 
+exports.message = (text) => {
+    console.info(text);
+}
+
 exports.header = (lengthOS = NaN, lengthOSM = NaN) => {
-  console.log('\n\t\t*****\t comparator Script started at ' +
-            new Date().toLocaleTimeString() + ' \t*****\n');
   if (isNaN(lengthOS) || isNaN(lengthOSM)) {
-    console.log('ERROR! Parameter sent to function print.header are not numbers.');
-    return false;
+    throw 'ERROR! Parameter sent to function print.header are not numbers.';
   } else {
-    console.log('Nubmer of roads OS= ' + lengthOS + ', and OSM= ' + lengthOSM);
-    return true;
+    console.info('\n\t\t*****\t comparator Script started at ' +
+              new Date().toLocaleTimeString() + ' \t*****\n');
+    console.info('Nubmer of roads OS= ' + lengthOS + ', and OSM= ' + lengthOSM);
   }
 }
 
 exports.report = (counter = []) => {
   if (counter.length === 0) {
-    console.log('ERROR! The input is empty no values to print');
-    return false;
+    throw 'ERROR! The mismatch counters are empty no values to print';
   } else {
-    console.log('Number of OS links with NO match in OSM: \t\t' + counter.noMatch);
-    console.log('Number of OS links with ONE match in OSM: \t\t' + counter.oneMatch);
-    console.log('Number of OS links with MULTIPLE match in OSM: \t\t' + counter.multiMatch);
-    console.log('Number of roads with No-Name in OS: \t\t\t' + counter.noName);
-    return true;
+    console.info('Number of OS links with NONE match in OSM: ' + counter.noMatch);
+    console.info('Number of OS links with ONE  match in OSM: ' + counter.oneMatch);
+    console.info('Number of OS links with MULTImatch in OSM: ' + counter.multiMatch);
+    console.info('Number of road links without a Name in OS: ' + counter.noName);
+  }
+}
+
+exports.progress = (inputArray) => {
+  if (inputArray && inputArray.length === 3) {
+    [timePassed, estimateTimeLeft, Progresspercentage] = inputArray;
+    if (isNaN(timePassed) || isNaN(estimateTimeLeft) || isNaN(Progresspercentage)) {
+      console.info('ERROR! One or more of input values are NOT numbers.');
+    } else {
+      console.info('Time passed: ' + tm.format(timePassed));
+      console.info('Estimate Time Left: ' + tm.format(estimateTimeLeft));
+      console.info('Progress: ' + Progresspercentage.toFixed(2) + '%');
+    }
+  } else {
+    console.info('ERROR! One or more of input values are missing.');
   }
 }
 
 exports.footer = (time = -1) => {
   if (time === -1) {
-    console.log('ERROR! time cannot be calcualted. No starting (input) time provided');
-    return false;
-  }
-  let duration = new Date() - time;
-  console.log('***************************************\n',duration);
-  if (duration < 0) {
-    console.log("ERROR! starting (input) time is greater than end (current) time.");
-    return false;
+    throw 'ERROR! time cannot be calcualted. No starting (input) time provided';
   } else {
-    console.log('\t\tTotal time taken: \t' + tm.format(new Date() - time) + '\n');
-    return true;
+    let duration = new Date() - time;
+    console.info('\t***************************************\n');
+    if (duration < 0) {
+      throw 'ERROR! starting (input) time is greater than end (current) time.';
+    } else {
+      console.info('\t\tTotal time taken: \t' + tm.format(new Date() - time) + '\n');
+    }
   }
 }
