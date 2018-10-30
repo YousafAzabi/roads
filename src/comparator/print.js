@@ -25,7 +25,7 @@ exports.report = (counter = []) => {
   }
 }
 
-exports.progress = (inputArray) => {
+function progress(inputArray) {
   if (inputArray && inputArray.length === 3) {
     [timePassed, estimateTimeLeft, Progresspercentage] = inputArray;
     if (isNaN(timePassed) || isNaN(estimateTimeLeft) || isNaN(Progresspercentage)) {
@@ -39,7 +39,7 @@ exports.progress = (inputArray) => {
     console.info('ERROR! One or more of input values are missing.');
   }
 }
-
+exports.progress = progress;
 exports.footer = (time = -1) => {
   if (time === -1) {
     throw 'ERROR! time cannot be calcualted. No starting (input) time provided';
