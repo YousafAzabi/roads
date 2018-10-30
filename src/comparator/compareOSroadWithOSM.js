@@ -4,6 +4,7 @@ const overlap = require('./overlap.js');
 const angle = require('./angle.js')
 const nt = require('./note-generator.js');
 const data = require('./data.js');
+// const _ = require('lodash')
 
 let matchesCounter;
 
@@ -20,21 +21,21 @@ conditions = (roadOS, roadOSM) => {
   }
   return false;
 }
-exports.conditions = conditions;
 
-exports.compare = (roadOS, dataOSM, outputData) => {
+function compare(roadOS, dataOSM, outputData) {
   matchesCounter = 0; //reset counter for number of matches
-  for (let roadOSM of dataOSM.features) { //loop OSM links
-    if (!distance.inRange(roadOS, roadOSM)) { //if links faraway from each other go to next
-      continue;
-    }
-    note = conditions(roadOS, roadOSM);
-    if (note) {
-      outputData.info.push(data.format(roadOS, roadOSM, note));
-      outputData.OS.push(roadOS);
-      outputData.OSM.push(roadOSM);
-    }
-  }
+
+  dataOSM.features
+    .filter(roadOSM => distance.inRange(roadOS, roadOSM))
+    .forEach(roadOSM => {
+      const note = conditions(roadOS, roadOSM);
+      if (note) {
+        outputData.info.push(data.format(roadOS, roadOSM, note));
+        outputData.OS.push(roadOS);
+        outputData.OSM.push(roadOSM);
+      }
+    });
+
   if (matchesCounter === 0) {
     matchesCounter = 'noMatch';
   } else if (matchesCounter === 1) {
@@ -44,3 +45,6 @@ exports.compare = (roadOS, dataOSM, outputData) => {
   }
   return matchesCounter;
 }
+
+exports.conditions = conditions;
+exports.compare = compare;
