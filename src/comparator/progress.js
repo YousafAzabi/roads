@@ -3,8 +3,18 @@
 const print = require('./print.js');
 const _ = require('lodash');
 
-let startDate = new Date();
-let lastPrintDate = new Date();
+let startDate;
+let lastPrintDate;
+
+init();
+
+//-----------/
+function init() {
+  startDate = new Date();
+  lastPrintDate = new Date();
+}
+
+exports.init = init;
 
 exports.calculate = (counters) => {
   if ( !( _.has(counters , "processedOS") && _.has(counters , "processedOS")) ) {

@@ -7,7 +7,7 @@ describe('io.js for read (input) and write (output) from/to files', () => {
     it('Test reading file with correct format. Return two element array', () => {
       const input1 = './test/io/testdataOS.json';
       const input2 = './test/io/testdataOSM.json';
-      const expected = [7, 10];
+      const expected = [117, 25];
       const arr = io.read(input1, input2);
       const output = [arr[0].features.length, arr[1].features.length];
       expect(output).to.eql(expected);

@@ -29,8 +29,8 @@ loop = (input) => {
       roadCounters.noName ++;
       continue;
     }
-    compareOSroadWithOSM.compare(roadOS, dataOSM, roadCounters, outputData);
-
+    let key = compareOSroadWithOSM.compare(roadOS, dataOSM, outputData);
+    roadCounters[key] ++;
     returnProgress = progress.calculate(roadCounters);
     if (returnProgress) {
       print.progress(returnProgress);
@@ -41,8 +41,8 @@ loop = (input) => {
 
 //========== script start here ==========
 exports.start = (input, output, startTime = new Date()) => {
-  let promise = new Promise((resolve, reject) => {
-    resolve(loop(input));
+  return promise = new Promise((resolve, reject) => {
+      resolve(loop(input));
   });
 
   promise.then( (values) => { //call main function loop
