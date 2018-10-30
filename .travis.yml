@@ -13,10 +13,9 @@ cache:
     - node_modules/
 
 before_install:
-  - # sudo add-apt-repository ppa:ubuntugis/ppa -y
+  - sudo add-apt-repository ppa:ubuntugis/ppa -y
   - sudo apt-get update
   - sudo apt-get install -y gdal-bin
-
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
