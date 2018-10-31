@@ -1,68 +1,65 @@
 const assert = require('assert');
-const {expect} = require('chai');
-const direction = require('../src/comparator/direction.js');
+const {isMismatch} = require('../src/comparator/direction.js');
+const {tolerance} = require('../src/comparator/direction.js');
 
-describe('direction.js finds the dirction of the road based on angle', () => {
-  it('Test when angle in 1st quadrant', () => {
-    const input = [[6, 3], [9, 6]];
-    const expected = 0.25 * Math.PI;
-    const output = direction.find(input);
+const input1 = -76;
+
+describe('direction.js compare angle are in opposite direction with tolerance range', () => {
+  it('Test angle with rotation 180 degrees. Return true', () => {
+    const input2 = input1 + 180;
+    const expected = true;
+    const output = isMismatch(input1, input2);
     assert.equal(expected, output);
   });
 
-  it('Test when angle in 2nd quadrant', () => {
-    const input = [[-6, 3], [-9, 6]];
-    const expected = 0.75 * Math.PI;
-    const output = direction.find(input);;
+  it('Test lower bound range. Return true', () => {
+    const input2 = input1 + tolerance;
+    const expected = true;
+    const output = isMismatch(input1, input2);
     assert.equal(expected, output);
   });
 
-  it('Test when angle in 3rd quadrant', () => {
-    const input = [[-6, -3], [-9, -6]];
-    const expected = - 0.75 * Math.PI;
-    const output = direction.find(input);;
+  it('Test upper bound range. Return true', () => {
+    const input2 = input1 + (360 - tolerance);
+    const expected = true;
+    const output = isMismatch(input1, input2);
     assert.equal(expected, output);
   });
 
-  it('Test when angle in 4th quadrant', () => {
-    const input = [[6, -3], [9, -6]];
-    const expected = - 0.25 * Math.PI;
-    const output = direction.find(input);;
+  it('Test angle less than lower boound range. Return false', () => {
+    const input2 = input1 + tolerance - 1;
+    const expected = false;
+    const output = isMismatch(input1, input2);
     assert.equal(expected, output);
   });
 
-  it('Test when angle is ZERO', () => {
-    const input = [[6, 0], [9, 0]];
-    const expected = 0;
-    const output = direction.find(input);;
+  it('Test angle larger than upper boound range. Return false', () => {
+    const input2 = input1 + tolerance - 1;
+    const expected = false;
+    const output = isMismatch(input1, input2);
     assert.equal(expected, output);
   });
 
-  it('Test when angle is 90 degree', () => {
-    const input = [[0, 3], [0, 6]];
-    const expected = Math.PI / 2;
-    const output = direction.find(input);;
+  it('Test second angle is not number. Return false', () => {
+    const input2 = NaN;
+    const expected = false;
+    const output = isMismatch(input1, input2);
     assert.equal(expected, output);
   });
 
-  it('Test when angle is 180 degree', () => {
-    const input = [[-6, 0], [-9, 0]];
-    const expected = - Math.PI;
-    const output = direction.find(input);;
+  it('Test first angle is not number. Return false', () => {
+    const input3 = NaN;
+    const input2 = 175;
+    const expected = false;
+    const output = isMismatch(input3, input2);
     assert.equal(expected, output);
   });
 
-  it('Test when angle is 270 degree', () => {
-    const input = [[0, 6], [0, 3]];
-    const expected = - Math.PI / 2;
-    const output = direction.find(input);
+  it('Test both angles are not numbers. Return false', () => {
+    const input3 = NaN;
+    const input2 = NaN;
+    const expected = false;
+    const output = isMismatch(input3, input2);
     assert.equal(expected, output);
-  });
-
-  it('Test when start and finish points are the same (ie roundabout)', () => {
-    const input = [[6, 3], [9, 6], [8, 4], [6, 3]];
-    const expected = NaN;
-    const output = direction.find(input);
-    expect(output).to.eql(expected);
   });
 });

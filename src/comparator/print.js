@@ -1,42 +1,32 @@
 const tm = require('../time.js');
 
-exports.header = (lengthOS = NaN, lengthOSM = NaN) => {
-  console.log('\n\t\t*****\t comparator Script started at ' +
+exports.message = (text) => {
+    console.info(text);
+}
+
+exports.header = (lengthOS, lengthOSM) => {
+  console.info('\n\t\t*****\t comparator Script started at ' +
             new Date().toLocaleTimeString() + ' \t*****\n');
-  if (isNaN(lengthOS) || isNaN(lengthOSM)) {
-    console.log('ERROR! Parameter sent to function print.header are not numbers.');
-    return false;
-  } else {
-    console.log('Nubmer of roads OS= ' + lengthOS + ', and OSM= ' + lengthOSM);
-    return true;
+  console.info('Nubmer of roads OS= ' + lengthOS + ', and OSM= ' + lengthOSM);
+}
+
+exports.report = (counter) => {
+  console.info('Number of OS links with NONE match in OSM: ' + counter.noMatch);
+  console.info('Number of OS links with ONE  match in OSM: ' + counter.oneMatch);
+  console.info('Number of OS links with MULTImatch in OSM: ' + counter.multiMatch);
+  console.info('Number of road links without a Name in OS: ' + counter.noName);
+}
+
+exports.progress = (obj) => {
+  if (obj.toPrint) {
+    console.info('Time passed: ' + tm.format(obj.timePassed));
+    console.info('Estimate Time Left: ' + tm.format(obj.estimateTimeLeft));
+    console.info('Progress: ' + obj.progressPercent.toFixed(2) + '%');
   }
 }
 
-exports.report = (counter = []) => {
-  if (counter.length === 0) {
-    console.log('ERROR! The input is empty no values to print');
-    return false;
-  } else {
-    console.log('Number of OS links with NO match in OSM: \t\t' + counter.noMatch);
-    console.log('Number of OS links with ONE match in OSM: \t\t' + counter.oneMatch);
-    console.log('Number of OS links with MULTIPLE match in OSM: \t\t' + counter.multiMatch);
-    console.log('Number of roads with No-Name in OS: \t\t\t' + counter.noName);
-    return true;
-  }
-}
-
-exports.footer = (time = -1) => {
-  if (time === -1) {
-    console.log('ERROR! time cannot be calcualted. No starting (input) time provided');
-    return false;
-  }
+exports.footer = (time) => {
   let duration = new Date() - time;
-  console.log('***************************************\n',duration);
-  if (duration < 0) {
-    console.log("ERROR! starting (input) time is greater than end (current) time.");
-    return false;
-  } else {
-    console.log('\t\tTotal time taken: \t' + tm.format(new Date() - time) + '\n');
-    return true;
-  }
+  console.info('\t***************************************\n');
+  console.info('\t\tTotal time taken: \t' + tm.format(new Date() - time) + '\n');
 }

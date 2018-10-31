@@ -1,26 +1,16 @@
-//module to find road segement direction
+//module to generate and return a message based on angles if are opposite direction
 
-exports.find = (coordinates) => {
-  //index points to last element in array
-  let index = coordinates.length - 1;
+const tolerance = 170; //tolerance of road vector angles in Degree.
+exports.tolerance = tolerance;
 
-  //calculate difference in x and y coordinates between 1st and last points of link
-  let xDifference = coordinates[index][0] - coordinates[0][0];
-  let yDifference = coordinates[index][1] - coordinates[0][1];
-  if (!xDifference && !yDifference) {
-    return NaN;
+//========== format data to be written to file ==========
+exports.isMismatch = (angleOne, angleTwo) => {
+  if( !isNaN(angleOne) && !isNaN(angleTwo) ) {
+    //compare angle differnce falls in range to be considered opposite direction
+    if ( (Math.abs(angleOne - angleTwo) >= tolerance )
+      && (Math.abs(angleOne - angleTwo) <= (360 - tolerance)  ) ) {
+      return true;
+    }
   }
-  //calculate angle of link using INVERSEtan()
-  let tanTheta = Math.atan( Math.abs(yDifference / xDifference) );
-  //switch to check in which quadrant the angle is so execute the right formula
-  switch(true){
-    case (xDifference >= 0 && yDifference >= 0):  //angle in 1st quadrant
-      return tanTheta;
-    case (xDifference < 0 && yDifference > 0):  //angle in 2nd quadrant
-      return (Math.PI - tanTheta);
-    case (xDifference <= 0 && yDifference <= 0):  //angle in 3rd quadrant
-      return (tanTheta - Math.PI);
-    case (xDifference > 0 && yDifference < 0):  //angle in 4th quadrant
-      return (-tanTheta);
-  }
+  return false;
 }

@@ -1,17 +1,880 @@
 {
-"type": "FeatureCollection",
-"name": "lines",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
-{ "type": "Feature", "properties": { "osm_id": "31030", "name": "Grafton Way", "highway": "trunk", "z_order": 8, "other_tags": "\"maxspeed\"=>\"20 mph\",\"lanes\"=>\"2\",\"proposed:cycleway:left\"=>\"track\",\"lit\"=>\"yes\",\"oneway\"=>\"yes\",\"operator\"=>\"Transport for London\",\"sidewalk\"=>\"both\",\"ref\"=>\"A400\"" }, "geometry": { "type": "LineString", "coordinates": [ [ -0.1349287, 51.5245734 ], [ -0.1350024, 51.5245455 ], [ -0.1356679, 51.5242968 ], [ -0.1357503, 51.5242663 ], [ -0.135835, 51.5242338 ], [ -0.1359652, 51.5241777 ], [ -0.136314, 51.5240353 ], [ -0.1370609, 51.523765 ], [ -0.1370981, 51.5237515 ], [ -0.1372409, 51.5236995 ] ] } },
-{ "type": "Feature", "properties": { "osm_id": "31039", "name": "Tottenham Court Road", "highway": "primary", "z_order": 7, "other_tags": "\"maxspeed\"=>\"30 mph\",\"lanes\"=>\"2\",\"proposed:oneway\"=>\"no\",\"lit\"=>\"yes\",\"surface\"=>\"asphalt\",\"oneway\"=>\"yes\",\"sidewalk\"=>\"both\",\"ref\"=>\"A400\",\"proposed:lanes\"=>\"2\"" }, "geometry": { "type": "LineString", "coordinates": [ [ -0.1303768, 51.5164132 ], [ -0.1303818, 51.5164704 ], [ -0.1303995, 51.5165196 ], [[ -0.1304262, 51.5165744 ], [ -0.1304677, 51.5166597 ]], [ -0.1306375, 51.5169145 ], [ -0.1307776, 51.517086 ] ] } },
-{ "type": "Feature", "properties": { "osm_id": "31959", "name": "Cleveland Street", "highway": "tertiary", "z_order": 4, "other_tags": "\"lit\"=>\"yes\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\",\"maxspeed\"=>\"30 mph\",\"sidewalk\"=>\"both\"" }, "geometry": { "type": "LineString", "coordinates": [ [[[[ -0.1391027, 51.5208299 ], [ -0.1391537, 51.5208689 ]], [[ -0.1393094, 51.5209943 ], [ -0.139444, 51.5211006 ]]], [ -0.1398601, 51.5214447 ] ]] } },
-{ "type": "Feature", "properties": { "osm_id": "331357", "name": "Gray's Inn Road", "highway": "trunk", "z_order": 8, "other_tags": "\"horse\"=>\"yes\",\"maxspeed\"=>\"30 mph\",\"bicycle\"=>\"yes\",\"abutters\"=>\"mixed\",\"cycleway\"=>\"share_busway\",\"lit\"=>\"yes\",\"busway\"=>\"lane\",\"operator\"=>\"Transport for London\",\"oneway\"=>\"yes\",\"foot\"=>\"yes\",\"lanes\"=>\"3\",\"sidewalk\"=>\"both\",\"ref\"=>\"A5200\"" }, "geometry": { "type": "LineString", "coordinates": [ ] } },
-{ "type": "Feature", "properties": { "osm_id": "2191122", "name": "Euston Road", "highway": "trunk", "z_order": 8, "other_tags": "\"maxspeed\"=>\"30 mph\",\"lanes\"=>\"3\",\"cycleway:left\"=>\"share_busway\",\"oneway\"=>\"yes\",\"turn:lanes\"=>\"through|through|through\",\"surface\"=>\"asphalt\",\"lit\"=>\"yes\",\"busway:left\"=>\"lane\",\"motor_vehicle\"=>\"designated\",\"operator\"=>\"Transport for London\",\"lanes:psv\"=>\"1\",\"sidewalk\"=>\"left\",\"ref\"=>\"A501\"" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ -0.1442329, 51.5240882 ], [ -0.1440296, 51.5240624 ], [ -0.1439337, 51.5240495 ], [ -0.143651, 51.5240211 ], [ -0.1435901, 51.5240152 ], [ -0.143449, 51.5240015 ] ] } },
-{ "type": "Feature", "properties": { "osm_id": "2198814", "highway": "tertiary", "z_order": 4, "other_tags": "\"lit\"=>\"yes\",\"lanes\"=>\"1\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\",\"maxspeed\"=>\"30 mph\",\"sidewalk\"=>\"separate\"" }, "geometry": { "type": "LineString", "coordinates": [ [ -0.1272868, 51.5083856 ], [ -0.1272889, 51.508459 ], [ -0.1272896, 51.5084816 ], [ -0.1272934, 51.5085231 ], [ -0.1272908, 51.5085459 ], [ -0.1272833, 51.5085619 ], [ -0.1272575, 51.5085723 ], [ -0.1271796, 51.5085736 ] ] } },
-{ "type": "Feature", "properties": { "osm_id": "2199184", "name": "Park Crescent", "highway": "primary", "z_order": 7, "other_tags": "\"maxspeed\"=>\"30 mph\",\"surface\"=>\"asphalt\",\"lit\"=>\"yes\",\"sidewalk\"=>\"both\",\"ref\"=>\"A4201\"" }, "geometry": { "type": "LineString", "coordinates": [ [ -0.1451711, 51.5239114 ], [ -0.1451414, 51.5238405 ], [ -0.1451326, 51.5238006 ], [ -0.1451285, 51.5237608 ], [ -0.1451343, 51.5236869 ], [ -0.1451491, 51.5236107 ], [ -0.1451813, 51.5235059 ], [ -0.1452309, 51.5234056 ], [ -0.1452993, 51.5233146 ], [ -0.1453816, 51.5232331 ], [ -0.1454763, 51.5231569 ], [ -0.1455903, 51.5230876 ], [ -0.1457073, 51.5230261 ], [ -0.1458424, 51.5229732 ], [ -0.1459685, 51.5229364 ], [ -0.1460905, 51.5229071 ] ] } },
-{ "type": "Feature", "properties": { "osm_id": "2199185", "name": "Marylebone Road", "highway": "trunk", "z_order": 8, "other_tags": "\"maxspeed\"=>\"30 mph\",\"lanes\"=>\"3\",\"cycleway:left\"=>\"share_busway\",\"name:ru\"=>\"Мерилибон-роуд\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\",\"lit\"=>\"yes\",\"busway:left\"=>\"lane\",\"motor_vehicle\"=>\"designated\",\"operator\"=>\"Transport for London\",\"lanes:psv\"=>\"1\",\"sidewalk\"=>\"left\",\"ref\"=>\"A501\"" }, "geometry": { "type": "LineString", "coordinates": [ [ -0.1442338, 51.5239873 ], [ -0.1444036, 51.5240029 ], [ -0.1445079, 51.5240049 ], [ -0.1446138, 51.5239972 ], [ -0.1447305, 51.5239815 ] ] } },
-{ "type": "Feature", "properties": { "osm_id": "2199747", "name": "Great Portland Street", "highway": "secondary", "z_order": 6, "other_tags": "\"lit\"=>\"yes\",\"ref\"=>\"B506\",\"surface\"=>\"asphalt\",\"maxspeed\"=>\"30 mph\",\"sidewalk\"=>\"both\",\"source:name\"=>\"local knowledge\"" }, "geometry": { "type": "LineString", "coordinates": [ [ -0.1437628, 51.5223932 ], [ -0.1438536, 51.5225989 ], [ -0.1439701, 51.5228519 ], [ -0.1440273, 51.5229762 ], [ -0.1441362, 51.5232128 ], [ -0.1441512, 51.5232503 ] ] } },
-{ "type": "Feature", "properties": { "osm_id": "2199749", "name": "Portland Place", "highway": "primary", "z_order": 7, "other_tags": "\"maxspeed\"=>\"30 mph\",\"lanes\"=>\"2\",\"surface\"=>\"asphalt\",\"lit\"=>\"yes\",\"oneway\"=>\"yes\",\"sidewalk\"=>\"left\",\"ref\"=>\"A4201\"" }, "geometry": { "type": "LineString", "coordinates": [ [ -0.1442389, 51.5183717 ], [ -0.1443468, 51.5185515 ], [ -0.1446409, 51.5191747 ], [ -0.1448468, 51.519616 ], [ -0.1448633, 51.5196548 ], [ -0.144899, 51.5197389 ] ] } }
-]
+  "type": "FeatureCollection",
+  "name": "lines",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "3754847",
+        "name": "Woodbridge Street",
+        "direction": "\"abutters\"=>\"residential\",\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1045397,
+            51.5245658
+          ],
+          [
+            -0.1047467,
+            51.5247377
+          ],
+          [
+            -0.1056497,
+            51.52543
+          ],
+          [
+            -0.1056967,
+            51.5254597
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "3754848",
+        "name": "Sans Walk",
+        "direction": "\"abutters\"=>\"residential\",\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1056276,
+            51.5243238
+          ],
+          [
+            -0.1047467,
+            51.5247377
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "3755162",
+        "name": "Aylesbury Street",
+        "direction": "\"abutters\"=>\"mixed\",\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.102875,
+            51.5239902
+          ],
+          [
+            -0.1035638,
+            51.523701
+          ],
+          [
+            -0.1040557,
+            51.5234627
+          ],
+          [
+            -0.1045539,
+            51.5231811
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4252579",
+        "name": "Gee Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.0961772,
+            51.5249755
+          ],
+          [
+            -0.0978794,
+            51.5244154
+          ],
+          [
+            -0.0984155,
+            51.5242501
+          ],
+          [
+            -0.0990152,
+            51.5240714
+          ],
+          [
+            -0.099092,
+            51.5240511
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4253228",
+        "name": "Memel Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.0965919,
+            51.5236585
+          ],
+          [
+            -0.0972614,
+            51.5233577
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4253427",
+        "name": "Sekforde Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1045539,
+            51.5231811
+          ],
+          [
+            -0.1046333,
+            51.5233215
+          ],
+          [
+            -0.1046725,
+            51.5234279
+          ],
+          [
+            -0.1046732,
+            51.5235643
+          ],
+          [
+            -0.1045447,
+            51.5245192
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4253430",
+        "name": "Albemarle Way",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1032906,
+            51.5226844
+          ],
+          [
+            -0.1032133,
+            51.5226864
+          ],
+          [
+            -0.1030915,
+            51.5226722
+          ],
+          [
+            -0.1030503,
+            51.5226719
+          ],
+          [
+            -0.1021573,
+            51.5228272
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4253445",
+        "name": "Woodbridge Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1045447,
+            51.5245192
+          ],
+          [
+            -0.1038826,
+            51.5239763
+          ],
+          [
+            -0.1035638,
+            51.523701
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4253487",
+        "name": "Sekforde Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"sidewalk\"=>\"both\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1045397,
+            51.5245658
+          ],
+          [
+            -0.1045029,
+            51.5250215
+          ],
+          [
+            -0.1044532,
+            51.5253144
+          ],
+          [
+            -0.1043476,
+            51.5254798
+          ],
+          [
+            -0.1041195,
+            51.5254869
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4253964",
+        "name": "St James's Walk",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"not:name\"=>\"St James Walk\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1046732,
+            51.5235643
+          ],
+          [
+            -0.1047149,
+            51.5235968
+          ],
+          [
+            -0.1051712,
+            51.5239444
+          ],
+          [
+            -0.1056276,
+            51.5243238
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4254642",
+        "direction": "\"access\"=>\"destination\",\"oneway\"=>\"yes\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.0961772,
+            51.5270889
+          ],
+          [
+            -0.096405,
+            51.5277282
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4255856",
+        "name": "Bastwick Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.0991981,
+            51.5243351
+          ],
+          [
+            -0.0980974,
+            51.5246666
+          ],
+          [
+            -0.0962895,
+            51.5252964
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4340567",
+        "name": "Great Sutton Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.0989889,
+            51.5238322
+          ],
+          [
+            -0.0994423,
+            51.5236951
+          ],
+          [
+            -0.1003111,
+            51.5234325
+          ],
+          [
+            -0.1009673,
+            51.5232527
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4340672",
+        "name": "Northburgh Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1012633,
+            51.5237125
+          ],
+          [
+            -0.100628,
+            51.523875
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4340674",
+        "name": "Berry Street",
+        "direction": "\"lit\"=>\"yes\",\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"sidewalk\"=>\"both\",\"source:name\"=>\"Sign\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1009618,
+            51.5243274
+          ],
+          [
+            -0.100628,
+            51.523875
+          ],
+          [
+            -0.1003111,
+            51.5234325
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4340737",
+        "name": "Pardon Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1001559,
+            51.523986
+          ],
+          [
+            -0.1004273,
+            51.5244639
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4340872",
+        "name": "Compton Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"sidewalk\"=>\"both\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1031878,
+            51.5242896
+          ],
+          [
+            -0.1027802,
+            51.5245771
+          ],
+          [
+            -0.102351,
+            51.5247674
+          ],
+          [
+            -0.1019492,
+            51.5248818
+          ],
+          [
+            -0.1015303,
+            51.525001
+          ],
+          [
+            -0.1012148,
+            51.5250813
+          ],
+          [
+            -0.1006371,
+            51.5252286
+          ],
+          [
+            -0.0996414,
+            51.5254824
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4352113",
+        "name": "Rawstorne Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1047873,
+            51.5284133
+          ],
+          [
+            -0.1045891,
+            51.5284091
+          ],
+          [
+            -0.1037586,
+            51.5288564
+          ],
+          [
+            -0.1034216,
+            51.5290738
+          ],
+          [
+            -0.1030332,
+            51.5293486
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "67822898",
+        "name": "Berry Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"postal_code\"=>\"EC1\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.0999779,
+            51.5229736
+          ],
+          [
+            -0.1001444,
+            51.5231957
+          ],
+          [
+            -0.100243,
+            51.5233344
+          ],
+          [
+            -0.1003111,
+            51.5234325
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "67822899",
+        "name": "Great Sutton Street",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1009673,
+            51.5232527
+          ],
+          [
+            -0.1010804,
+            51.5232259
+          ],
+          [
+            -0.1022129,
+            51.5230067
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "164254082",
+        "name": "Skinner Street",
+        "direction": "\"abutters\"=>\"mixed\",\"cycleway:left\"=>\"track\",\"lit\"=>\"yes\",\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"ref\"=>\"B502\",\"sidewalk\"=>\"left\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1059172,
+            51.5257731
+          ],
+          [
+            -0.1058346,
+            51.5257813
+          ],
+          [
+            -0.1057314,
+            51.5257532
+          ],
+          [
+            -0.1056207,
+            51.5257297
+          ],
+          [
+            -0.1054811,
+            51.5257089
+          ],
+          [
+            -0.105331,
+            51.5256976
+          ],
+          [
+            -0.1051534,
+            51.5256893
+          ],
+          [
+            -0.1049853,
+            51.5256996
+          ],
+          [
+            -0.1049263,
+            51.5256785
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "164254083",
+        "name": "Skinner Street",
+        "direction": "\"abutters\"=>\"mixed\",\"cycleway:left\"=>\"track\",\"lit\"=>\"yes\",\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"ref\"=>\"B502\",\"sidewalk\"=>\"left\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1049263,
+            51.5256785
+          ],
+          [
+            -0.1049696,
+            51.5256448
+          ],
+          [
+            -0.1050775,
+            51.5256207
+          ],
+          [
+            -0.1051753,
+            51.5256064
+          ],
+          [
+            -0.1053213,
+            51.5256078
+          ],
+          [
+            -0.1054223,
+            51.5256116
+          ],
+          [
+            -0.1055129,
+            51.5256193
+          ],
+          [
+            -0.1056053,
+            51.525628
+          ],
+          [
+            -0.1057129,
+            51.525654
+          ],
+          [
+            -0.1057729,
+            51.5256707
+          ],
+          [
+            -0.1058884,
+            51.5257265
+          ],
+          [
+            -0.1059172,
+            51.5257731
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "201756812",
+        "name": "Goswell Road",
+        "direction": "\"lanes\"=>\"2\",\"lit\"=>\"yes\",\"maxspeed\"=>\"20 mph\",\"maxweight\"=>\"18\",\"oneway\"=>\"no\",\"ref\"=>\"A1\",\"sidewalk\"=>\"both\",\"surface\"=>\"asphalt\",\"width\"=>\"13\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.1024658,
+            51.5297587
+          ],
+          [
+            -0.1020297,
+            51.5294821
+          ],
+          [
+            -0.1019145,
+            51.5294044
+          ],
+          [
+            -0.1017853,
+            51.5293146
+          ],
+          [
+            -0.1015498,
+            51.5291495
+          ],
+          [
+            -0.1012993,
+            51.5289299
+          ],
+          [
+            -0.101097,
+            51.5286181
+          ],
+          [
+            -0.1010715,
+            51.5285802
+          ],
+          [
+            -0.1010241,
+            51.528512
+          ],
+          [
+            -0.100975,
+            51.5284275
+          ],
+          [
+            -0.1009523,
+            51.5283857
+          ],
+          [
+            -0.1008474,
+            51.5281924
+          ],
+          [
+            -0.1006489,
+            51.5278007
+          ],
+          [
+            -0.1006174,
+            51.5277278
+          ],
+          [
+            -0.1005153,
+            51.5275153
+          ],
+          [
+            -0.1004187,
+            51.5273014
+          ],
+          [
+            -0.100239,
+            51.5268963
+          ],
+          [
+            -0.1001711,
+            51.5266591
+          ],
+          [
+            -0.100157,
+            51.5266209
+          ],
+          [
+            -0.1001059,
+            51.5265119
+          ],
+          [
+            -0.1000613,
+            51.5264165
+          ],
+          [
+            -0.1000443,
+            51.5263792
+          ],
+          [
+            -0.099767,
+            51.5257487
+          ],
+          [
+            -0.0996414,
+            51.5254824
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "534031400",
+        "name": "Goswell Road",
+        "direction": "\"lanes\"=>\"2\",\"lit\"=>\"yes\",\"maxspeed\"=>\"20 mph\",\"maxweight\"=>\"18\",\"oneway\"=>\"no\",\"ref\"=>\"A1\",\"sidewalk\"=>\"both\",\"surface\"=>\"asphalt\",\"width\"=>\"13\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.0996414,
+            51.5254824
+          ],
+          [
+            -0.0996169,
+            51.5254124
+          ],
+          [
+            -0.0994986,
+            51.5251095
+          ],
+          [
+            -0.0993147,
+            51.524649
+          ],
+          [
+            -0.0991981,
+            51.5243351
+          ],
+          [
+            -0.0991528,
+            51.5242092
+          ],
+          [
+            -0.099092,
+            51.5240511
+          ],
+          [
+            -0.0989889,
+            51.5238322
+          ],
+          [
+            -0.0987118,
+            51.5234715
+          ],
+          [
+            -0.0986808,
+            51.5234345
+          ],
+          [
+            -0.0986621,
+            51.5234122
+          ],
+          [
+            -0.0986026,
+            51.5233604
+          ],
+          [
+            -0.0985242,
+            51.5233095
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "560891304",
+        "name": "Crescent Row",
+        "direction": "\"maxspeed\"=>\"20 mph\",\"oneway\"=>\"yes\",\"surface\"=>\"asphalt\""
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -0.0973346,
+            51.5234239
+          ],
+          [
+            -0.0969798,
+            51.5236527
+          ],
+          [
+            -0.0966739,
+            51.5237705
+          ]
+        ]
+      }
+    }
+  ]
 }
