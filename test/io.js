@@ -81,4 +81,4 @@ describe('io.js for read (input) and write (output) from/to files', () => {
       expect( () => { output = io.write() } ).throw(expected);
     });
   });
-});
+}); 

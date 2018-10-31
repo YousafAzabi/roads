@@ -1,6 +1,7 @@
-const assert = require('assert');
+const {expect} = require('chai');
 const sinon = require('sinon');
-const progress = require('../src/comparator/progress.js');
+const {calculateProgress} = require('../src/comparator/progress.js');
+const {init} = require('../src/comparator/progress.js');
 
 describe('progress.js calculates time passed, estaimated time to finish and percentage of progress', () => {
   it('Test when both input parameters are given. Return true', () => {
@@ -8,13 +9,18 @@ describe('progress.js calculates time passed, estaimated time to finish and perc
       "totalRoadsOS": 100,
       "processedOS": 20
     };
-    const expected = 3;
+    const expected = {
+      "toPrint": true,
+      "timePassed": 3500,
+      "estimateTimeLeft": 14000,
+      "progressPercent": 20
+    };
     clock = sinon.useFakeTimers(new Date());
-    progress.init();
+    init();
     clock.tick(3500);
-    const output = progress.calculate(input).length;
+    const output = calculateProgress(input);
     clock.restore();
-    assert.equal(expected, output);
+    expect(output).to.eql(expected);
   });
 
   it('Test when both input parameters are given. Return true', () => {
@@ -22,13 +28,13 @@ describe('progress.js calculates time passed, estaimated time to finish and perc
       "totalRoadsOS": 100,
       "processedOS": 20
     };
-    const expected = false;
+    const expected = {};
     clock = sinon.useFakeTimers(new Date());
-    progress.init();
+    init();
     clock.tick(2500);
-    const output = progress.calculate(input);
+    const output = calculateProgress(input);
     clock.restore();
-    assert.equal(expected, output);
+    expect(output).to.eql(expected);
   });
 
   it('Test when one input parameter is given. Return false', () => {
@@ -36,14 +42,14 @@ describe('progress.js calculates time passed, estaimated time to finish and perc
       "totalRoadsOS": 100,
       "processedOS": 20
     };
-    const expected = false;
-    const output = progress.calculate(input);
-    assert.equal(expected, output);
+    const expected = {};
+    const output = calculateProgress(input);
+    expect(output).to.eql(expected);
   });
 
   it('Test when both input parameters are missing. Return false', () => {
-    const expected = false;
-    const output = progress.calculate();
-    assert.equal(expected, output);
+    const expected = {};
+    const output = calculateProgress();
+    expect(output).to.eql(expected);
   });
 });

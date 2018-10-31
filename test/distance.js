@@ -57,4 +57,4 @@ describe('distance.js checks distance between statring points of two links if th
     const output = distance.inRange(input1);
     assert.equal(expected, output);
   });
-});
+}); 

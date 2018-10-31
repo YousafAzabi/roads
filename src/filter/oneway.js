@@ -1,13 +1,6 @@
 const {exec} = require('child_process'); //to run commandline Asynchronous
 
-exports.execute = (source, input, output) => {
-  source = source.toUpperCase();
-  if (!source || !input || !output) {
-    throw 'ERROR! Please input three paramters to function call'
-  }
-  if ( (source != 'OS') && (source != 'OSM') ) {
-    throw 'ERROR! Data source must be from OS or OSM'
-  }
+exports.filterOneway = (source, input, output) => {
   //set ogr2ogr output format (JSON) and reduce coordinates to [longitude, latitude]
   const ogrJSON = "ogr2ogr -f GeoJSON -skipfailures -dim XY ";
   //define SQL query for OS map to select related data

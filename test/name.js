@@ -1,12 +1,12 @@
 const assert = require('assert');
-const name = require('../src/comparator/name.js');
+const {compareNames} = require('../src/comparator/name.js');
 
 describe('name.js comapres names of two roads', () => {
   it('Test to compare two roads have same name. Return true', () => {
     const inputOne = 'Oxford Street';
     const inputTwo = 'Oxford Street';
     const expected = true;
-    const output = name.compare(inputOne, inputTwo);
+    const output = compareNames(inputOne, inputTwo);
     assert.equal(expected, output);
   });
 
@@ -14,7 +14,7 @@ describe('name.js comapres names of two roads', () => {
     const inputOne = 'Oxford Street';
     const inputTwo = 'Oxford St.';
     const expected = true;
-    const output = name.compare(inputOne, inputTwo);
+    const output = compareNames(inputOne, inputTwo);
     assert.equal(expected, output);
   });
 
@@ -22,7 +22,7 @@ describe('name.js comapres names of two roads', () => {
     const inputOne = 'Oxford Street';
     const inputTwo = 'Oxford St';
     const expected = true;
-    const output = name.compare(inputOne, inputTwo);
+    const output = compareNames(inputOne, inputTwo);
     assert.equal(expected, output);
   });
 
@@ -30,7 +30,7 @@ describe('name.js comapres names of two roads', () => {
     const inputOne = 'Oxford Road';
     const inputTwo = 'Oxford Rd.';
     const expected = true;
-    const output = name.compare(inputOne, inputTwo);
+    const output = compareNames(inputOne, inputTwo);
     assert.equal(expected, output);
   });
 
@@ -38,7 +38,7 @@ describe('name.js comapres names of two roads', () => {
     const inputOne = 'Oxford Street';
     const inputTwo = 'Goswell Road';
     const expected = false;
-    const output = name.compare(inputOne, inputTwo);
+    const output = compareNames(inputOne, inputTwo);
     assert.equal(expected, output);
   });
 
@@ -46,7 +46,7 @@ describe('name.js comapres names of two roads', () => {
     const inputOne = '';
     const inputTwo = '';
     const expected = false;
-    const output = name.compare(inputOne, inputTwo);
+    const output = compareNames(inputOne, inputTwo);
     assert.equal(expected, output);
   });
 
@@ -54,7 +54,7 @@ describe('name.js comapres names of two roads', () => {
     const inputOne = undefined;
     const inputTwo = undefined;
     const expected = false;
-    const output = name.compare(inputOne, inputTwo);
+    const output = compareNames(inputOne, inputTwo);
     assert.equal(expected, output);
   });
 });

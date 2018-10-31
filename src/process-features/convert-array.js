@@ -10,7 +10,7 @@ const extractor = require('./feature-extractor.js')
 const print = require('./filter-print.js');
 
 //input variable is array of 2 elements [inputFile, outputFile]
-exports.process = (file = []) => {
+exports.processArray = (file = []) => {
   if (file.length != 2) {
     throw 'ERROR! Parameter array must include 2 values:\n' +
           '\tInput and Output file names';

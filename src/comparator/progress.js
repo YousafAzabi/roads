@@ -16,16 +16,23 @@ function init() {
 
 exports.init = init;
 
-exports.calculate = (counters) => {
-  if ( !( _.has(counters , "processedOS") && _.has(counters , "processedOS")) ) {
-    print.message('ERROR! Input "Counters" is missing.');
-  } else if ( (new Date() - lastPrintDate) > 3000 ) {
+exports.calculateProgress = (counters) => {
+  let calcObj = {};
+
+  // print only once evere 3000 mills
+  if ( (new Date() - lastPrintDate) > 3000 ) {
     lastPrintDate = new Date();
     let timePassed = lastPrintDate - startDate;
     let roadRatio = (counters.totalRoadsOS / counters.processedOS);
     let estimateTimeLeft = (roadRatio - 1) * timePassed;
     let progressPercent = ( 1 / roadRatio) * 100;
-    return [timePassed, estimateTimeLeft, progressPercent];
+
+    calcObj = {
+      toPrint: true,
+      timePassed,
+      estimateTimeLeft,
+      progressPercent
+    };
   }
-  return false;
+  return calcObj;
 }

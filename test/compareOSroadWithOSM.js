@@ -1,9 +1,10 @@
 const assert = require('assert');
-const compareOSroadWithOSM = require('../src/comparator/compareOSroadWithOSM.js');
+const {compareOSroadWithOSM} = require('../src/comparator/compareOSroadWithOSM.js');
+const {conditions} = require('../src/comparator/compareOSroadWithOSM.js');
 
 describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
   describe('Testing "conditions" function that checks matching conditions', () => {
-    it('Test when links have same name, overlap and in OPPOSITE direction. Return string', () => {
+    it('Test when links have same name, overlap and in OPPOSITE direction. Return true', () => {
       const input1 = {
         "properties": { "id": 1,"name": "(1:Some Road)","direction": 0},
         "geometry": {"coordinates": [[1, 1], [2, 2]]} };
@@ -11,12 +12,12 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
         "properties": { "id": 201,"name": "Some Road","direction": '"oneway"=>"yes"'},
         "geometry": {"coordinates": [[1, 1], [2, 2]]} };
       const input3 = 3;
-      const expected = 'OS 225 OSM 45 direction mismatch';
-      const output = compareOSroadWithOSM.conditions(input1, input2, input3);
+      const expected = true;
+      const output = conditions(input1, input2, input3);
       assert.equal(expected, output);
     });
 
-    it('Test when links have same name, overlap and in SAME direction. Return emtpy string', () => {
+    it('Test when links have same name, overlap and in SAME direction. Return false', () => {
       const input1 = {
         "properties": { "id": 1,"name": "(1:Some Road)","direction": 1},
         "geometry": {"coordinates": [[1, 1], [2, 2]]} };
@@ -24,8 +25,8 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
         "properties": { "id": 201,"name": "Some Road","direction": '"oneway"=>"yes"'},
         "geometry": {"coordinates": [[1, 1], [2, 2]]} };
       const input3 = 3;
-      const expected = '';
-      const output = compareOSroadWithOSM.conditions(input1, input2, input3);
+      const expected = false;
+      const output = conditions(input1, input2, input3);
       assert.equal(expected, output);
     });
 
@@ -38,7 +39,7 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
         "geometry": {"coordinates": [[1, 1], [2, 2]]} };
       const input3 = 3;
       const expected = false;
-      const output = compareOSroadWithOSM.conditions(input1, input2, input3);
+      const output = conditions(input1, input2, input3);
       assert.equal(expected, output);
     });
 
@@ -51,7 +52,7 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
         "geometry": {"coordinates": [[1, 1], [2, 2]]} };
       const input3 = 3;
       const expected = false;
-      const output = compareOSroadWithOSM.conditions(input1, input2, input3);
+      const output = conditions(input1, input2, input3);
       assert.equal(expected, output);
     });
   });
@@ -68,7 +69,7 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
         "geometry": {"coordinates": [[5, 1], [3, 4]]} } ]};
       const input3 = {OS: [], OSM: [], info: []};
       const expected = 'noMatch';
-      const output = compareOSroadWithOSM.compare(input1, input2, input3);
+      const output = compareOSroadWithOSM(input1, input2, input3);
       assert.equal(expected, output);
     });
 
@@ -83,7 +84,7 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
         "geometry": {"coordinates": [[5, 1], [3, 4]]} } ]};
       const input3 = {OS: [], OSM: [], info: []};
       const expected = 'noMatch';
-      const output = compareOSroadWithOSM.compare(input1, input2, input3);
+      const output = compareOSroadWithOSM(input1, input2, input3);
       assert.equal(expected, output);
     });
 
@@ -98,7 +99,7 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
         "geometry": {"coordinates": [[5, 1], [3, 4]]} } ]};
       const input3 = {OS: [], OSM: [], info: []};
       const expected = 'oneMatch';
-      const output = compareOSroadWithOSM.compare(input1, input2, input3);
+      const output = compareOSroadWithOSM(input1, input2, input3);
       assert.equal(expected, output);
     });
 
@@ -113,7 +114,7 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
         "geometry": {"coordinates": [[1, 1], [2, 2]]} } ]};
       const input3 = {OS: [], OSM: [], info: []};
       const expected = 'multiMatch';
-      const output = compareOSroadWithOSM.compare(input1, input2, input3);
+      const output = compareOSroadWithOSM(input1, input2, input3);
       assert.equal(expected, output);
     });
 
@@ -128,7 +129,7 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
         "geometry": {"coordinates": [[5, 1], [3, 4]]} } ]};
       const input3 = {OS: [], OSM: [], info: []};
       const expected = 'oneMatch';
-      const output = compareOSroadWithOSM.compare(input1, input2, input3);
+      const output = compareOSroadWithOSM(input1, input2, input3);
       assert.equal(expected, output);
     });
   });

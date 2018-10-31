@@ -1,4 +1,4 @@
-//module to find distance between first node of two links
+//module to find distance between first node of two links 
 
 const turf = require('@turf/turf');
 const _ = require('lodash');
