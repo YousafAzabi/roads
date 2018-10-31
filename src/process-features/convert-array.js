@@ -7,7 +7,7 @@ write data to output file
 
 const fs = require('fs');
 const extractor = require('./feature-extractor.js')
-const print = require('./filter-print.js');
+const print = require('../comparator/print.js');
 
 //input variable is array of 2 elements [inputFile, outputFile]
 exports.processArray = (file = []) => {

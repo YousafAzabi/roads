@@ -1,5 +1,5 @@
 //module to find road segement direction
-
+const truf = require('@turf/turf');
 exports.calculateAngle = (coordinates) => {
   //index points to last element in array
   let index = coordinates.length - 1;
