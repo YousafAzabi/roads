@@ -9,7 +9,7 @@ let matchesCounter;
 conditions = (roadOS, roadOSM) => {
   const osName = roadOS.properties.name.slice(3, (roadOS.properties.name.length - 1));
   if ( compareNames(osName, roadOSM.properties.name) ) { //comapre if names matches
-    if ( isOverlapping(roadOS.geometry.coordinates, roadOSM.geometry.coordinates) ) { //check if links overlap
+    if ( isOverlapping(roadOS.geometry, roadOSM.geometry) ) { //check if links overlap
       matchesCounter ++; //increment links' match counter
       let angleOS = calculateAngle(roadOS.geometry.coordinates); //find OS angle
       angleOS = roadOS.properties.direction ? angleOS : (angleOS + 180) % 360; //if opposite direction rotate 180
