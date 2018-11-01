@@ -13,6 +13,15 @@ const outputResults = (output, outputData, roadCounters) => {
   print.footer(startTime); //print time taken
 }
 
+outputResults = (output, outputData, roadCounters, startTime) => {
+  print.message('Writing data to files');
+  io.write(output.outputFileOS, outputData.OS); //write data to files
+  io.write(output.outputFileOSM, outputData.OSM);
+  io.write(output.outputFileInfo, outputData.info);
+  print.report(roadCounters); //print report of number of link matches
+  print.footer(startTime); //print time taken
+}
+
 //compare names of the roads for match betwwen OS and OSM
 exports.compare = (input, output) => {
   let roadCounters = {  //object holds counter of road links
