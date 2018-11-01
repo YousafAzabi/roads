@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {isOverlapping} = require('../src/comparator/overlap.js');
+const {isOverlapping} = require('../src/comparator/checker.js');
 
 describe('overlap.js to find if two GIS segements overlap', () => {
   it('Test two road links that are overlaping. Return ture', () => {

@@ -4,10 +4,6 @@ const {processArray} = require('./process-features/convert-array.js');
 
 console.info('***** Start ' + new Date().toLocaleTimeString() + ' *****\n');
 
-<<<<<<< HEAD
-=======
-let totalTime = new Date();
->>>>>>> d0b94688b7d1460d68784e4f52cbf7a37c304181
 let tempInput = [], promise = [];
 let output = {
   "outputFileOS": './output/onewayUKOS.json',
@@ -34,11 +30,7 @@ Promise.all(promise)
   })
   .then( () => {
     console.info('FINISHED pre-processing data');
-<<<<<<< HEAD
     compare(tempInput, output);
-=======
-    compare(tempInput, output, totalTime);
->>>>>>> d0b94688b7d1460d68784e4f52cbf7a37c304181
   }, (reason) => {
   throw reason;
 });

@@ -1,5 +1,5 @@
 const assert = require('assert');
-const {compareNames} = require('../src/comparator/name.js');
+const {compareNames} = require('../src/comparator/checker.js');
 
 describe('name.js comapres names of two roads', () => {
   it('Test to compare two roads have same name. Return true', () => {
