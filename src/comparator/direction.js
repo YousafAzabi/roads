@@ -5,12 +5,10 @@ exports.tolerance = tolerance;
 
 //========== format data to be written to file ==========
 exports.isMismatch = (angleOne, angleTwo) => {
-  if( !isNaN(angleOne) && !isNaN(angleTwo) ) {
     //compare angle differnce falls in range to be considered opposite direction
     if ( (Math.abs(angleOne - angleTwo) >= tolerance )
       && (Math.abs(angleOne - angleTwo) <= (360 - tolerance)  ) ) {
       return true;
     }
-  }
   return false;
 }

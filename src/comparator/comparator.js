@@ -2,8 +2,9 @@ const io = require('./io.js');
 const {calculateProgress} = require('./progress.js');
 const {compareOSroadWithOSM}= require('./compareOSroadWithOSM.js');
 const print = require('./print.js');
+const startTime = new Date();
 
-outputResults = (output, outputData, roadCounters, startTime) => {
+const outputResults = (output, outputData, roadCounters) => {
   print.message('Writing data to files');
   io.write(output.outputFileOS, outputData.OS); //write data to files
   io.write(output.outputFileOSM, outputData.OSM);
@@ -38,5 +39,5 @@ exports.compare = (input, output) => {
     roadCounters[key] ++;
     print.progress(calculateProgress(roadCounters));
   }
-outputResults(output, outputData, roadCounters, startTime);
+outputResults(output, outputData, roadCounters);
 }

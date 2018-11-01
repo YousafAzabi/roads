@@ -1,5 +1,5 @@
 //module to find road segement direction
-const truf = require('@turf/turf');
+const turf = require('@turf/turf');
 exports.calculateAngle = (coordinates) => {
   //index points to last element in array
   let index = coordinates.length - 1;
@@ -26,5 +26,10 @@ exports.calculateAngle = (coordinates) => {
     case (xDifference > 0 && yDifference < 0):  //angle in 4th quadrant
       angle = (-tanTheta);
   }
+  // console.log('turf', turf.bearing(turf.point(coordinates[0]), turf.point(coordinates[index])));
+  // console.log('turf2', turf.bearing(turf.point(coordinates[0]), turf.point(coordinates[index])));
+  // console.log(((angle * 180 / Math.PI) + 360 ) % 360);
   return ((angle * 180 / Math.PI) + 360 ) % 360;
+  //turf.radiansToDegrees(tanTheta);
+
 }
