@@ -25,8 +25,8 @@ mapFilter('OSM', 'testLondon.pbf');
 
 Promise.all(promise)
   .then( () => {
-    processArray([tempInput[0], tempInput[0]]);
-    processArray([tempInput[1], tempInput[1]]);
+    processArray(tempInput[0]);
+    processArray(tempInput[1]);
   })
   .then( () => {
     console.info('FINISHED pre-processing data');

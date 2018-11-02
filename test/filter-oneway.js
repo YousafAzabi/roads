@@ -4,7 +4,7 @@ const chaiAsPromsied = require('chai-as-promised');
 chai.use(chaiAsPromsied);
 const {filterOneway} = require('../src/filter/oneway.js');
 
-describe.skip('filter/oneway.js using ogr2ogr to filter oneway road links', () => {
+describe('filter/oneway.js using ogr2ogr to filter oneway road links', () => {
   it('Test with OSM input data. Return true', async () => {
     const source = 'osm';
     const inputFile = './test/io/testdataOSM.xml';
@@ -23,11 +23,11 @@ describe.skip('filter/oneway.js using ogr2ogr to filter oneway road links', () =
     expect(output).to.equal(expected);
   });
 
-  it.skip('Test if input file name wrong or any ogr2ogr error.', () => {
+  it('Test if input file name wrong or any ogr2ogr error.', () => {
     const source = 'os';
     const inputFile = './test/io/dataOS.gpkg';
     const outputFile = './test/io/testoutput.json';
-    const expected = 'hi';
+    const expected = false;
     return expect(filterOneway(source, inputFile, outputFile)).to.be.rejectedWith(expected);
   });
 });

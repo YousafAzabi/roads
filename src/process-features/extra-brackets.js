@@ -4,8 +4,8 @@ array output format [[X1, Y1], [X2, Y2], [X3, Y3], .....[Xn, Yn]]
 */
 
 exports.delete = (input, output = []) => {
-  //if input not an array or array is empty, return 0 (false)
-  if ( (!Array.isArray(input)) || (input.length == 0) ) {
+  //if input not an array or array is empty, return empty array []
+  if (!Array.isArray(input)) {
     return [];
   }
   //loop through array elements
