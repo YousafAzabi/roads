@@ -10,8 +10,8 @@ exports.roadFlow = (inputFiles, outputFiles, tempFiles) => {
     filterOneway('OS', inputFiles.OS, tempFiles.OS),
     filterOneway('OSM', inputFiles.OSM, tempFiles.OSM)
   ];
-  
-  Promise.all(promise)
+
+  return Promise.all(promise)
     .then( () => {
       processArray(tempFiles.OS);
       processArray(tempFiles.OSM);
@@ -19,7 +19,10 @@ exports.roadFlow = (inputFiles, outputFiles, tempFiles) => {
     .then( () => {
       console.info('FINISHED pre-processing data');
       compareData(tempFiles, outputFiles);
-    }, (reason) => {
-    throw reason;
+    })
+    .then( () => {
+      return true;
+    }, () => {
+      return false;
   });
 }

@@ -20,4 +20,5 @@ exports.processArray = (fileName) => {
   //write JSON data of orginized coordinates array to same input file
   fs.writeFileSync( fileName, JSON.stringify(data, null, 2));
   print.message("Data is saved to: " + fileName);
+  return true;
 }

@@ -39,5 +39,5 @@ exports.compareData = (input, outputFiles) => {
     roadCounters[key] ++;
     print.progress(calculateProgress(roadCounters));
   }
-outputResults(outputFiles, outputData, roadCounters);
+  outputResults(outputFiles, outputData, roadCounters);
 }
