@@ -1,4 +1,4 @@
-Road Flow project can be run from command line (the file path depends in which directory is the user )
+Road Flow project can be run from command line (the file path depends on the active directory)
 ```
 node bin/run.js
 ```

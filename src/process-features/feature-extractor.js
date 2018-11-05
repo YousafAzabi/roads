@@ -24,5 +24,5 @@ exports.filter = (features) => {
       features.splice(i, 1);
     }
   }
-  return features;
+  return features; //return feature which has non-empty coordinates in right format
 }
