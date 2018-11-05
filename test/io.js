@@ -5,26 +5,32 @@ const io = require('../src/comparator/io.js');
 describe('io.js for read (input) and write (output) from/to files', () => {
   describe('Testing function "read" is to read two files and return data', () => {
     it('Test reading file with correct format. Return two element array', () => {
-      const input1 = './test/io/testdataOS.json';
-      const input2 = './test/io/testdataOSM.json';
+      const input = {
+        "OS":'./test/io/testdataOS.json',
+        "OSM": './test/io/testdataOSM.json'
+      };
       const expected = [117, 25];
-      const arr = io.read(input1, input2);
+      const arr = io.read(input);
       const output = [arr[0].features.length, arr[1].features.length];
       expect(output).to.eql(expected);
     });
 
     it('Test if one or both file names are missing. Throw ERROR', () => {
-      const input1 = './test/io/testdataOS.json';
-      const input2 = '';
+      const input = {
+        "OS":'./test/io/testdataOS.json',
+        "OSM": ''
+      };
       const expected = "ERROR! One or both file names are missing";
-      expect( () => { io.read(input1, input2) } ).throw(expected);
+      expect( () => { io.read(input) } ).throw(expected);
     });
 
     it('Test if file not found. Return ', () => {
-      const input1 = './test/io/testdataOS.json';
-      const input2 = './test/io/este.json';
-      const expected = "ENOENT: no such file or directory, open '" + input2 + "'";
-      expect( () => { io.read(input1, input2) } ).throw(expected);
+      const input = {
+        "OS":'./test/io/testdataOS.json',
+        "OSM": './test/io/este.json'
+      };
+      const expected = "ENOENT: no such file or directory, open '" + input.OSM + "'";
+      expect( () => { io.read(input) } ).throw(expected);
     });
   });
 
@@ -81,4 +87,4 @@ describe('io.js for read (input) and write (output) from/to files', () => {
       expect( () => { output = io.write() } ).throw(expected);
     });
   });
-}); 
+});

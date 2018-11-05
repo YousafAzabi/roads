@@ -1,13 +1,13 @@
-//module for reading and writing files to disk 
+//module for reading and writing files to disk
 const fs = require('fs');
 
   //========== read files and return array of data in file ==========
-  exports.read = (fileOne, fileTwo) => {
-    if (!fileOne || !fileTwo) { //check file names are given
+  exports.read = (files) => {
+    if (!files.OS || !files.OSM) { //check file names are given
       throw 'ERROR! One or both file names are missing'; //throw error
     }
-    let dataOne = fs.readFileSync(fileOne); //read in OS file first
-    let dataTwo = fs.readFileSync(fileTwo); //read in OSM file second
+    let dataOne = fs.readFileSync(files.OS); //read in OS file first
+    let dataTwo = fs.readFileSync(files.OSM); //read in OSM file second
     dataOne = JSON.parse(dataOne.toString()); //parse OS data
     dataTwo = JSON.parse(dataTwo.toString()); //parse OSM data
     return [dataOne, dataTwo]; //return array of data from both files
