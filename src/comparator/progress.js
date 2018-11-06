@@ -18,7 +18,7 @@ exports.init = init;
 exports.calculateProgress = (counters) => {
   let calcObj = {};
   // print only once evere 3000 mills
-  if ( (new Date() - lastPrintDate) > 5000 ) {
+  if ( (new Date() - lastPrintDate) > 10000 ) {
     lastPrintDate = new Date();
     let timePassed = lastPrintDate - startDate;
     let roadRatio = (counters.totalRoadsOS / counters.processedOS);

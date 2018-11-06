@@ -30,13 +30,11 @@ exports.isOverlapping = (geometryOne, geometryTwo) => { //function comapres over
 }
 
 exports.inRange = (roadOne, roadTwo, range = 1) => { //function compares if 2 road links are close together
-    if ( _.has(roadOne , "geometry.coordinates[0]") && _.has(roadTwo , "geometry.coordinates[0]")) {
-      const pointOne = roadOne.geometry.coordinates[0]; //get 1st point in 1st road
-      const pointTwo = roadTwo.geometry.coordinates[0]; //get 1st point in 2nd road
-      const distance = turf.distance(pointOne, pointTwo); //calculate distance
-      if (distance < range) { //if in range (in km) return true
-        return true;
-      }
-    }
+  const pointOne = roadOne.geometry.coordinates[0]; //get 1st point in 1st road
+  const pointTwo = roadTwo.geometry.coordinates[0]; //get 1st point in 2nd road
+  const distance = turf.distance(pointOne, pointTwo); //calculate distance
+  if (distance < range) { //if in range (in km) return true
+    return true;
+  }
   return false;
 }
