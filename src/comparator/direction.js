@@ -1,6 +1,7 @@
 //module has 2 function calculateAngle (calculates angle from coordinates)
 //and isMismatch (checks if angles has opposite directions)
 
+
 const turf = require('@turf/turf');
 
 const tolerance = 10; //deviation from 180 degree.
