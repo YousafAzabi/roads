@@ -1,7 +1,7 @@
-const {inRange} = require('./distance.js');
-const {compareNames} = require('./name.js');
-const {isOverlapping} = require('./overlap.js');
-const {calculateAngle} = require('./findAngle.js')
+const {inRange} = require('./checker.js');
+const {compareNames} = require('./checker.js');
+const {isOverlapping} = require('./checker.js');
+const {calculateAngle} = require('./direction.js')
 const {isMismatch} = require('./direction.js');
 
 let matchesCounter;

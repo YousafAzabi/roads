@@ -62,4 +62,12 @@ describe('direction.js compare angle are in opposite direction with tolerance ra
     const output = isMismatch(input3, input2);
     assert.equal(expected, output);
   });
+
+  it('Test first angle is not number. Return false', () => {
+    const input3 = 3;
+    const input2 = 357;
+    const expected = false;
+    const output = isMismatch(input3, input2);
+    assert.equal(expected, output);
+  });
 });

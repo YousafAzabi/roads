@@ -4,8 +4,7 @@ array output format [[X1, Y1], [X2, Y2], [X3, Y3], .....[Xn, Yn]]
 */
 
 exports.delete = (input, output = []) => {
-  //if input not an array or array is empty, return 0 (false)
-  if ( (!Array.isArray(input)) || (input.length == 0) ) {
+  if (!Array.isArray(input)) { //if input not an array return empty array []
     return [];
   }
   //loop through array elements
@@ -13,7 +12,7 @@ exports.delete = (input, output = []) => {
     //check if first element is not array (no extra brucket) push to output array
     if (!Array.isArray(temp[0])) {
       output.push(temp);
-    } else { //else element array call function again (recursion)
+    } else { //else element array call same function again (recursion)
       output = this.delete(temp, output);
     }
   }

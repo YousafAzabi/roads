@@ -1,12 +1,12 @@
 const assert = require('assert');
-const distance = require('../src/comparator/distance.js');
+const {inRange} = require('../src/comparator/checker.js');
 
 describe('distance.js checks distance between statring points of two links if there are in range', () => {
   it('Test when road links in range. Return true', () => {
     const input1 = {"geometry": {"coordinates": [[0.13, 52],[0.1, 53], [0, 54]]}};
     const input2 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
     const expected = true;
-    const output = distance.inRange(input1, input2);
+    const output = inRange(input1, input2);
     assert.equal(expected, output);
   });
 
@@ -14,7 +14,7 @@ describe('distance.js checks distance between statring points of two links if th
     const input1 = {"geometry": {"coordinates": [[0.15, 52],[0.1, 53], [0, 54]]}};
     const input2 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
     const expected = false;
-    const output = distance.inRange(input1, input2);
+    const output = inRange(input1, input2);
     assert.equal(expected, output);
   });
 
@@ -22,7 +22,7 @@ describe('distance.js checks distance between statring points of two links if th
     const input1 = {"geometry": {"coordinates": []}};
     const input2 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
     const expected = false;
-    const output = distance.inRange(input1, input2);
+    const output = inRange(input1, input2);
     assert.equal(expected, output);
   });
 
@@ -30,7 +30,7 @@ describe('distance.js checks distance between statring points of two links if th
     const input1 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};
     const input2 = {"geometry": {"coordinates": []}};
     const expected = false;
-    const output = distance.inRange(input1, input2);
+    const output = inRange(input1, input2);
     assert.equal(expected, output);
   });
 
@@ -38,7 +38,7 @@ describe('distance.js checks distance between statring points of two links if th
     const input1 = {"geometry": {}};
     const input2 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
     const expected = false;
-    const output = distance.inRange(input1, input2);
+    const output = inRange(input1, input2);
     assert.equal(expected, output);
   });
 
@@ -46,7 +46,7 @@ describe('distance.js checks distance between statring points of two links if th
     const input1 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
     const input2 = {"geometry": {}};
     const expected = false;
-    const output = distance.inRange(input1, input2);
+    const output = inRange(input1, input2);
     assert.equal(expected, output);
   });
 
@@ -54,7 +54,7 @@ describe('distance.js checks distance between statring points of two links if th
     const input1 = {"geometry": {"coordinates": [[0.13, 52],[0.1, 53], [0, 54]]}};
     const input2 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
     const expected = false;
-    const output = distance.inRange(input1);
+    const output = inRange(input1);
     assert.equal(expected, output);
   });
-}); 
+});

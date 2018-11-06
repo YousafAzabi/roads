@@ -24,15 +24,16 @@ const ogrSQLOSM = " -sql \"SELECT osm_id as id, name, other_tags as direction " 
                 "'service', 'living_street', 'unclassified')\" ";
 
 exports.filterOneway = (source, input, output) => {
+  source = source.toUpperCase(); //convert string to Upper Case for comparsion
   const ogrCommand = ogrJSON +  output + ' ' + input +
-                (source == 'OS' ? ogrSQLOS + ogrProj : ogrSQLOSM);
-  return new Promise((resolve, reject) => {
-    exec(ogrCommand, (error, stdout, stderr) => {
+                (source === 'OS' ? ogrSQLOS + ogrProj : ogrSQLOSM); //construct the command
+  return new Promise((resolve, reject) => { //return promise either resolved or rejected
+    exec(ogrCommand, (error, stdout, stderr) => { //execute ogrCommand in the commandline (bash)
       if (error) { //check for error
         console.error(error); // print error
-        reject(false);
+        reject(false); // if error reject promise with false value
       }
-      resolve(true);
+      resolve(true); // if no error, promise resolved with true value
     });
   });
 }
