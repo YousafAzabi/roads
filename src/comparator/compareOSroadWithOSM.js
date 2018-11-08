@@ -18,7 +18,7 @@ linkComparisions = (roadOS, roadOSM) => {
       matchesCounter ++; //increment links' match counter
       let angleOS = calculateAngle(roadOS.geometry.coordinates); //find OS angle
       angleOS = roadOS.properties.direction ? angleOS : (angleOS + 180) % 360; //if link direction is opposite rotate 180
-      let angleOSM = calculateAngle(roadOSM.geometry.coordinates); //find OSM angle
+      const angleOSM = calculateAngle(roadOSM.geometry.coordinates); //find OSM angle
       return isMismatch(angleOS, angleOSM); //return true if mismatch occure
     }
   }

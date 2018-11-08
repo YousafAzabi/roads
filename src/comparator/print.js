@@ -3,7 +3,7 @@
 const tm = require('../time.js');
 
 exports.message = (text) => {
-    console.info(text);
+  console.info(text);
 }
 
 //========== print info at start of programe ==========

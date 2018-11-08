@@ -14,7 +14,7 @@ exports.compareNames  = (nameOne, nameTwo) => {  //function compares two road na
 }
 
 exports.isOverlapping = (geometryOne, geometryTwo) => { //function comapres overlap between 2 road links
-  //distToler is error tolerance in km, overlapPercent is min acceptance ratio between overlap and road link
+  //distToler is tolerance in km, overlapPercent is min acceptance ratio between overlap and road link
   const distToler = 0.004, overlapPercent = 0.5;
   //calculate the overlap sections between OS and OSM road links
   const overlap = turf.lineOverlap(geometryOne, geometryTwo, {tolerance: distToler});

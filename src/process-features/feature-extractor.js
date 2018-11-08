@@ -15,12 +15,12 @@ exports.filter = (features) => {
       geometry.type = "LineString";
     }
 
-    const coordinates = deleteBrackets(geometry.coordinates);
+    let coordinates = deleteBrackets(geometry.coordinates);
     geometry.coordinates = coordinates;
     //check if coordinates are empty delete entry
     if (coordinates.length === 0) {
       //delete element i form features
-      delete features[i];
+      features.splice(i, 1);
     }
   }
   return features; //return feature which has non-empty coordinates in right format

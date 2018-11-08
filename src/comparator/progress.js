@@ -2,6 +2,7 @@
 
 const print = require('./print.js');
 
+const intervalPrintTime = 10000; //time intervals to print progress in millisecond
 let startDate;
 let lastPrintDate;
 
@@ -14,11 +15,12 @@ function init() {
 }
 
 exports.init = init;
+exports.intervalPrintTime = intervalPrintTime;
 
 exports.calculateProgress = (counters) => {
-  let calcObj = {};
+  let calcObj = {}; //object to hold progress information
   // print only once evere 3000 mills
-  if ( (new Date() - lastPrintDate) > 10000 ) {
+  if ( (new Date() - lastPrintDate) > intervalPrintTime ) {
     lastPrintDate = new Date();
     let timePassed = lastPrintDate - startDate;
     let roadRatio = (counters.totalRoadsOS / counters.processedOS);
