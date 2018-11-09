@@ -30,7 +30,6 @@ exports.calculateAngle = (coordinates) => {
       tanTheta = (-tanTheta);
   }
   //convert radian to degree, add 360 to convert -ve to +ve, and %360 to range 0 to 360
-  console.log(((tanTheta * 180 / Math.PI) + 360 ) % 360);
   return ((tanTheta * 180 / Math.PI) + 360 ) % 360;
 }
 
