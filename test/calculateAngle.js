@@ -2,7 +2,7 @@ const assert = require('assert');
 const {expect} = require('chai');
 const {calculateAngle} = require('../src/comparator/direction.js');
 
-describe('findAngle.js finds the dirction of the road based on angle', () => {
+describe('calculateAngle.js finds the dirction of the road based on angle', () => {
   it('Test when angle in 1st quadrant', () => {
     const input = [[6, 3], [9, 6]];
     const expected = 45;

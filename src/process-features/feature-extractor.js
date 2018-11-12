@@ -4,22 +4,21 @@ calls module to process coordinates array
 returns output GIS data with processed coordinates array
 */
 
-const brackets = require('./extra-brackets')
+const deleteBrackets = require('./extra-brackets').delete
 
 //this is the input file to be fixed
 exports.filter = (features) => {
   for (let i = 0; i < features.length; i++) {
+    let geometry = features[i].geometry;
     // check if type is MultiLineString convert it to LineString
-    if (features[i].geometry.type == "MultiLineString"){
-      features[i].geometry.type = "LineString";
+    if (geometry.type == "MultiLineString"){
+      geometry.type = "LineString";
     }
 
-    let coordinates = brackets.delete(features[i].geometry.coordinates);
+    let coordinates = deleteBrackets(geometry.coordinates);
+    geometry.coordinates = coordinates;
     //check if coordinates are empty delete entry
-    if (coordinates.length > 0) {
-      //delete extra brackets in coordinates array and save them
-      features[i].geometry.coordinates = coordinates;
-    } else {
+    if (coordinates.length === 0) {
       //delete element i form features
       features.splice(i, 1);
     }

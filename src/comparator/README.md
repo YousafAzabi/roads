@@ -1,2 +1,5 @@
-* `overlap.js` contains `distToler = 0.004` and `overlapPercentage = 0.5`, which are distance between links to be overlap and the overlap percentage between overlap segment and road links (0.5 = 50%).
-* `note-generator.js` contains `tolerance = 170` which is tolerance of the angle in degree and is exported to be used by other modules.
+The code in this folder is to compare between OS and OSM datasets and find mismatches in oneway road links. The script used to read two input files, then compare road name of each road in first set against all links in second set. If a name match found then compare coordinates if there is an overlap between two links. call function to calculate direction of both links and check if in same or opposite direction. After finishing all links write output to output files.
+The first file executed is `comparator.js`, then calls `compareOSroadWithOSM.js` which calls `checker.js` and `direction.js`. `comparator.js` calls `print.js` for printing information to console, `progress.js` called in time intervals to calculate progress of the execution. `io.js` is used to read and write input and output files.
+
+* `checker.js` contains two parametric values `distToler = 0.004` and `overlapPercent = 0.5` inside function `isOverlapping`, which are distance between links to be overlap and the overlap percentage between overlap segment and road links (0.5 = 50%).
+* `direction.js` contains `tolerance = 10` which is tolerance of the angle in degree and is exported to be used by other modules.

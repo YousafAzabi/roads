@@ -11,44 +11,61 @@ describe('feature-extractor.js receives GIS JSON data and returns data processed
     expect(output).to.eql(expected);
   });
 
-  it('Test if feature is correct format. Returns input feature', () => {
-    const input = [{ "type": "Feature",
-                     "geometry": { "type": "LineString",
-                                   "coordinates": [[3, 5], [2, 6], [1, 6]]
-                                 }
-                   },
-                   { "type": "Feature",
-                     "geometry": { "type": "LineString",
-                                   "coordinates": [[3, 3], [2, 5]]
-                                 }
-                   }];
+  it('Test if feature is correct format. Returns input features', () => {
+    const input = [ {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[3, 5], [2, 6], [1, 6]]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+          "coordinates": [[3, 3], [2, 5]]
+        }
+    }];
     const expected = input;
     const output = extractor.filter(input);
     expect(output).to.eql(expected);
   });
 
-  it('Test if feature has empty coordinates. Return empty array []', () => {
-    const input = [{ "type": "Feature",
-                     "geometry": { "type": "LineString",
-                                   "coordinates": [ ]
-                                 }
-                  }];
-    const expected = [];
-    const output = extractor.filter(input);
-    expect(output).to.eql(expected);
+  it('Test if feature has empty coordinates. Return features execluding empty coordinates feature', () => {
+    const input = [ {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": []
+      }
+    },
+    {
+      "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [[3, 5], [2, 6]]
+        }
+    }];
+    const expected = 1;
+    const output = extractor.filter(input).length;
+    expect(output).to.equal(expected);
   });
 
-  it('Test if feature has geometry type MultiLineString. Return feature with LineString type', () => {
-    const input = [{ "type": "Feature",
-                     "geometry": { "type": "MultiLineString",
-                                   "coordinates": [[3, 5], [2, 6]]
-                                 }
-                  }];
-    const expected = [{ "type": "Feature",
-                        "geometry": { "type": "LineString",
-                                      "coordinates": [[3, 5], [2, 6]]
-                                    }
-                      }];
+  it('Test if feature has geometry type MultiLineString. Return features with LineString type', () => {
+    const input = [ {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [[3, 5], [2, 6]]
+      }
+    }];
+    const expected = [ {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[3, 5], [2, 6]]
+      }
+    }];
     const output = extractor.filter(input);
     expect(output).to.eql(expected);
   });

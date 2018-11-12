@@ -38,13 +38,12 @@ describe('io.js for read (input) and write (output) from/to files', () => {
     it('Test writing correct data to file. Return true', () => {
       const input1 = './test/io/testoutput.json';
       const input2 = {
-                      "id":01,
-                      "name": "Oxford Street",
-                      "geometry":
-                                {
-                                  "coordinates": [[1, 1], [2, 2]]
-                                }
-                    };
+        "id":01,
+        "name": "Oxford Street",
+        "geometry": {
+          "coordinates": [[1, 1], [2, 2]]
+        }
+      };
       const expected = true;
       const output = io.write(input1, input2);
       assert(expected, output);
@@ -53,9 +52,9 @@ describe('io.js for read (input) and write (output) from/to files', () => {
     it('Test empty file name. Return ERROR', () => {
       const input1 = '';
       const input2 = {
-                      "id":01,
-                      "name": "Oxford Street",
-                    };
+        "id":01,
+        "name": "Oxford Street",
+      };
       const expected = 'ERROR! Either file name or data is missing';
       expect( () => { output = io.write(input1, input2) } ).throw(expected);
     });
@@ -70,9 +69,9 @@ describe('io.js for read (input) and write (output) from/to files', () => {
     it('Test missing file name. Return ERROR', () => {
       const input1 = './test/io/testoutput.json'
       const input2 = {
-                      "id":01,
-                      "name": "Oxford Street",
-                    };
+        "id":01,
+        "name": "Oxford Street",
+      };
       const expected = 'ERROR! Either file name or data is missing';
       expect( () => { output = io.write(input2) } ).throw(expected);
     });
@@ -80,9 +79,9 @@ describe('io.js for read (input) and write (output) from/to files', () => {
     it('Test missing file name. Return ERROR', () => {
       const input1 = './test/io/testoutput.json'
       const input2 = {
-                      "id":01,
-                      "name": "Oxford Street",
-                    };
+        "id":01,
+        "name": "Oxford Street",
+      };
       const expected = 'ERROR! Either file name or data is missing';
       expect( () => { output = io.write() } ).throw(expected);
     });

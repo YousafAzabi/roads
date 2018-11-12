@@ -2,28 +2,30 @@ const {expect} = require('chai');
 const sinon = require('sinon');
 const {calculateProgress} = require('../src/comparator/progress.js');
 const {init} = require('../src/comparator/progress.js');
+const {intervalPrintTime} = require('../src/comparator/progress.js');
 
 describe('progress.js calculates time passed, estaimated time to finish and percentage of progress', () => {
-  it('Test when both input parameters are given. Return true', () => {
+  it('Test when both input parameters are given.', () => {
+    const time = intervalPrintTime + 200;
     const input = {
       "totalRoadsOS": 100,
       "processedOS": 20
     };
     const expected = {
       "toPrint": true,
-      "timePassed": 3500,
-      "estimateTimeLeft": 14000,
+      "timePassed": time,
+      "estimateTimeLeft": time * 4,
       "progressPercent": 20
     };
     clock = sinon.useFakeTimers(new Date());
     init();
-    clock.tick(3500);
+    clock.tick(time);
     const output = calculateProgress(input);
     clock.restore();
     expect(output).to.eql(expected);
   });
 
-  it('Test when both input parameters are given. Return true', () => {
+  it('Test when both input parameters are given but printing time not reached yet.', () => {
     const input = {
       "totalRoadsOS": 100,
       "processedOS": 20
@@ -31,7 +33,7 @@ describe('progress.js calculates time passed, estaimated time to finish and perc
     const expected = {};
     clock = sinon.useFakeTimers(new Date());
     init();
-    clock.tick(2500);
+    clock.tick(intervalPrintTime - 500);
     const output = calculateProgress(input);
     clock.restore();
     expect(output).to.eql(expected);

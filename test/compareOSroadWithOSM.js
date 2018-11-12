@@ -1,9 +1,9 @@
 const assert = require('assert');
 const {compareOSroadWithOSM} = require('../src/comparator/compareOSroadWithOSM.js');
-const {conditions} = require('../src/comparator/compareOSroadWithOSM.js');
+const {linkComparisions} = require('../src/comparator/compareOSroadWithOSM.js');
 
 describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
-  describe('Testing "conditions" function that checks matching conditions', () => {
+  describe('Testing "linkComparisions" function that checks matching conditions', () => {
     it('Test when links have same name, overlap and in OPPOSITE direction. Return true', () => {
       const input1 = {
         "properties": { "id": 1,"name": "(1:Some Road)","direction": 0},
@@ -21,7 +21,7 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
       };
       const input3 = 3;
       const expected = true;
-      const output = conditions(input1, input2, input3);
+      const output = linkComparisions(input1, input2, input3);
       assert.equal(expected, output);
     });
 
@@ -42,7 +42,7 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
       };
       const input3 = 3;
       const expected = false;
-      const output = conditions(input1, input2, input3);
+      const output = linkComparisions(input1, input2, input3);
       assert.equal(expected, output);
     });
 
@@ -63,7 +63,7 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
       };
       const input3 = 3;
       const expected = false;
-      const output = conditions(input1, input2, input3);
+      const output = linkComparisions(input1, input2, input3);
       assert.equal(expected, output);
     });
 
@@ -84,12 +84,12 @@ describe('compareOSroadWithOSM.js compare OS link aganist all OSM loop', () => {
       };
       const input3 = 3;
       const expected = false;
-      const output = conditions(input1, input2, input3);
+      const output = linkComparisions(input1, input2, input3);
       assert.equal(expected, output);
     });
   });
 
-  describe('Testing "compare" function that checks matching conditions', () => {
+  describe('Testing "compareOSroadWithOSM" function that loops through OSM data', () => {
     it('Test when all links are NOT in distance range.', () => {
       const input1 = {
         "properties": { "id": 1,"name": "(1:Some Road)","direction": 1},

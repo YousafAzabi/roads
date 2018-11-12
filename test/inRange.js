@@ -1,7 +1,7 @@
 const assert = require('assert');
 const {inRange} = require('../src/comparator/checker.js');
 
-describe('distance.js checks distance between statring points of two links if there are in range', () => {
+describe('checker.js function "inRange" checks distance between statring points of two links if there are in range', () => {
   it('Test when road links in range. Return true', () => {
     const input1 = {"geometry": {"coordinates": [[0.13, 52],[0.1, 53], [0, 54]]}};
     const input2 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
@@ -15,46 +15,6 @@ describe('distance.js checks distance between statring points of two links if th
     const input2 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
     const expected = false;
     const output = inRange(input1, input2);
-    assert.equal(expected, output);
-  });
-
-  it('Test when coordnates of 1st input is an empty array. Return false', () => {
-    const input1 = {"geometry": {"coordinates": []}};
-    const input2 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
-    const expected = false;
-    const output = inRange(input1, input2);
-    assert.equal(expected, output);
-  });
-
-  it('Test when coordnates of 2nd input is an empty array. Return false', () => {
-    const input1 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};
-    const input2 = {"geometry": {"coordinates": []}};
-    const expected = false;
-    const output = inRange(input1, input2);
-    assert.equal(expected, output);
-  });
-
-  it('Test when coordnates of 1st input is missing. Return false', () => {
-    const input1 = {"geometry": {}};
-    const input2 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
-    const expected = false;
-    const output = inRange(input1, input2);
-    assert.equal(expected, output);
-  });
-
-  it('Test when coordnates of 2nd input is missing. Return false', () => {
-    const input1 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
-    const input2 = {"geometry": {}};
-    const expected = false;
-    const output = inRange(input1, input2);
-    assert.equal(expected, output);
-  });
-
-  it('Test one input is missing. Return false', () => {
-    const input1 = {"geometry": {"coordinates": [[0.13, 52],[0.1, 53], [0, 54]]}};
-    const input2 = {"geometry": {"coordinates": [[0.131, 52],[0.1, 53], [0, 54]]}};;
-    const expected = false;
-    const output = inRange(input1);
     assert.equal(expected, output);
   });
 });
