@@ -12,7 +12,7 @@ const outputFiles = {
 };
 
 const tempFiles = {
-  "OS": './temp/OS.json',
+  "OS": './temp/OS4.json',
   "OSM": './temp/OSM.json'
 };
 

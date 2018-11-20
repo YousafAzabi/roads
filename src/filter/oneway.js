@@ -3,7 +3,7 @@ const {exec} = require('child_process'); //to run commandline Asynchronous
 //set ogr2ogr output format (JSON) and reduce coordinates to [longitude, latitude]
 const ogrJSON = "ogr2ogr -f GeoJSON -dim XY ";
 //define SQL query for OS map to select related data
-const ogrSQLOS = " -sql \"SELECT localid AS id, roadname AS name, formofway, " +
+const ogrSQLOS = " -sql \"SELECT localid AS id, roadname AS name, " +
                "CASE directionality WHEN 'in direction' THEN 1 " +
                "WHEN 'in opposite direction' THEN -1 " +
                "ELSE 0 END AS direction, geom " +
