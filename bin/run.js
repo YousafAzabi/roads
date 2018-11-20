@@ -12,8 +12,8 @@ const outputFiles = {
 };
 
 const tempFiles = {
-  "OS": './temp/OS4.json',
-  "OSM": './temp/OSM.json'
+  "OS": './temp/t/reduced/OS.json',
+  "OSM": './temp/t/reduced/OSM.json'
 };
 
 roadFlow(inputFiles, outputFiles, tempFiles);
