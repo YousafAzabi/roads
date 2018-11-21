@@ -1,8 +1,8 @@
 const {roadFlow}  = require('../src/index.js')
 
 const inputFiles = {
-  "OS": './input/OSMM_HIGHWAYS_June18.gpkg',
-  "OSM": './input/UK_OSM.gpkg'
+  "OS": './input/London_OS.gpkg',
+  "OSM": './input/testOSM.gpkg'
 };
 
 const outputFiles = {
@@ -12,8 +12,8 @@ const outputFiles = {
 };
 
 const tempFiles = {
-  "OS": './temp/t/reduced/OS.json',
-  "OSM": './temp/t/reduced/OSM.json'
+  "OS": './temp/OS.json',
+  "OSM": './temp/OSM.json'
 };
 
 roadFlow(inputFiles, outputFiles, tempFiles);
