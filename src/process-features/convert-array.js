@@ -17,6 +17,6 @@ exports.processArray = (fileName) => {
   data.features = extractor.filter(data.features);
   print.message("Writing data to the file: " + fileName);
   //write JSON data of orginized coordinates array to same input file
-  fs.writeFileSync( fileName, JSON.stringify(data, null, 2));
+  fs.writeFileSync( fileName, JSON.stringify(data));
   print.message("Data is saved to: " + fileName);
 }

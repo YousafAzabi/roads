@@ -9,7 +9,7 @@ exports.roadFlow = (inputFiles, outputFiles, tempFiles) => {
 
   console.info('***** Start ' + new Date().toLocaleTimeString() + ' *****\n');
 
-  let promise = [ //call oneway filtering for OS and OSM data as array
+  const promise = [ //call oneway filtering for OS and OSM data as array
     filterOneway('OS', inputFiles.OS, tempFiles.OS),
     filterOneway('OSM', inputFiles.OSM, tempFiles.OSM)
   ];
@@ -18,14 +18,7 @@ exports.roadFlow = (inputFiles, outputFiles, tempFiles) => {
     .then( () => { //call functions for processing arrays after filter promise resolved
       processArray(tempFiles.OS);
       processArray(tempFiles.OSM);
-    })
-    .then( () => { //call function for comparing data after array processed promise resolved
       console.info('FINISHED pre-processing data');
-      compareData(tempFiles, outputFiles);
-    })
-    .then( () => { //if all promises resolved return true
-      return true;
-    }, () => { //if any of the promises is rejected return false
-      return false;
-  });
+      compareData(tempFiles, outputFiles); //call function for comparing data
+    });
 }

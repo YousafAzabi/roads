@@ -1,7 +1,6 @@
 //module has 2 function calculateAngle (calculates angle from coordinates)
 //and isMismatch (checks if angles has opposite directions)
 
-
 const turf = require('@turf/turf');
 
 const tolerance = 10; //deviation from 180 degree.
@@ -34,7 +33,7 @@ exports.calculateAngle = (coordinates) => {
 }
 
 //========== compare if two angles are in opposite direction ==========
-exports.isMismatch = (angleOne, angleTwo) => {
+exports.isOppositeDirection = (angleOne, angleTwo) => {
     //compare angle differnce falls in range to be considered opposite direction
     if ( (Math.abs(angleOne - angleTwo) >= (180 - tolerance) )
       && (Math.abs(angleOne - angleTwo) <= (180 + tolerance)  ) ) {

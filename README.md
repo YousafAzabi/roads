@@ -39,6 +39,8 @@ There is a general work flow you can follow to get to the point of comparing roa
 
 1. The first step is to collect your data. OS data can be downloaded/purchased from the official [website](https://www.ordnancesurvey.co.uk/business-and-government/products/os-mastermap-highways-network.html) in formats including GML. OSM data can be collected in a number of ways, the method we will focus on is through the website [geofabrik](http://download.geofabrik.de/). From here you can download data for entire countries or cities, in an OSM file format. Once you have downloaded and unzipped your data, you can move onto the next step.
 
+ONLY IN THIS COMMIT 12/11/2018: OSM data first is converted to gpkg format because SQL CASE cannot be implemented when reading pbf format.
+
 2. Once you have your data files, you can place these in the `input` directory. Once there, you can follow the instructions displayed in the `input` directory's `README.md` file in order to convert your files into JSON format and with a correct coordinate projection. Once your files have been successfully converted, you can move onto the next step.
 
 3. Now that you have your data files in a parsable format, you can compare the two data sets to identify common roads between the two. There are two files that make up the OS & OSM Road Comparison Script, `comparator-config.json` and `comparatorY.js`. `comparator-config.json` is where you will edit the I/O settings for the script, telling the script where your input files are, and where you would like it to output results. Once this file has been configured, you can then run the following command in your terminal, while in the root directory.

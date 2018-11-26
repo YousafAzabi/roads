@@ -2,7 +2,8 @@
 
 const io = require('./io.js');
 const {calculateProgress} = require('./progress.js');
-const {compareOSroadWithOSM}= require('./compareOSroadWithOSM.js');
+const {compareOSroadWithOSM} = require('./compareOSroadWithOSM.js');
+const {filterDuplication} = require('./filter-output.js');
 const print = require('./print.js');
 const startTime = new Date();
 
@@ -17,7 +18,7 @@ const outputResults = (outputFiles, outputData, roadCounters) => { //function to
 
 //compare names of the roads for match betwwen OS and OSM
 exports.compareData = (input, outputFiles) => {
-  let roadCounters = {  //object holds counter of road links
+  const roadCounters = {  //object holds counter of road links
     noMatch: 0,  //counter of zero match
     oneMatch: 0,  //counter of one match
     multiMatch: 0,  //counter of multi match
@@ -25,7 +26,7 @@ exports.compareData = (input, outputFiles) => {
     processedOS: 0,  //counter for processed OS links
     totalRoadsOS: 0  //counter for total links in OS
   };
-  let outputData= { OS: [], OSM: [], info: []}; //object of 3 output data arrays
+  const outputData= { OS: [], OSM: [], info: []}; //object of 3 output data arrays
   [dataOS, dataOSM] = io.read(input); //read input files
   print.header(dataOS.features.length, dataOSM.features.length); //print total links in OS and OSM
   roadCounters.totalRoadsOS = dataOS.features.length; //save total number of OS links to counter
@@ -36,9 +37,10 @@ exports.compareData = (input, outputFiles) => {
       roadCounters.noName ++;
       continue; //no comparision, continue loop
     }
-    let key = compareOSroadWithOSM(roadOS, dataOSM, outputData); //compare OS link against OSM links
+    const key = compareOSroadWithOSM(roadOS, dataOSM, outputData); //compare OS link against OSM links
     roadCounters[key] ++; // increament related counter according to key value
     print.progress(calculateProgress(roadCounters)); //print the progess of the calculation on the run
   }
+  outputData.OS = filterDuplication(outputData.OS);
   outputResults(outputFiles, outputData, roadCounters); //call inner function
 }

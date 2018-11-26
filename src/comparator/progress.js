@@ -22,10 +22,10 @@ exports.calculateProgress = (counters) => {
   // print only once evere 3000 mills
   if ( (new Date() - lastPrintDate) > intervalPrintTime ) {
     lastPrintDate = new Date();
-    let timePassed = lastPrintDate - startDate;
-    let roadRatio = (counters.totalRoadsOS / counters.processedOS);
-    let estimateTimeLeft = (roadRatio - 1) * timePassed;
-    let progressPercent = ( 1 / roadRatio) * 100;
+    const timePassed = lastPrintDate - startDate;
+    const roadRatio = (counters.totalRoadsOS / counters.processedOS);
+    const estimateTimeLeft = (roadRatio - 1) * timePassed;
+    const progressPercent = ( 1 / roadRatio) * 100;
 
     calcObj = {
       toPrint: true,

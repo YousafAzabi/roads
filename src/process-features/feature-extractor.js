@@ -4,7 +4,8 @@ calls module to process coordinates array
 returns output GIS data with processed coordinates array
 */
 
-const deleteBrackets = require('./extra-brackets').delete
+const deleteExtraBrackets = require('./extra-brackets').delete
+const {roundNumbers} = require('./number-rounder.js');
 
 //this is the input file to be fixed
 exports.filter = (features) => {
@@ -14,9 +15,9 @@ exports.filter = (features) => {
     if (geometry.type == "MultiLineString"){
       geometry.type = "LineString";
     }
+    const coordinates = deleteExtraBrackets(geometry.coordinates);
 
-    let coordinates = deleteBrackets(geometry.coordinates);
-    geometry.coordinates = coordinates;
+    geometry.coordinates = roundNumbers(coordinates);
     //check if coordinates are empty delete entry
     if (coordinates.length === 0) {
       //delete element i form features
