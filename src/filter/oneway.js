@@ -18,7 +18,8 @@ const ogrSQLOSM = " -sql \"SELECT osm_id AS id, name, " +
                 "CASE WHEN other_tags LIKE '%oneway_=>_yes%' THEN 1 " +
                 "ELSE 0 END AS direction, geom " +
                 "FROM lines " +
-                "WHERE other_tags NOT LIKE '%motor_vehicle_=>_no%' AND " +
+                "WHERE (other_tags NOT LIKE '%motor_vehicle_=>_no%' OR " +
+                "other_tags IS NULL) AND " +
                 "highway in ('motorway', 'motorway_link', 'trunk_link', " +
                 "'tertiary', 'primary', 'secondary', 'tertiary_link', " +
                 "'primary_link', 'secondary_link', 'residential', 'trunk', " +
