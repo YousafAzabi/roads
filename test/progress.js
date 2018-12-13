@@ -8,7 +8,7 @@ describe('progress.js calculates time passed, estaimated time to finish and perc
   it('Test when both input parameters are given.', () => {
     const time = intervalPrintTime + 200;
     const input = {
-      "totalRoadsOS": 100,
+      "totalLinksOS": 100,
       "processedOS": 20
     };
     const expected = {
@@ -27,7 +27,7 @@ describe('progress.js calculates time passed, estaimated time to finish and perc
 
   it('Test when both input parameters are given but printing time not reached yet.', () => {
     const input = {
-      "totalRoadsOS": 100,
+      "totalLinksOS": 100,
       "processedOS": 20
     };
     const expected = {};
@@ -41,7 +41,7 @@ describe('progress.js calculates time passed, estaimated time to finish and perc
 
   it('Test when one input parameter is given. Return false', () => {
     const input = {
-      "totalRoadsOS": 100,
+      "totalLinksOS": 100,
       "processedOS": 20
     };
     const expected = {};

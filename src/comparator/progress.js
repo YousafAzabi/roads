@@ -23,7 +23,7 @@ exports.calculateProgress = (counters) => {
   if ( (new Date() - lastPrintDate) > intervalPrintTime ) {
     lastPrintDate = new Date();
     const timePassed = lastPrintDate - startDate;
-    const roadRatio = (counters.totalRoadsOS / counters.processedOS);
+    const roadRatio = (counters.totalLinksOS / counters.processedOS);
     const estimateTimeLeft = (roadRatio - 1) * timePassed;
     const progressPercent = ( 1 / roadRatio) * 100;
 

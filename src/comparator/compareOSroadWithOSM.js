@@ -13,6 +13,7 @@ isMismatch = (roadOS, roadOSM) => {
   const isOnewayOS = !!roadOS.properties.direction;
   const isOnewayOSM = !!roadOSM.properties.direction;
   if (!isOnewayOS && !isOnewayOSM) {
+    matchesCounter = -1; //set value to increment two-way counter
     return false;
   }
   const osName = roadOS.properties.name.slice(3, (roadOS.properties.name.length - 1));
@@ -45,18 +46,18 @@ exports.compareOSroadWithOSM = (roadOS, dataOSM, outputData) => {
           "roadName": roadOSM.properties.name,
           "OSId": (roadOS.properties.id).toString(),
           "OSMId": (roadOSM.properties.id).toString(),
-          "Note": 'OS: ' + angleOS + ', OSM: ' + angleOSM
         };
         outputData.info.push(data);  //push object to info array
         outputData.OS.push(roadOS);  //push OS link to OS array
         outputData.OSM.push(roadOSM);  //push OSM link to OSM array
       }
     });
-
   if (matchesCounter === 0) { //if number of matches ZERO set to 'noMatch'
     matchesCounter = 'noMatch';
   } else if (matchesCounter === 1) { //if number of matches ONE set to 'oneMatch'
     matchesCounter = 'oneMatch';
+  } else if (matchesCounter === -1) { //if -1 set to 'twowayRoad'
+    matchesCounter = 'twoway';
   } else { //else set to 'multiMatch'
     matchesCounter = 'multiMatch';
   }

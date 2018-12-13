@@ -23,13 +23,14 @@ exports.compareData = (input, outputFiles) => {
     oneMatch: 0,  //counter of one match
     multiMatch: 0,  //counter of multi match
     noName: 0,  //counter of no names links
+    twoway: 0, //counter of two-way links
     processedOS: 0,  //counter for processed OS links
-    totalRoadsOS: 0  //counter for total links in OS
+    totalLinksOS: 0  //counter for total links in OS
   };
   const outputData= { OS: [], OSM: [], info: []}; //object of 3 output data arrays
   [dataOS, dataOSM] = io.read(input); //read input files
   print.header(dataOS.features.length, dataOSM.features.length); //print total links in OS and OSM
-  roadCounters.totalRoadsOS = dataOS.features.length; //save total number of OS links to counter
+  roadCounters.totalLinksOS = dataOS.features.length; //save total number of OS links to counter
   for (let roadOS of dataOS.features) { //loop through OS links
     roadCounters.processedOS ++; //increase links processed in counter
     if (!roadOS.properties.name) { //check if link has no name, increment counter

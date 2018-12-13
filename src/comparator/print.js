@@ -16,6 +16,7 @@ exports.header = (lengthOS, lengthOSM) => {
 //========== print info about link matche at end of programe ==========
 exports.report = (counter) => {
   console.info('Number of OS links with NONE match in OSM: ' + counter.noMatch);
+  console.info('Number of twoway links in both: ' + counter.twoway);
   console.info('Number of OS links with ONE  match in OSM: ' + counter.oneMatch);
   console.info('Number of OS links with MULTImatch in OSM: ' + counter.multiMatch);
   console.info('Number of road links without a Name in OS: ' + counter.noName);
