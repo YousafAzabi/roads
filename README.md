@@ -43,9 +43,17 @@ ONLY IN THIS COMMIT 12/11/2018: OSM data first is converted to gpkg format becau
 
 2. Once you have your data files, you can place these in the `input` directory. Once there, you can follow the instructions displayed in the `input` directory's `README.md` file in order to convert your files into JSON format and with a correct coordinate projection. Once your files have been successfully converted, you can move onto the next step.
 
-3. Now that you have your data files in a parsable format, you can compare the two data sets to identify common roads between the two. There are two files that make up the OS & OSM Road Comparison Script, `comparator-config.json` and `comparatorY.js`. `comparator-config.json` is where you will edit the I/O settings for the script, telling the script where your input files are, and where you would like it to output results. Once this file has been configured, you can then run the following command in your terminal, while in the root directory.
+3. Now that you have your data files in a parsable format, you can compare the two data sets to identify common roads between the two. The scripts are split in individual folders;
+    * `fliter` folder contains files that use ogr2ogr to filter data.
+    * `process-features` folder contains files that assures input file coordinates are in right format.
+    * `comparator` folder contains files that compare between road links from different data sources.
+Every folder contains a README file which contains more information about the files in a specific folder.
+
+## Execution
+
+There input, output and temp file names are input parameters in the `/bin/run.js` script. Once this file has been configured, you can then run the following command in your terminal, while in the root directory.
 ```
-node comparator.js
+node --max-old-space-size=8192 ./bin/run.js
 ```
 The output on the terminal shows the total number of roads in OS and OSM, the number of roads with zero, one and multi matches, and how many roads with no name in OS. The last line shows number of oneway mismatches between the two datasets (OS & OSM).
 
@@ -63,9 +71,3 @@ The output files can be imported to QGIS to see the roads mismatch and analyse t
 ## Testing
 * The code is split into smaller pieces of code modules (functions) to write a test for each part individually.
 * The tests are saved in test folder and are implemented using Mocha and Chai.
-* The scripts are split in individual folders;
-    1. `fliter` folder contains files that use ogr2ogr to filter data.
-    2. `process-features` folder contains files that assures input file coordinates are in right format.
-    3. `comparator` folder contains files that compare between road links from different data sources.
-* Every folder contains a README file which contains more information about the files in a specific folder.
-* The scripts should be executed in the order shown in the sublist above (folders).
